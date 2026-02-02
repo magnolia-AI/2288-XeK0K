@@ -13,6 +13,7 @@ import {
 import { useAuthClient } from '@/lib/auth/client';
 import { LogOut, Settings, Footprints } from 'lucide-react';
 import { CartSheet } from '@/components/cart-sheet';
+import { MobileNav } from '@/components/mobile-nav';
 
 export function AuthHeader() {
   const { user, isPending, signOut } = useAuthClient();
@@ -53,6 +54,7 @@ export function AuthHeader() {
           </nav>
         </div>
         <div className="flex items-center gap-4">
+          <MobileNav />
           <CartSheet />
           {user ? (
             <DropdownMenu>

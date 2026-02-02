@@ -23,7 +23,7 @@ The approach involves auditing the current implementations of `auth-header.tsx`,
 - [x] **5. Synchronize active states and hover effects** <!-- id:4VKtbB -->
   Ensure that hover states for breadcrumb items match the navigation link hover states (e.g., simple opacity change or color shift to primary) defined in `auth-header.tsx`.
 
-- [ ] **6. Update mobile-nav.tsx for consistency** <!-- id:FL_-6_ -->
+- [x] **6. Update mobile-nav.tsx for consistency** <!-- id:FL_-6_ -->
   Ensure the sheet-based mobile navigation utilizes the same typography and iconography as the desktop breadcrumb for a seamless transition between viewports.
 
 - [ ] **7. Final Audit of 'Products' and 'Account' pages** <!-- id:5Gb9iH -->
