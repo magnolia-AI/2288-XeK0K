@@ -105,8 +105,8 @@
 
 @layer utilities {
   .glass-header {
-    @apply bg-background/90 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70 border-b border-primary/10;
+    background-color: color-mix(in srgb, var(--background), transparent 10%);
+    @apply backdrop-blur-xl border-b border-primary/10;
     box-shadow: 0 4px 30px -10px rgba(0, 0, 0, 0.3);
   }
 }
-
