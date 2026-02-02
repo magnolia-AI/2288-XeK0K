@@ -1,5 +1,6 @@
 'use client';
 
+import * as React from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import {
   Select,
@@ -20,16 +21,40 @@ export function ProductFilters() {
   const updateFilters = (updates: Record<string, string | null>) => {
     const params = new URLSearchParams(searchParams);
     Object.entries(updates).forEach(([key, value]) => {
-      if (value) {
+      if (value !== null && value !== '') {
         params.set(key, value);
       } else {
         params.delete(key);
       }
     });
     
+    // Reset to page 1 when filters change
+    params.delete('page');
+
     startTransition(() => {
       router.push(`/products?${params.toString()}`);
     });
+  };
+
+  // Use a ref to store timeout to avoid re-renders cancelling it
+  const searchTimeoutRef = React.useRef<NodeJS.Timeout>();
+  const priceTimeoutRef = React.useRef<NodeJS.Timeout>();
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
+    
+    searchTimeoutRef.current = setTimeout(() => {
+      updateFilters({ q: value });
+    }, 400);
+  };
+
+  const handlePriceChange = (key: 'minPrice' | 'maxPrice', value: string) => {
+    if (priceTimeoutRef.current) clearTimeout(priceTimeoutRef.current);
+
+    priceTimeoutRef.current = setTimeout(() => {
+      updateFilters({ [key]: value });
+    }, 500);
   };
 
   return (
@@ -41,7 +66,7 @@ export function ProductFilters() {
             id="search"
             placeholder="Search T-Rexes..."
             defaultValue={searchParams.get('q') || ''}
-            onChange={(e) => updateFilters({ q: e.target.value })}
+            onChange={handleSearchChange}
             className="w-full"
           />
         </div>
@@ -115,4 +140,3 @@ export function ProductFilters() {
     </div>
   );
 }
-

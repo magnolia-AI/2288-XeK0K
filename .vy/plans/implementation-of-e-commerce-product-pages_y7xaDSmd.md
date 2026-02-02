@@ -23,7 +23,7 @@ The implementation will follow a data-driven approach using Next.js Server Compo
 - [x] **5. Create 'Add to Cart' interactivity** <!-- id:7bFMpg -->
   Create a new client component `components/products/add-to-cart-button.tsx`. Integrate it with `hooks/use-cart.ts` to add items to the stateful cart and trigger the `sonner` toast notification.
 
-- [ ] **6. Implement Product Filters logic** <!-- id:yPAjuy -->
+- [x] **6. Implement Product Filters logic** <!-- id:yPAjuy -->
   Connect `components/products/product-filters.tsx` to the Next.js router, allowing users to select categories and price ranges that update the URL and trigger re-validation.
 
 - [ ] **7. Add breadcrumbs and navigation** <!-- id:Xr9FYS -->
