@@ -11,7 +11,7 @@ The strategy centers on creating a dedicated asset utility that resolves image U
 - [x] **1. Inventory all broken image references** <!-- id:pAFSpD -->
   Scan 'lib/schema.ts', 'lib/seed.ts', and 'app/products/[id]/page.tsx' to identify current static URLs that are returning 404s.
 
-- [ ] **2. Create an Image Utility for fallbacks** <!-- id:B7zsAZ -->
+- [x] **2. Create an Image Utility for fallbacks** <!-- id:B7zsAZ -->
   Implement a 'getPlaceholderImageUrl' function in 'lib/utils.ts' that generates a themed SVG data URI or returns a reliable local asset path based on category (e.g., bones, apparel, toys).
 
 - [ ] **3. Update Database Seeding Logic** <!-- id:IlMA-p -->
