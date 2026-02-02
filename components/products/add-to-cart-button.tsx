@@ -1,18 +1,16 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
+import { Button, ButtonProps } from '@/components/ui/button';
 import { useCart } from '@/hooks/use-cart';
 import { Product } from '@/lib/schema';
 import { ShoppingCart } from 'lucide-react';
 import { toast } from 'sonner';
+import { cn } from '@/lib/utils';
 
-interface AddToCartButtonProps {
+interface AddToCartButtonProps extends ButtonProps {
   product: Product;
   quantity?: number;
   showIcon?: boolean;
-  className?: string;
-  variant?: 'default' | 'outline' | 'secondary' | 'ghost' | 'link' | 'destructive';
-  size?: 'default' | 'sm' | 'lg' | 'icon';
 }
 
 export function AddToCartButton({
@@ -20,26 +18,25 @@ export function AddToCartButton({
   quantity = 1,
   showIcon = true,
   className,
-  variant = 'default',
-  size = 'default',
+  children,
+  ...props
 }: AddToCartButtonProps) {
   const addItem = useCart((state) => state.addItem);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
     try {
       addItem(product, quantity);
-      toast.success(`${product.name} added to cart`, {
-        description: `${quantity} ${quantity === 1 ? 'item' : 'items'} added successfully.`,
-        action: {
-          label: 'View Cart',
-          onClick: () => {
-             // In a real app, logic to open cart sheet would go here
-             // For now, we just acknowledge the click
-          },
-        },
+      toast.success(`${product.name} Added to Enclosure`, {
+        description: `Secure transport of ${quantity} ${quantity === 1 ? 'specimen' : 'specimens'} has been initiated.`,
+        icon: <ShoppingCart className="h-4 w-4" />,
       });
     } catch (error) {
-      toast.error('Failed to add item to cart');
+      toast.error('Failed to initiate transport', {
+        description: 'System error in the genetics lab.'
+      });
       console.error('Add to cart error:', error);
     }
   };
@@ -47,12 +44,11 @@ export function AddToCartButton({
   return (
     <Button
       onClick={handleAddToCart}
-      className={className}
-      variant={variant}
-      size={size}
+      className={cn(showIcon && 'gap-2', className)}
+      {...props}
     >
-      {showIcon && <ShoppingCart className="mr-2 h-4 w-4" />}
-      Add to Cart
+      {showIcon && <ShoppingCart className="h-5 w-5" />}
+      {children || 'ADOPT NOW'}
     </Button>
   );
 }

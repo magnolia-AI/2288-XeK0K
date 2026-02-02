@@ -32,13 +32,13 @@ export function ProductFilters() {
     params.delete('page');
 
     startTransition(() => {
-      router.push(`/products?${params.toString()}`);
+      const newUrl = `/products?${params.toString()}`;
+      router.push(newUrl);
     });
   };
 
-  // Use a ref to store timeout to avoid re-renders cancelling it
-  const searchTimeoutRef = React.useRef<NodeJS.Timeout>();
-  const priceTimeoutRef = React.useRef<NodeJS.Timeout>();
+  const searchTimeoutRef = React.useRef<any>(null);
+  const priceTimeoutRef = React.useRef<any>(null);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -64,79 +64,85 @@ export function ProductFilters() {
           <Label htmlFor="search" className="sr-only">Search</Label>
           <Input
             id="search"
-            placeholder="Search T-Rexes..."
+            placeholder="Search our labs..."
             defaultValue={searchParams.get('q') || ''}
             onChange={handleSearchChange}
-            className="w-full"
+            className="w-full bg-muted/30 border-primary/10"
           />
         </div>
-        <div className="w-full md:w-[200px]">
+        <div className="w-full md:w-[220px]">
           <Select
             defaultValue={searchParams.get('sort') || 'newest'}
             onValueChange={(value) => updateFilters({ sort: value })}
           >
-            <SelectTrigger aria-label="Sort by">
-              <SelectValue placeholder="Sort by" />
+            <SelectTrigger aria-label="Sort by" className="bg-muted/30 border-primary/10">
+              <SelectValue placeholder="Sort Catalog" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="newest">Newest</SelectItem>
+              <SelectItem value="newest">Newest Specimens</SelectItem>
               <SelectItem value="price-low">Price: Low to High</SelectItem>
               <SelectItem value="price-high">Price: High to Low</SelectItem>
-              <SelectItem value="name">Name</SelectItem>
+              <SelectItem value="name">Alphabetical</SelectItem>
             </SelectContent>
           </Select>
         </div>
       </div>
 
       <div className="flex flex-wrap gap-4 items-end">
-        <div className="w-full md:w-[200px]">
-          <Label htmlFor="category" className="text-sm font-medium mb-1.5 block">Category</Label>
+        <div className="w-full md:w-[220px]">
+          <Label htmlFor="category" className="text-xs font-bold uppercase tracking-widest mb-2 block text-muted-foreground">Genetic Lineage</Label>
           <Select
             defaultValue={searchParams.get('category') || 'all'}
             onValueChange={(value) => updateFilters({ category: value === 'all' ? null : value })}
           >
-            <SelectTrigger id="category">
+            <SelectTrigger id="category" className="bg-muted/30 border-primary/10">
               <SelectValue placeholder="All Categories" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Categories</SelectItem>
-              <SelectItem value="Apex">Apex Predator</SelectItem>
-              <SelectItem value="Scavenger">Scavenger</SelectItem>
-              <SelectItem value="Aquatic">Aquatic</SelectItem>
-              <SelectItem value="Miniature">Miniature</SelectItem>
+              <SelectItem value="all">Full Catalog</SelectItem>
+              <SelectItem value="Standard T-Rex">Standard T-Rex</SelectItem>
+              <SelectItem value="Rare Variants">Rare Variants</SelectItem>
+              <SelectItem value="Specialized">Specialized</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
         <div className="flex gap-2 items-end flex-grow md:flex-grow-0">
-          <div className="w-24">
-            <Label htmlFor="minPrice" className="text-sm font-medium mb-1.5 block">Min Price</Label>
+          <div className="w-28">
+            <Label htmlFor="minPrice" className="text-xs font-bold uppercase tracking-widest mb-2 block text-muted-foreground">Min Cost</Label>
             <Input
               id="minPrice"
               type="number"
-              placeholder="0"
+              placeholder="$0"
               defaultValue={searchParams.get('minPrice') || ''}
-              onChange={(e) => updateFilters({ minPrice: e.target.value })}
+              onChange={(e) => handlePriceChange('minPrice', e.target.value)}
+              className="bg-muted/30 border-primary/10 text-xs"
             />
           </div>
-          <div className="w-24">
-            <Label htmlFor="maxPrice" className="text-sm font-medium mb-1.5 block">Max Price</Label>
+          <div className="w-28">
+            <Label htmlFor="maxPrice" className="text-xs font-bold uppercase tracking-widest mb-2 block text-muted-foreground">Max Cost</Label>
             <Input
               id="maxPrice"
               type="number"
-              placeholder="Any"
+              placeholder="無"
               defaultValue={searchParams.get('maxPrice') || ''}
-              onChange={(e) => updateFilters({ maxPrice: e.target.value })}
+              onChange={(e) => handlePriceChange('maxPrice', e.target.value)}
+              className="bg-muted/30 border-primary/10 text-xs"
             />
           </div>
         </div>
         
         {isPending && (
-          <div className="text-sm text-muted-foreground animate-pulse mb-2">
-            Updating results...
+          <div className="text-xs font-medium text-primary animate-pulse mb-3 ml-2 flex items-center gap-2">
+             <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+              </span>
+            Re-sequencing...
           </div>
         )}
       </div>
     </div>
   );
 }
+
