@@ -11,7 +11,7 @@ The approach focuses on refining the 'glass' utility classes and component-speci
 - [x] **1. Adjust global glassmorphism utility classes in app/globals.css** <!-- id:B7oC58 -->
   Increase the opacity of the background colors used for glass effects (e.g., changing from opacity 0.1 to 0.25). Increase standard backdrop-blur from 'blur-md' to 'blur-xl' for better text isolation.
 
-- [ ] **2. Refine Product Card legibility in components/products/product-card.tsx** <!-- id:Yc30L_ -->
+- [x] **2. Refine Product Card legibility in components/products/product-card.tsx** <!-- id:Yc30L_ -->
   Apply a subtle semi-transparent background to the text area of the product card specifically. Add a 1px border with higher contrast (e.g., border-white/20 in dark mode) to define the card boundaries more clearly.
 
 - [ ] **3. Enhance Cart Sheet contrast in components/cart-sheet.tsx** <!-- id:aweqQt -->
