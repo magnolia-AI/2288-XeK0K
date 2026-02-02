@@ -26,7 +26,7 @@ The implementation will follow a data-driven approach using Next.js Server Compo
 - [x] **6. Implement Product Filters logic** <!-- id:yPAjuy -->
   Connect `components/products/product-filters.tsx` to the Next.js router, allowing users to select categories and price ranges that update the URL and trigger re-validation.
 
-- [ ] **7. Add breadcrumbs and navigation** <!-- id:Xr9FYS -->
+- [x] **7. Add breadcrumbs and navigation** <!-- id:Xr9FYS -->
   Utilize `components/ui/breadcrumb.tsx` on the PDP to allow users to navigate back to the catalog or specific categories.
 
 - [ ] **8. Verification and Error Handling** <!-- id:dn4Tx7 -->
