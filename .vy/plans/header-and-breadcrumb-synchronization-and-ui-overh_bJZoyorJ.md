@@ -17,7 +17,7 @@ The approach involves auditing the current implementations of `auth-header.tsx`,
 - [x] **3. Apply matching styles to Breadcrumb component** <!-- id:p_sxqj -->
   Modify `components/ui/breadcrumb.tsx` or its implementation in page layouts to use the same text-muted-foreground colors and font sizes as the navigation links in the header.
 
-- [ ] **4. Enhance Breadcrumb visibility and spacing** <!-- id:WGSCLC -->
+- [x] **4. Enhance Breadcrumb visibility and spacing** <!-- id:WGSCLC -->
   Add a dedicated section below the header in `app/layout.tsx` or individual product pages (`app/products/[id]/page.tsx`) that houses the breadcrumb with consistent top/bottom padding (e.g., `py-4`) that scales with the header's height.
 
 - [ ] **5. Synchronize active states and hover effects** <!-- id:4VKtbB -->
