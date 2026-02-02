@@ -11,7 +11,7 @@ The approach focuses on data integrity and dynamic fallbacks. First, we will cle
 - [x] **1. Clean current public folder images** <!-- id:q9LQHr -->
   Remove existing .jpg, .png, and .webp files in the 'public/' directory that are currently broken or unused to ensure a fresh start.
 
-- [ ] **2. Create a name-based image generator utility in lib/utils.ts** <!-- id:Ga3Qm8 -->
+- [x] **2. Create a name-based image generator utility in lib/utils.ts** <!-- id:Ga3Qm8 -->
   Implement 'generateProductImage(name: string)' which returns a URL from a service like 'https://images.unsplash.com/photo-...' using the product name as a query, or generates a themed SVG placeholder if the service is unreachable.
 
 - [ ] **3. Refactor lib/seed.ts to use the image generator** <!-- id:bvf8s8 -->
