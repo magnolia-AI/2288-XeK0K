@@ -50,7 +50,7 @@ async function main() {
         price: '8500000.00',
         stock: 2,
         categoryId: specializedCat?.id,
-        imageUrl: 'https://images.unsplash.com/photo-1517922193564-63953559630e?q=80&w=1000&auto=format&fit=crop',
+        imageUrl: '/images/products/alpine-tyrannosaur.webp',
         specs: {
           age: 'Adult (12 years)',
           temperament: 'Stoic but highly territorial',
@@ -66,7 +66,7 @@ async function main() {
         price: '4500000.00',
         stock: 5,
         categoryId: standardCat?.id,
-        imageUrl: 'https://images.unsplash.com/photo-1615110303063-d2508933b946?q=80&w=1000&auto=format&fit=crop',
+        imageUrl: '/images/products/juvenile-t-rex.webp',
         specs: {
           age: 'Juvenile (3 years)',
           temperament: 'Hyperactive and curious',
@@ -82,7 +82,7 @@ async function main() {
         price: '25000000.00',
         stock: 1,
         categoryId: rareCat?.id,
-        imageUrl: 'https://images.unsplash.com/photo-1559967011-74ba4164be6c?q=80&w=1000&auto=format&fit=crop',
+        imageUrl: '/images/products/obsidian-tyrannosaur.webp',
         specs: {
           age: 'Prime Adult (15 years)',
           temperament: 'Highly intelligent and calculating',
@@ -98,7 +98,7 @@ async function main() {
         price: '6200000.00',
         stock: 3,
         categoryId: specializedCat?.id,
-        imageUrl: 'https://images.unsplash.com/photo-1525833324c41-26f634d0b0b8?q=80&w=1000&auto=format&fit=crop',
+        imageUrl: '/images/products/island-tyrannosaur.webp',
         specs: {
           age: 'Young Adult (8 years)',
           temperament: 'Relatively docile in water',
@@ -114,7 +114,7 @@ async function main() {
         price: '7800000.00',
         stock: 4,
         categoryId: specializedCat?.id,
-        imageUrl: 'https://images.unsplash.com/photo-1568515045052-f9a854d70ec2?q=80&w=1000&auto=format&fit=crop',
+        imageUrl: '/images/products/desert-stalker-rex.webp',
         specs: {
           age: 'Adult (10 years)',
           temperament: 'Patient ambush predator',
@@ -131,7 +131,9 @@ async function main() {
         await db.insert(products).values(rex);
         console.log(`Seeded: ${rex.name}`);
       } else {
-        console.log(`Product already exists: ${rex.name}`);
+        // Update existing product with new imageUrl to ensure the fix applies to already seeded DBs
+        await db.update(products).set({ imageUrl: rex.imageUrl }).where(eq(products.slug, rex.slug));
+        console.log(`Updated imageUrl for: ${rex.name}`);
       }
     }
 

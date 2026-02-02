@@ -14,7 +14,7 @@ The strategy centers on creating a dedicated asset utility that resolves image U
 - [x] **2. Create an Image Utility for fallbacks** <!-- id:B7zsAZ -->
   Implement a 'getPlaceholderImageUrl' function in 'lib/utils.ts' that generates a themed SVG data URI or returns a reliable local asset path based on category (e.g., bones, apparel, toys).
 
-- [ ] **3. Update Database Seeding Logic** <!-- id:IlMA-p -->
+- [x] **3. Update Database Seeding Logic** <!-- id:IlMA-p -->
   Modify 'lib/seed.ts' to replace external broken URLs with programmatic placeholder paths or local public directory assets.
 
 - [ ] **4. Enhance 'SafeImage' component** <!-- id:WzrDny -->
