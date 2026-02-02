@@ -4,6 +4,15 @@ import { ProductCard } from '@/components/products/product-card';
 import { ProductFilters } from '@/components/products/product-filters';
 import { desc, asc, ilike, or, and, eq, gte, lte } from 'drizzle-orm';
 import { Suspense } from 'react';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Home, LayoutGrid } from "lucide-react";
 
 export const dynamic = 'force-dynamic';
 
@@ -96,13 +105,32 @@ async function ProductList({
     </div>
   );
 }
+      {/* Breadcrumbs */}
+      <Breadcrumb className="mb-8">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/" className="flex items-center gap-1">
+              <Home className="h-3.5 w-3.5" />
+              Home
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage className="flex items-center gap-1">
+              <LayoutGrid className="h-3.5 w-3.5" />
+              Catalog
+            </BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
   const params = await searchParams;
   const { q, sort, category, minPrice, maxPrice } = params;
 
   return (
-    <div className="container mx-auto px-4 md:px-6 py-8">
+    <div className="container mx-auto px-4 md:px-6 py-8 mt-16 max-w-7xl">
       <div className="flex flex-col gap-2 mb-8">
         <h1 className="text-4xl font-bold tracking-tight">Our T-Rex Collection</h1>
         <p className="text-muted-foreground">

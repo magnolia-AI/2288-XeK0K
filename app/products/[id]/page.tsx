@@ -7,8 +7,15 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent } from "@/components/ui/card";
 import { AddToCartButton } from "@/components/products/add-to-cart-button";
-import { ChevronRight, Home, LayoutGrid } from "lucide-react";
-import Link from "next/link";
+import { Home, LayoutGrid } from "lucide-react";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -36,19 +43,29 @@ export default async function ProductDetailPage({ params }: PageProps) {
   return (
     <div className="container mx-auto px-4 md:px-6 py-8 mt-16 max-w-7xl">
       {/* Breadcrumbs */}
-      <nav className="flex items-center space-x-2 text-sm text-muted-foreground mb-8 overflow-hidden whitespace-nowrap">
-        <Link href="/" className="hover:text-primary flex items-center gap-1 transition-colors">
-          <Home className="h-3.5 w-3.5" />
-          <span>Home</span>
-        </Link>
-        <ChevronRight className="h-4 w-4 shrink-0" />
-        <Link href="/products" className="hover:text-primary flex items-center gap-1 transition-colors">
-          <LayoutGrid className="h-3.5 w-3.5" />
-          <span>Catalog</span>
-        </Link>
-        <ChevronRight className="h-4 w-4 shrink-0" />
-        <span className="text-foreground font-medium truncate">{product.name}</span>
-      </nav>
+      <Breadcrumb className="mb-8">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/" className="flex items-center gap-1">
+              <Home className="h-3.5 w-3.5" />
+              <span>Home</span>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/products" className="flex items-center gap-1">
+              <LayoutGrid className="h-3.5 w-3.5" />
+              <span>Catalog</span>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage className="truncate max-w-[200px] md:max-w-none">
+              {product.name}
+            </BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
 
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
         {/* Product Visuals */}
@@ -112,7 +129,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
           <div className="space-y-6 mb-10">
             <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">Detailed Description</h3>
-            <p className="text-lg text-muted-foreground leading-relaxed leading-relaxed font-medium">
+            <p className="text-lg text-muted-foreground leading-relaxed font-medium">
               {product.description || "An exceptional specimen of the tyrannosaurid theropod dinosaur. This creature represents the pinnacle of ancient predatory evolution, meticulously reconstructed for modern observers."}
             </p>
           </div>
@@ -145,7 +162,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
             </Card>
           </div>
 
-          {/* Add to Cart - Task 5 */}
+          {/* Add to Cart */}
           <div className="space-y-4 mt-auto">
             <AddToCartButton 
               product={product} 

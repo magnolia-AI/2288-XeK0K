@@ -14,7 +14,7 @@ The approach involves auditing the current implementations of `auth-header.tsx`,
 - [x] **2. Refactor `components/auth-header.tsx` for glassmorphism styling** <!-- id:wTfE0K -->
   Apply `sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60` to the header element to provide a modern, high-end feel.
 
-- [ ] **3. Apply matching styles to Breadcrumb component** <!-- id:p_sxqj -->
+- [x] **3. Apply matching styles to Breadcrumb component** <!-- id:p_sxqj -->
   Modify `components/ui/breadcrumb.tsx` or its implementation in page layouts to use the same text-muted-foreground colors and font sizes as the navigation links in the header.
 
 - [ ] **4. Enhance Breadcrumb visibility and spacing** <!-- id:WGSCLC -->
