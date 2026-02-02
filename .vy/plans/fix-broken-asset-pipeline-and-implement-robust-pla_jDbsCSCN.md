@@ -14,7 +14,7 @@ The approach focuses on data integrity and dynamic fallbacks. First, we will cle
 - [x] **2. Create a name-based image generator utility in lib/utils.ts** <!-- id:Ga3Qm8 -->
   Implement 'generateProductImage(name: string)' which returns a URL from a service like 'https://images.unsplash.com/photo-...' using the product name as a query, or generates a themed SVG placeholder if the service is unreachable.
 
-- [ ] **3. Refactor lib/seed.ts to use the image generator** <!-- id:bvf8s8 -->
+- [x] **3. Refactor lib/seed.ts to use the image generator** <!-- id:bvf8s8 -->
   Update the product seeding logic to call the new generator utility for each product instead of using hardcoded, brittle Unsplash URLs.
 
 - [ ] **4. Enhance components/ui/safe-image.tsx with smart-fallback** <!-- id:O1bPEv -->

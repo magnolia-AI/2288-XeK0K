@@ -2,6 +2,7 @@ import 'dotenv/config';
 import db from './db';
 import { categories, products } from './schema';
 import { eq } from 'drizzle-orm';
+import { generateProductImage } from './utils';
 
 async function main() {
   console.log('Starting database seed...');
@@ -50,7 +51,6 @@ async function main() {
         price: '8500000.00',
         stock: 2,
         categoryId: specializedCat?.id,
-        imageUrl: '/images/products/alpine-tyrannosaur.webp',
         specs: {
           age: 'Adult (12 years)',
           temperament: 'Stoic but highly territorial',
@@ -66,7 +66,6 @@ async function main() {
         price: '4500000.00',
         stock: 5,
         categoryId: standardCat?.id,
-        imageUrl: '/images/products/juvenile-t-rex.webp',
         specs: {
           age: 'Juvenile (3 years)',
           temperament: 'Hyperactive and curious',
@@ -82,7 +81,6 @@ async function main() {
         price: '25000000.00',
         stock: 1,
         categoryId: rareCat?.id,
-        imageUrl: '/images/products/obsidian-tyrannosaur.webp',
         specs: {
           age: 'Prime Adult (15 years)',
           temperament: 'Highly intelligent and calculating',
@@ -98,7 +96,6 @@ async function main() {
         price: '6200000.00',
         stock: 3,
         categoryId: specializedCat?.id,
-        imageUrl: '/images/products/island-tyrannosaur.webp',
         specs: {
           age: 'Young Adult (8 years)',
           temperament: 'Relatively docile in water',
@@ -114,7 +111,6 @@ async function main() {
         price: '7800000.00',
         stock: 4,
         categoryId: specializedCat?.id,
-        imageUrl: '/images/products/desert-stalker-rex.webp',
         specs: {
           age: 'Adult (10 years)',
           temperament: 'Patient ambush predator',
@@ -126,13 +122,18 @@ async function main() {
     ];
 
     for (const rex of rexInventory) {
+      const productData = {
+        ...rex,
+        imageUrl: generateProductImage(rex.name)
+      };
+
       const existing = await db.select().from(products).where(eq(products.slug, rex.slug));
       if (existing.length === 0) {
-        await db.insert(products).values(rex);
+        await db.insert(products).values(productData);
         console.log(`Seeded: ${rex.name}`);
       } else {
         // Update existing product with new imageUrl to ensure the fix applies to already seeded DBs
-        await db.update(products).set({ imageUrl: rex.imageUrl }).where(eq(products.slug, rex.slug));
+        await db.update(products).set({ imageUrl: productData.imageUrl }).where(eq(products.slug, rex.slug));
         console.log(`Updated imageUrl for: ${rex.name}`);
       }
     }
@@ -152,4 +153,3 @@ main()
   .finally(async () => {
     process.exit(0);
   });
-
