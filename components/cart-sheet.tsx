@@ -48,13 +48,13 @@ export function CartSheet() {
           )}
         </Button>
       </SheetTrigger>
-      <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
-        <SheetHeader className="px-1">
-          <SheetTitle>Cart ({itemCount})</SheetTitle>
+      <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg bg-background/95 backdrop-blur-xl border-l border-primary/20 shadow-[-10px_0_30px_-15px_rgba(0,0,0,0.3)] dark:shadow-[-10px_0_30px_-15px_rgba(0,0,0,0.7)]">
+        <SheetHeader className="px-1 border-b border-primary/10 pb-4 mr-6">
+          <SheetTitle className="text-2xl font-bold tracking-tight">Cart ({itemCount})</SheetTitle>
         </SheetHeader>
         {itemCount > 0 ? (
           <>
-            <div className="flex flex-1 flex-col gap-5 overflow-hidden pr-6">
+            <div className="flex flex-1 flex-col gap-5 overflow-hidden pr-6 mt-4">
               <ScrollArea className="h-full">
                 <div className="flex flex-col gap-4 py-4">
                   {items.map((item) => (
@@ -127,10 +127,10 @@ export function CartSheet() {
                   <span className="font-bold">${totalPrice.toLocaleString()}</span>
                 </div>
               </div>
-              <SheetFooter>
+              <SheetFooter className="mt-2">
                 <SheetTrigger asChild>
                   <Link href="/checkout" className="w-full">
-                    <Button className="w-full">
+                    <Button className="w-full h-12 text-lg font-bold shadow-[0_5px_15px_-5px_rgba(0,0,0,0.4)] dark:shadow-[0_5px_15px_-5px_oklch(var(--primary)/0.4)] hover:shadow-[0_8px_20px_-5px_rgba(0,0,0,0.5)] transition-all duration-300">
                       Proceed to Checkout
                     </Button>
                   </Link>

@@ -14,7 +14,7 @@ The approach focuses on refining the 'glass' utility classes and component-speci
 - [x] **2. Refine Product Card legibility in components/products/product-card.tsx** <!-- id:Yc30L_ -->
   Apply a subtle semi-transparent background to the text area of the product card specifically. Add a 1px border with higher contrast (e.g., border-white/20 in dark mode) to define the card boundaries more clearly.
 
-- [ ] **3. Enhance Cart Sheet contrast in components/cart-sheet.tsx** <!-- id:aweqQt -->
+- [x] **3. Enhance Cart Sheet contrast in components/cart-sheet.tsx** <!-- id:aweqQt -->
   Update the SheetContent component to use a more opaque background variable. Ensure the close button and 'Checkout' actions have high-contrast shadows to pop against the glass background.
 
 - [ ] **4. Optimize Auth Header and Navigation visibility** <!-- id:FPSy6k -->
