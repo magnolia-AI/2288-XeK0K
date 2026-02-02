@@ -11,7 +11,7 @@ The approach involves auditing the current implementations of `auth-header.tsx`,
 - [x] **1. Unify Header and Breadcrumb layout container** <!-- id:QJfJ2O -->
   Update the root `app/layout.tsx` or a shared wrapper to ensure both the header and the breadcrumb share the same horizontal padding and max-width constraints (e.g., `container mx-auto px-4`).
 
-- [ ] **2. Refactor `components/auth-header.tsx` for glassmorphism styling** <!-- id:wTfE0K -->
+- [x] **2. Refactor `components/auth-header.tsx` for glassmorphism styling** <!-- id:wTfE0K -->
   Apply `sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60` to the header element to provide a modern, high-end feel.
 
 - [ ] **3. Apply matching styles to Breadcrumb component** <!-- id:p_sxqj -->
