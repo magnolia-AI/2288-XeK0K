@@ -2,7 +2,7 @@ import db from "@/lib/db";
 import * as schema from "@/lib/schema";
 import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
-import Image from "next/image";
+import { SafeImage } from "@/components/ui/safe-image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -36,9 +36,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <div className="grid md:grid-cols-2 gap-12">
         {/* Product Image */}
         <div className="relative aspect-square overflow-hidden rounded-2xl bg-muted border shadow-lg">
-          <Image
+          <SafeImage
             src={product.imageUrl}
             alt={product.name}
+            productName={product.name}
             fill
             className="object-cover hover:scale-105 transition-transform duration-500"
             priority
@@ -152,4 +153,3 @@ export default async function ProductDetailPage({ params }: PageProps) {
     </div>
   );
 }
-

@@ -17,6 +17,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <SafeImage
           src={product.imageUrl}
           alt={product.name}
+          productName={product.name}
           fill
           className="object-cover transition-transform hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

@@ -20,7 +20,7 @@ The approach focuses on data integrity and dynamic fallbacks. First, we will cle
 - [x] **4. Enhance components/ui/safe-image.tsx with smart-fallback** <!-- id:O1bPEv -->
   Update the component to accept a 'productName' prop. If the main 'src' fails to load, use the name-based generator as the fallback source.
 
-- [ ] **5. Standardize all product components** <!-- id:eYW7Tz -->
+- [x] **5. Standardize all product components** <!-- id:eYW7Tz -->
   Ensure 'components/products/product-card.tsx' and 'app/products/[id]/page.tsx' use the enhanced 'SafeImage' with the product name passed in.
 
 - [ ] **6. Verify static asset deployment** <!-- id:nmWILe -->
