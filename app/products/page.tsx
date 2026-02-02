@@ -83,7 +83,15 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
       <Suspense fallback={
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {[...Array(8)].map((_, i) => (
-            <div key={i} className="h-[400px] rounded-xl bg-muted animate-pulse" />
+            <div key={i} className="flex flex-col h-full overflow-hidden border-2 border-muted bg-card rounded-xl">
+              <div className="aspect-square bg-muted animate-pulse" />
+              <div className="p-4 space-y-3">
+                <div className="h-6 w-2/3 bg-muted animate-pulse rounded" />
+                <div className="h-4 w-full bg-muted animate-pulse rounded" />
+                <div className="h-4 w-5/6 bg-muted animate-pulse rounded" />
+                <div className="h-10 w-full bg-muted animate-pulse rounded mt-4" />
+              </div>
+            </div>
           ))}
         </div>
       }>
