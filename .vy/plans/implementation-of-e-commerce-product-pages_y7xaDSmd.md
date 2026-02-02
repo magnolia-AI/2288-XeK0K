@@ -20,7 +20,7 @@ The implementation will follow a data-driven approach using Next.js Server Compo
 - [x] **4. Develop Product Detail Page (PDP) layout** <!-- id:Ybp_zA -->
   Build `app/products/[id]/page.tsx`. Include an image gallery using `carousel.tsx`, price display, stock status from the inventory table, and product descriptions.
 
-- [ ] **5. Create 'Add to Cart' interactivity** <!-- id:7bFMpg -->
+- [x] **5. Create 'Add to Cart' interactivity** <!-- id:7bFMpg -->
   Create a new client component `components/products/add-to-cart-button.tsx`. Integrate it with `hooks/use-cart.ts` to add items to the stateful cart and trigger the `sonner` toast notification.
 
 - [ ] **6. Implement Product Filters logic** <!-- id:yPAjuy -->
