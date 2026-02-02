@@ -4,10 +4,13 @@ import { orders, orderItems } from '@/lib/schema';
 import { authServer } from '@/lib/auth/server';
 
 export async function GET() {
-  const session = await authServer.getSession();
-  if (!session || !session.user) {
+  const result = await authServer.getSession();
+  
+  if (!result || 'error' in result || !result.user) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
+
+  const session = result;
 
   try {
     const userOrders = await db.query.orders.findMany({
@@ -28,4 +31,3 @@ export async function GET() {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
-
