@@ -17,7 +17,7 @@ The approach focuses on data integrity and dynamic fallbacks. First, we will cle
 - [x] **3. Refactor lib/seed.ts to use the image generator** <!-- id:bvf8s8 -->
   Update the product seeding logic to call the new generator utility for each product instead of using hardcoded, brittle Unsplash URLs.
 
-- [ ] **4. Enhance components/ui/safe-image.tsx with smart-fallback** <!-- id:O1bPEv -->
+- [x] **4. Enhance components/ui/safe-image.tsx with smart-fallback** <!-- id:O1bPEv -->
   Update the component to accept a 'productName' prop. If the main 'src' fails to load, use the name-based generator as the fallback source.
 
 - [ ] **5. Standardize all product components** <!-- id:eYW7Tz -->
