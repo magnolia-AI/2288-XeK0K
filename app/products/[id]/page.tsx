@@ -34,7 +34,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const specs = (product.specs as any) || {};
 
   return (
-    <div className="container mx-auto px-4 py-8 mt-16 max-w-7xl">
+    <div className="container mx-auto px-4 md:px-6 py-8 mt-16 max-w-7xl">
       {/* Breadcrumbs */}
       <nav className="flex items-center space-x-2 text-sm text-muted-foreground mb-8 overflow-hidden whitespace-nowrap">
         <Link href="/" className="hover:text-primary flex items-center gap-1 transition-colors">
@@ -189,4 +189,3 @@ export default async function ProductDetailPage({ params }: PageProps) {
     </div>
   );
 }
-

@@ -102,7 +102,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   const { q, sort, category, minPrice, maxPrice } = params;
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 md:px-6 py-8">
       <div className="flex flex-col gap-2 mb-8">
         <h1 className="text-4xl font-bold tracking-tight">Our T-Rex Collection</h1>
         <p className="text-muted-foreground">
@@ -138,4 +138,3 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
     </div>
   );
 }
-
