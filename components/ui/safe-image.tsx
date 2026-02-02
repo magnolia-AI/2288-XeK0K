@@ -15,24 +15,24 @@ export function SafeImage({ src, alt, fallbackSrc = '/images/products/placeholde
   const [imgSrc, setImgSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
 
-  // Reset error state if src changes
+  // Set the source when it changes
   useEffect(() => {
     setImgSrc(src);
-    setHasError(false);
   }, [src]);
+
+  const handleError = () => {
+    if (!hasError) {
+      setHasError(true);
+      setImgSrc(fallbackSrc);
+    }
+  };
 
   return (
     <Image
       {...props}
       src={imgSrc}
       alt={alt}
-      onError={() => {
-        if (!hasError) {
-          setImgSrc(fallbackSrc);
-          setHasError(true);
-        }
-      }}
+      onError={handleError}
     />
   );
 }
-

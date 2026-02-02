@@ -17,7 +17,7 @@ The strategy centers on creating a dedicated asset utility that resolves image U
 - [x] **3. Update Database Seeding Logic** <!-- id:IlMA-p -->
   Modify 'lib/seed.ts' to replace external broken URLs with programmatic placeholder paths or local public directory assets.
 
-- [ ] **4. Enhance 'SafeImage' component** <!-- id:WzrDny -->
+- [x] **4. Enhance 'SafeImage' component** <!-- id:WzrDny -->
   Update 'components/ui/safe-image.tsx' to include an 'onError' handler that automatically switches to a T-Rex branded fallback image if the primary source fails.
 
 - [ ] **5. Generate and Place Assets in Public Directory** <!-- id:ItmMaR -->
