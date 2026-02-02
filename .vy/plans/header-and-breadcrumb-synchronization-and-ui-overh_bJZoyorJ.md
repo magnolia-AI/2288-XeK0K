@@ -20,7 +20,7 @@ The approach involves auditing the current implementations of `auth-header.tsx`,
 - [x] **4. Enhance Breadcrumb visibility and spacing** <!-- id:WGSCLC -->
   Add a dedicated section below the header in `app/layout.tsx` or individual product pages (`app/products/[id]/page.tsx`) that houses the breadcrumb with consistent top/bottom padding (e.g., `py-4`) that scales with the header's height.
 
-- [ ] **5. Synchronize active states and hover effects** <!-- id:4VKtbB -->
+- [x] **5. Synchronize active states and hover effects** <!-- id:4VKtbB -->
   Ensure that hover states for breadcrumb items match the navigation link hover states (e.g., simple opacity change or color shift to primary) defined in `auth-header.tsx`.
 
 - [ ] **6. Update mobile-nav.tsx for consistency** <!-- id:FL_-6_ -->
