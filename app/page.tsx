@@ -9,7 +9,7 @@ export default function Home() {
       <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1517923432734-2e23d0c9506e?auto=format&fit=crop&q=80&w=2000"
+            src="/images/hero-rex.webp"
             alt="Majestic T-Rex in a landscape"
             fill
             className="object-cover brightness-50"
@@ -72,4 +72,3 @@ export default function Home() {
     </div>
   );
 }
-
