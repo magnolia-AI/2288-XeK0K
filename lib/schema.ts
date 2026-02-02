@@ -20,6 +20,8 @@ export const products = pgTable('products', {
   description: text('description'),
   price: decimal('price', { precision: 12, scale: 2 }).notNull(),
   stock: integer('stock').default(0).notNull(),
+  category: varchar('category', { length: 100 }), // Added flat category field
+  rating: decimal('rating', { precision: 3, scale: 2 }).default('0.00'), // Added rating field
   specs: jsonb('specs').$type<{
     age?: string;
     temperament?: string;
