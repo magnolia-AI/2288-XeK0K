@@ -17,7 +17,7 @@ The implementation will follow a data-driven approach using Next.js Server Compo
 - [x] **3. Refine Product Card component** <!-- id:h3VG71 -->
   Update `components/products/product-card.tsx` to use `safe-image.tsx` and ensure consistent aspect ratios for T-Rex themed assets.
 
-- [ ] **4. Develop Product Detail Page (PDP) layout** <!-- id:Ybp_zA -->
+- [x] **4. Develop Product Detail Page (PDP) layout** <!-- id:Ybp_zA -->
   Build `app/products/[id]/page.tsx`. Include an image gallery using `carousel.tsx`, price display, stock status from the inventory table, and product descriptions.
 
 - [ ] **5. Create 'Add to Cart' interactivity** <!-- id:7bFMpg -->
