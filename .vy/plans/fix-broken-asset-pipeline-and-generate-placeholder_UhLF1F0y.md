@@ -20,7 +20,7 @@ The strategy centers on creating a dedicated asset utility that resolves image U
 - [x] **4. Enhance 'SafeImage' component** <!-- id:WzrDny -->
   Update 'components/ui/safe-image.tsx' to include an 'onError' handler that automatically switches to a T-Rex branded fallback image if the primary source fails.
 
-- [ ] **5. Generate and Place Assets in Public Directory** <!-- id:ItmMaR -->
+- [x] **5. Generate and Place Assets in Public Directory** <!-- id:ItmMaR -->
   Create 'public/placeholders' directory and add a set of optimized WebP images representing different product categories for the RexShop store.
 
 - [ ] **6. Verify Product Grid Layouts** <!-- id:dW8P0z -->
