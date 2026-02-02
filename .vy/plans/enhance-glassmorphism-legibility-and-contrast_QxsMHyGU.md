@@ -20,7 +20,7 @@ The approach focuses on refining the 'glass' utility classes and component-speci
 - [x] **4. Optimize Auth Header and Navigation visibility** <!-- id:FPSy6k -->
   Modify components/auth-header.tsx and components/mobile-nav.tsx to include a stronger 'mask' or 'gradient overlay' beneath the text to ensure legibility when scrolling over busy hero images.
 
-- [ ] **5. Audit text colors for glass components** <!-- id:MVfZLP -->
+- [x] **5. Audit text colors for glass components** <!-- id:MVfZLP -->
   Verify that all text components inside glass containers use 'foreground' or 'primary' colors instead of 'muted-foreground' to maintain high enough contrast ratios.
 
 ---
