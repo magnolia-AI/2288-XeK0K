@@ -2,7 +2,7 @@ import db from '@/lib/db';
 import { products } from '@/lib/schema';
 import { ProductCard } from '@/components/products/product-card';
 import { ProductFilters } from '@/components/products/product-filters';
-import { desc, asc, ilike, or } from 'drizzle-orm';
+import { desc, asc, ilike, or, and, eq, gte, lte } from 'drizzle-orm';
 import { Suspense } from 'react';
 
 export const dynamic = 'force-dynamic';
@@ -11,15 +11,24 @@ interface ProductsPageProps {
   searchParams: Promise<{
     q?: string;
     sort?: string;
+    category?: string;
+    minPrice?: string;
+    maxPrice?: string;
   }>;
 }
 
 async function ProductList({
   query,
   sort,
+  category,
+  minPrice,
+  maxPrice,
 }: {
   query?: string;
   sort?: string;
+  category?: string;
+  minPrice?: string;
+  maxPrice?: string;
 }) {
   let orderBy;
   switch (sort) {
@@ -38,9 +47,31 @@ async function ProductList({
       break;
   }
 
-  const where = query
-    ? or(ilike(products.name, `%${query}%`), ilike(products.description, `%${query}%`))
-    : undefined;
+  const conditions = [];
+
+  if (query) {
+    conditions.push(or(ilike(products.name, `%${query}%`), ilike(products.description, `%${query}%`)));
+  }
+
+  if (category && category !== 'all') {
+    conditions.push(eq(products.category, category));
+  }
+
+  if (minPrice) {
+    const min = parseFloat(minPrice);
+    if (!isNaN(min)) {
+      conditions.push(gte(products.price, min.toString()));
+    }
+  }
+
+  if (maxPrice) {
+    const max = parseFloat(maxPrice);
+    if (!isNaN(max)) {
+      conditions.push(lte(products.price, max.toString()));
+    }
+  }
+
+  const where = conditions.length > 0 ? and(...conditions) : undefined;
 
   const allProducts = await db
     .select()
@@ -67,7 +98,8 @@ async function ProductList({
 }
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const { q, sort } = await searchParams;
+  const params = await searchParams;
+  const { q, sort, category, minPrice, maxPrice } = params;
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -95,8 +127,15 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
           ))}
         </div>
       }>
-        <ProductList query={q} sort={sort} />
+        <ProductList 
+          query={q} 
+          sort={sort} 
+          category={category}
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+        />
       </Suspense>
     </div>
   );
 }
+
