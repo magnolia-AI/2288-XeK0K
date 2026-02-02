@@ -23,7 +23,7 @@ The approach focuses on data integrity and dynamic fallbacks. First, we will cle
 - [x] **5. Standardize all product components** <!-- id:eYW7Tz -->
   Ensure 'components/products/product-card.tsx' and 'app/products/[id]/page.tsx' use the enhanced 'SafeImage' with the product name passed in.
 
-- [ ] **6. Verify static asset deployment** <!-- id:nmWILe -->
+- [x] **6. Verify static asset deployment** <!-- id:nmWILe -->
   Check 'open-next.config.ts' to ensure it doesn't try to bundle the deleted images and handles the dynamic image routing correctly.
 
 ---
