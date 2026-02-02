@@ -9,6 +9,7 @@ You can only use the database server side
 import { neonConfig, Pool } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-serverless';
 import ws from 'ws';
+import * as schema from './schema';
 
 // Configure Neon
 neonConfig.webSocketConstructor = ws;
@@ -16,8 +17,7 @@ neonConfig.poolQueryViaFetch = true;
 
 // Type definitions
 declare global {
-
-  var db: ReturnType<typeof drizzle> | undefined;
+  var db: ReturnType<typeof drizzle<typeof schema>> | undefined;
 }
 
 const connectionString = process.env.DATABASE_URL;
@@ -29,10 +29,11 @@ if (!connectionString) {
 const pool = new Pool({ connectionString });
 
 // Create Drizzle instance
-const db = global.db || drizzle(pool);
+const db = global.db || drizzle(pool, { schema });
 
 if (process.env.NODE_ENV === 'development') {
   global.db = db;
 }
 
-export default db; 
+export default db;
+

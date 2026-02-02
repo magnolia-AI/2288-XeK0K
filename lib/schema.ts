@@ -1,67 +1,82 @@
-import { pgTable, serial, varchar, text, timestamp, boolean, uuid } from 'drizzle-orm/pg-core';
-
-// Import neon_auth table for FK references (but don't re-export it!)
-// This is the key - Drizzle only generates migrations for EXPORTED tables
+import { pgTable, serial, varchar, text, timestamp, integer, jsonb, decimal, uuid } from 'drizzle-orm/pg-core';
 import { neonAuthUser } from './neon-auth-schema';
 
 /**
- * YOUR APPLICATION TABLES
- * 
- * These tables are managed by Drizzle and live in the 'public' schema.
- * 
- * To reference neon_auth.user, use .references(() => neonAuthUser.id).
- * The neonAuthUser table is imported but NOT exported, so Drizzle won't
- * try to manage it in migrations.
- * 
- * Workflow:
- * 1. Define your tables here
- * 2. Run `bun run db:generate` to create migrations
- * 3. Run `bun run db:migrate` to apply migrations
+ * RexShop E-commerce Schema
  */
 
-// Example: User profile table that extends Neon Auth user data
-// export const userProfiles = pgTable('user_profiles', {
-//   id: serial('id').primaryKey(),
-//   // Reference the Neon Auth user - creates proper FK constraint
-//   userId: uuid('user_id')
-//     .notNull()
-//     .unique()
-//     .references(() => neonAuthUser.id, { onDelete: 'cascade' }),
-//   bio: text('bio'),
-//   username: varchar('username', { length: 50 }).unique(),
-//   avatarUrl: text('avatar_url'),
-//   createdAt: timestamp('created_at').defaultNow().notNull(),
-//   updatedAt: timestamp('updated_at').defaultNow().notNull(),
-// });
+export const categories = pgTable('categories', {
+  id: serial('id').primaryKey(),
+  name: varchar('name', { length: 255 }).notNull(),
+  slug: varchar('slug', { length: 255 }).notNull().unique(),
+  description: text('description'),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
 
-// Example: Posts table with author reference to Neon Auth user
-// export const posts = pgTable('posts', {
-//   id: serial('id').primaryKey(),
-//   title: varchar('title', { length: 255 }).notNull(),
-//   content: text('content'),
-//   published: boolean('published').default(false).notNull(),
-//   // Reference the Neon Auth user directly
-//   authorId: uuid('author_id')
-//     .notNull()
-//     .references(() => neonAuthUser.id, { onDelete: 'cascade' }),
-//   createdAt: timestamp('created_at').defaultNow().notNull(),
-//   updatedAt: timestamp('updated_at').defaultNow().notNull(),
-// });
+export const products = pgTable('products', {
+  id: serial('id').primaryKey(),
+  name: varchar('name', { length: 255 }).notNull(),
+  slug: varchar('slug', { length: 255 }).notNull().unique(), // Added slug for better URLs
+  description: text('description'),
+  price: decimal('price', { precision: 12, scale: 2 }).notNull(),
+  stock: integer('stock').default(0).notNull(),
+  category: varchar('category', { length: 100 }), // Added flat category field
+  rating: decimal('rating', { precision: 3, scale: 2 }).default('0.00'), // Added rating field
+  specs: jsonb('specs').$type<{
+    age?: string;
+    temperament?: string;
+    diet?: string;
+    height?: string;
+    weight?: string;
+    [key: string]: any;
+  }>(),
+  imageUrl: text('image_url').notNull(),
+  categoryId: integer('category_id').references(() => categories.id),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+export const inventory = pgTable('inventory', {
+  id: serial('id').primaryKey(),
+  productId: integer('product_id').notNull().references(() => products.id),
+  quantity: integer('quantity').notNull().default(0),
+  location: varchar('location', { length: 255 }),
+});
+
+export const orders = pgTable('orders', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  userId: uuid('user_id')
+    .notNull()
+    .references(() => neonAuthUser.id, { onDelete: 'cascade' }),
+  status: varchar('status', { length: 50 }).notNull().default('pending'),
+  totalPrice: decimal('total_price', { precision: 12, scale: 2 }).notNull(),
+  shippingAddress: text('shipping_address').notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+export const orderItems = pgTable('order_items', {
+  id: serial('id').primaryKey(),
+  orderId: uuid('order_id')
+    .notNull()
+    .references(() => orders.id, { onDelete: 'cascade' }),
+  productId: integer('product_id')
+    .notNull()
+    .references(() => products.id),
+  quantity: integer('quantity').notNull(),
+  price: decimal('price', { precision: 12, scale: 2 }).notNull(),
+});
 
 // Type exports
-// export type UserProfile = typeof userProfiles.$inferSelect;
-// export type NewUserProfile = typeof userProfiles.$inferInsert;
-// export type Post = typeof posts.$inferSelect;
-// export type NewPost = typeof posts.$inferInsert;
+export type Category = typeof categories.$inferSelect;
+export type NewCategory = typeof categories.$inferInsert;
+export type Product = typeof products.$inferSelect;
+export type NewProduct = typeof products.$inferInsert;
+export type Order = typeof orders.$inferSelect;
+export type NewOrder = typeof orders.$inferInsert;
+export type OrderItem = typeof orderItems.$inferSelect;
+export type NewOrderItem = typeof orderItems.$inferInsert;
 
-/**
- * Re-export neon auth TYPES only (not tables!) for convenience.
- * 
- * For querying neon_auth tables with Drizzle, import tables from './neon-auth-schema':
- * 
- *   import { neonAuthUser } from './neon-auth-schema';
- *   const user = await db.select().from(neonAuthUser).where(eq(neonAuthUser.id, id));
- */
 export type {
   NeonAuthUser,
   NeonAuthSession,

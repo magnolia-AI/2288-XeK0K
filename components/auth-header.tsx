@@ -11,7 +11,9 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useAuthClient } from '@/lib/auth/client';
-import { LogOut, Settings } from 'lucide-react';
+import { LogOut, Settings, Footprints } from 'lucide-react';
+import { CartSheet } from '@/components/cart-sheet';
+import { MobileNav } from '@/components/mobile-nav';
 
 export function AuthHeader() {
   const { user, isPending, signOut } = useAuthClient();
@@ -21,64 +23,92 @@ export function AuthHeader() {
     window.location.href = '/';
   };
 
-  // With SSR initial session, isPending is false on first render
-  // Only shows loading skeleton during client-side refetches without initial data
+  const headerStyles = "sticky top-0 z-50 w-full glass-header dark:shadow-[0_4px_30px_-10px_rgba(0,0,0,0.7)] transition-all";
+
   if (isPending) {
     return (
-      <header className="flex justify-end items-center p-4 gap-4 h-16">
-        <div className="h-9 w-9 rounded-full bg-muted animate-pulse" />
+      <header className={headerStyles}>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 to-transparent pointer-events-none" />
+        <div className="container mx-auto px-4 md:px-6 h-16 flex justify-between items-center relative z-10">
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2 text-xl font-bold tracking-tighter drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)] dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+              <Footprints className="h-6 w-6 text-primary rotate-45" />
+              <span>REX<span className="text-primary">SHOP</span></span>
+            </div>
+          </div>
+          <div className="h-9 w-9 rounded-full bg-muted animate-pulse" />
+        </div>
       </header>
     );
   }
 
   return (
-    <header className="flex justify-end items-center p-4 gap-4 h-16">
-      {user ? (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="relative h-9 w-9 rounded-full">
-              <Avatar className="h-9 w-9">
-                <AvatarFallback className="bg-primary text-primary-foreground">
-                  {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
-                </AvatarFallback>
-              </Avatar>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56">
-            <div className="flex items-center justify-start gap-2 p-2">
-              <div className="flex flex-col space-y-1 leading-none">
-                {user.name && <p className="font-medium">{user.name}</p>}
-                {user.email && (
-                  <p className="w-[200px] truncate text-sm text-muted-foreground">
-                    {user.email}
-                  </p>
-                )}
-              </div>
-            </div>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem asChild>
-              <Link href="/account/settings" className="cursor-pointer">
-                <Settings className="mr-2 h-4 w-4" />
-                Settings
-              </Link>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer text-destructive">
-              <LogOut className="mr-2 h-4 w-4" />
-              Sign out
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      ) : (
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" asChild>
-            <Link href="/auth/sign-in">Sign in</Link>
-          </Button>
-          <Button asChild>
-            <Link href="/auth/sign-up">Sign up</Link>
-          </Button>
+    <header className={headerStyles}>
+      <div className="absolute inset-0 bg-gradient-to-b from-background/40 to-transparent pointer-events-none" />
+      <div className="container mx-auto px-4 md:px-6 h-16 flex justify-between items-center relative z-10">
+        <div className="flex items-center gap-6">
+          <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tighter hover:opacity-90 transition-opacity drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)] dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+            <Footprints className="h-6 w-6 text-primary rotate-45" />
+            <span>REX<span className="text-primary">SHOP</span></span>
+          </Link>
+          <nav className="hidden md:flex gap-6 items-center">
+            <Link href="/products" className="text-sm font-semibold hover:text-primary transition-colors drop-shadow-sm">
+              T-Rex Catalog
+            </Link>
+          </nav>
         </div>
-      )}
+        <div className="flex items-center gap-4">
+          <MobileNav />
+          <CartSheet />
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="relative h-9 w-9 rounded-full ring-1 ring-primary/10">
+                  <Avatar className="h-9 w-9">
+                    <AvatarFallback className="bg-primary text-primary-foreground">
+                      {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
+                    </AvatarFallback>
+                  </Avatar>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <div className="flex items-center justify-start gap-2 p-2">
+                  <div className="flex flex-col space-y-1 leading-none">
+                    {user.name && <p className="font-medium">{user.name}</p>}
+                    {user.email && (
+                      <p className="w-[200px] truncate text-sm text-muted-foreground">
+                        {user.email}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild>
+                  <Link href="/account/settings" className="cursor-pointer">
+                    <Settings className="mr-2 h-4 w-4" />
+                    Settings
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer text-destructive">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Sign out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" asChild className="hover:bg-primary/5">
+                <Link href="/auth/sign-in">Sign in</Link>
+              </Button>
+              <Button asChild className="shadow-md">
+                <Link href="/auth/sign-up">Sign up</Link>
+              </Button>
+            </div>
+          )}
+        </div>
+      </div>
     </header>
   );
 }
+

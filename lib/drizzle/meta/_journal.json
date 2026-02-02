@@ -1,5 +1,27 @@
 {
   "version": "7",
   "dialect": "postgresql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1770020622008,
+      "tag": "0000_cheerful_mysterio",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1770020847791,
+      "tag": "0001_add_inventory_table",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1770051751406,
+      "tag": "0002_lethal_dragon_man",
+      "breakpoints": true
+    }
+  ]
 }

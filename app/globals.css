@@ -102,3 +102,12 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
 }
+
+@layer utilities {
+  .glass-header {
+    background-color: color-mix(in srgb, var(--background), transparent 10%);
+    border-bottom-color: color-mix(in srgb, var(--primary), transparent 90%);
+    @apply backdrop-blur-xl border-b;
+    box-shadow: 0 4px 30px -10px rgba(0, 0, 0, 0.3);
+  }
+}
