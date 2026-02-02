@@ -102,3 +102,11 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
 }
+
+@layer utilities {
+  .glass-header {
+    @apply bg-background/90 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70 border-b border-primary/10;
+    box-shadow: 0 4px 30px -10px rgba(0, 0, 0, 0.3);
+  }
+}
+

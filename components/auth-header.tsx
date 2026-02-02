@@ -23,13 +23,15 @@ export function AuthHeader() {
     window.location.href = '/';
   };
 
+  const headerStyles = "sticky top-0 z-50 w-full glass-header dark:shadow-[0_4px_30px_-10px_rgba(0,0,0,0.7)] transition-all";
+
   if (isPending) {
     return (
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.07)]">
-        <div className="absolute inset-0 bg-gradient-to-b from-background/50 to-transparent pointer-events-none md:hidden" />
+      <header className={headerStyles}>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 to-transparent pointer-events-none" />
         <div className="container mx-auto px-4 md:px-6 h-16 flex justify-between items-center relative z-10">
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 text-xl font-bold tracking-tighter">
+            <div className="flex items-center gap-2 text-xl font-bold tracking-tighter drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)] dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
               <Footprints className="h-6 w-6 text-primary rotate-45" />
               <span>REX<span className="text-primary">SHOP</span></span>
             </div>
@@ -41,16 +43,16 @@ export function AuthHeader() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 shadow-[0_2px_10px_-3px_rgba(0,0,0,0.07)]">
-      <div className="absolute inset-0 bg-gradient-to-b from-background/50 to-transparent pointer-events-none md:hidden" />
+    <header className={headerStyles}>
+      <div className="absolute inset-0 bg-gradient-to-b from-background/40 to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 md:px-6 h-16 flex justify-between items-center relative z-10">
         <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tighter hover:opacity-90 transition-opacity">
+          <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tighter hover:opacity-90 transition-opacity drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)] dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
             <Footprints className="h-6 w-6 text-primary rotate-45" />
             <span>REX<span className="text-primary">SHOP</span></span>
           </Link>
           <nav className="hidden md:flex gap-6 items-center">
-            <Link href="/products" className="text-sm font-semibold hover:text-primary transition-colors">
+            <Link href="/products" className="text-sm font-semibold hover:text-primary transition-colors drop-shadow-sm">
               T-Rex Catalog
             </Link>
           </nav>
@@ -61,7 +63,7 @@ export function AuthHeader() {
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-9 w-9 rounded-full">
+                <Button variant="ghost" className="relative h-9 w-9 rounded-full ring-1 ring-primary/10">
                   <Avatar className="h-9 w-9">
                     <AvatarFallback className="bg-primary text-primary-foreground">
                       {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
@@ -96,10 +98,10 @@ export function AuthHeader() {
             </DropdownMenu>
           ) : (
             <div className="flex items-center gap-2">
-              <Button variant="ghost" asChild>
+              <Button variant="ghost" asChild className="hover:bg-primary/5">
                 <Link href="/auth/sign-in">Sign in</Link>
               </Button>
-              <Button asChild>
+              <Button asChild className="shadow-md">
                 <Link href="/auth/sign-up">Sign up</Link>
               </Button>
             </div>
@@ -109,3 +111,4 @@ export function AuthHeader() {
     </header>
   );
 }
+
