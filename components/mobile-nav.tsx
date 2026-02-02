@@ -17,12 +17,12 @@ export function MobileNav() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="md:hidden h-9 w-9">
+        <Button variant="ghost" size="icon" className="md:hidden h-9 w-9 bg-background/20 hover:bg-background/40 backdrop-blur-sm transition-colors border border-primary/10">
           <Menu className="h-5 w-5" />
           <span className="sr-only">Toggle menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="w-[300px] p-0">
+      <SheetContent side="left" className="w-[300px] p-0 bg-background/95 backdrop-blur-xl border-r border-primary/20">
         <SheetHeader className="p-6 border-b bg-muted/30">
           <SheetTitle asChild>
             <Link 
@@ -63,4 +63,3 @@ export function MobileNav() {
     </Sheet>
   )
 }
-

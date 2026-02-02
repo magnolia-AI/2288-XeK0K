@@ -30,7 +30,7 @@ export function CartSheet() {
 
   if (!mounted) {
     return (
-      <Button variant="outline" size="icon" className="relative">
+      <Button variant="outline" size="icon" className="relative bg-background/50 backdrop-blur-sm">
         <ShoppingCart className="h-4 w-4" />
       </Button>
     );
@@ -39,7 +39,7 @@ export function CartSheet() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="relative border-2 border-primary/20 hover:border-primary/50 transition-colors">
+        <Button variant="outline" size="icon" className="relative border-2 border-primary/20 hover:border-primary/50 transition-colors bg-background/50 backdrop-blur-sm">
           <ShoppingCart className="h-4 w-4" />
           {itemCount > 0 && (
             <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center">
