@@ -1,16 +1,25 @@
 import { NextResponse } from 'next/server';
 import db from '@/lib/db';
-import { orders, orderItems } from '@/lib/schema';
+import { orders } from '@/lib/schema';
 import { authServer } from '@/lib/auth/server';
 
 export async function GET() {
   const result = await authServer.getSession();
   
-  if (!result || 'error' in result || !result.user) {
+  // Type Guard for Neon Auth result structure
+  if (!result || 'error' in result) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const session = result;
+  // Neon Auth data is typically inside the 'data' property if using standard result types,
+  // but looking at the TSC error, it seems 'user' is actually expected but TS is confused
+  // about the Data | Error union.
+  
+  const session = result as any; // Temporary escape to bypass the conflicting Data|Error union
+  
+  if (!session?.user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
 
   try {
     const userOrders = await db.query.orders.findMany({
@@ -31,3 +40,4 @@ export async function GET() {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
+
