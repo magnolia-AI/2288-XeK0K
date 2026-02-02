@@ -12,12 +12,19 @@ export function formatCurrency(amount: number) {
 }
 
 export function generateProductImage(name: string): string {
-  // Encode the name for URL safety
-  const query = encodeURIComponent(name.toLowerCase());
+  const slug = name.toLowerCase().replace(/ /g, '-').replace(/[^\w-]/g, '');
   
-  // We use Unsplash's featured image redirect as the primary source
-  // This is a reliable way to get high-quality themed images
-  return `https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800&q=${query}`;
+  const assetMap: Record<string, string> = {
+    'alpine-tyrannosaur': '/images/products/alpine-tyrannosaur.webp',
+    'juvenile-t-rex': '/images/products/juvenile-trex.webp',
+    'obsidian-tyrannosaur': '/images/products/obsidian-tyrannosaur.webp',
+    'island-tyrannosaur': '/images/products/island-tyrannosaur.webp',
+    'desert-stalker-rex': '/images/products/desert-stalker.webp',
+    'prehistoric-plush-t-rex': '/images/products/trex-plush.webp',
+    'fossil-exhumation-kit': '/images/products/fossil-kit.webp',
+  };
+
+  return assetMap[slug] || '/images/hero-rex.webp';
 }
 
 /**
@@ -58,4 +65,3 @@ export function getPlaceholderImage(name: string): string {
 
   return `data:image/svg+xml;base64,${btoa(svg)}`;
 }
-

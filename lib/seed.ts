@@ -119,6 +119,32 @@ async function main() {
           weight: '7,000 kg',
         },
       },
+      {
+        name: 'Prehistoric Plush T-Rex',
+        slug: 'prehistoric-plush-t-rex',
+        description: "Soft, cuddly, and definitely won't bite. Perfect for younger fans.",
+        price: '29.99',
+        stock: 100,
+        categoryId: standardCat?.id,
+        specs: {
+          material: 'Premium synthetic fur',
+          size: '30cm tall',
+          safety: 'CE certified, ages 3+',
+        },
+      },
+      {
+        name: 'Fossil Exhumation Kit',
+        slug: 'fossil-exhumation-kit',
+        description: 'Everything you need to dig up your own (replica) T-Rex skeleton.',
+        price: '45.00',
+        stock: 50,
+        categoryId: specializedCat?.id,
+        specs: {
+          contents: 'Brush, pick, chisel, and plaster block',
+          difficulty: 'Intermediate',
+          experience: 'Educational and fun',
+        },
+      },
     ];
 
     for (const rex of rexInventory) {
