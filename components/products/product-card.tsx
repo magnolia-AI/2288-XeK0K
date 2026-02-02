@@ -13,14 +13,15 @@ interface ProductCardProps {
 export function ProductCard({ product }: ProductCardProps) {
   return (
     <Card className="flex flex-col h-full overflow-hidden border-2 hover:border-primary/50 transition-colors">
-      <Link href={`/products/${product.slug}`} className="block relative aspect-square">
+      <Link href={`/products/${product.slug}`} className="block relative aspect-[4/5] overflow-hidden">
         <SafeImage
           src={product.imageUrl}
           alt={product.name}
           productName={product.name}
           fill
-          className="object-cover transition-transform hover:scale-105"
+          className="object-cover transition-transform duration-500 hover:scale-110"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={false}
         />
       </Link>
       <CardHeader className="p-4 flex-none">
