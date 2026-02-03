@@ -11,7 +11,7 @@ The research indicates that the schema is correctly defined in lib/schema.ts and
 - [x] **1. Verify environment variables** <!-- id:-s0wR9 -->
   Ensure the DATABASE_URL is correctly set in the environment to point to the Neon instance.
 
-- [ ] **2. Push schema to database** <!-- id:rDuouH -->
+- [x] **2. Push schema to database** <!-- id:rDuouH -->
   Run `bunx drizzle-kit push` or `npm run db:push` to apply the migrations and create the 'products' table in the remote database.
 
 - [ ] **3. Verify table creation** <!-- id:9qWOuN -->
