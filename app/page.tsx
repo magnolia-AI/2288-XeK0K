@@ -46,7 +46,7 @@ export default function Home() {
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl mb-12 max-w-2xl mx-auto text-gray-400 font-light leading-relaxed">
+            <p className="text-lg md:text-xl mb-12 max-w-2xl mx-auto text-zinc-300 font-light leading-relaxed">
               The world's premier digital showroom for pure-bred Tyrannosaurus Rex specimens. 
               Ethically sequenced. Geologically authenticated. Peerless.
             </p>
@@ -113,7 +113,7 @@ export default function Home() {
                   {feature.icon}
                 </div>
                 <h3 className="text-2xl font-bold mb-4 tracking-tight">{feature.title}</h3>
-                <p className="text-gray-500 leading-relaxed font-light">
+                <p className="text-zinc-400 leading-relaxed font-light">
                   {feature.desc}
                 </p>
               </div>
@@ -194,4 +194,3 @@ export default function Home() {
     </div>
   );
 }
-

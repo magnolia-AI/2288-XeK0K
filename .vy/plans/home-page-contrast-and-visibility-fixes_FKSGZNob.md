@@ -14,7 +14,7 @@ The approach focuses on three areas: theme synchronization, typography color ref
 - [x] **2. Refine Header Glassmorphism and Border Contrast** <!-- id:QN2-bd -->
   Update '.glass-header' in 'app/globals.css'. Adjust 'backdrop-blur' to '12px' and change the border color from 'var(--border)' to a fixed semi-transparent white like 'rgba(255,255,255,0.1)' to ensure edge definition on the dark home page.
 
-- [ ] **3. Increase Contrast for Hero Section Typography** <!-- id:jhPu_m -->
+- [x] **3. Increase Contrast for Hero Section Typography** <!-- id:jhPu_m -->
   In 'app/page.tsx', update hero description text from 'text-gray-400' to 'text-zinc-300'. Ensure the 'Facility Standards' section description uses 'text-zinc-400' instead of 'text-gray-500' for better legibility on pure black.
 
 - [ ] **4. Enhance HUD and Decorative Element Visibility** <!-- id:28p9Ed -->
