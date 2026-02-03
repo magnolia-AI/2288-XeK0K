@@ -17,7 +17,7 @@ The research indicates that the schema is correctly defined in lib/schema.ts and
 - [x] **3. Verify table creation** <!-- id:9qWOuN -->
   Confirm the 'products' table exists using a test query or by checking the Neon console.
 
-- [ ] **4. Seed initial data** <!-- id:rSILNX -->
+- [x] **4. Seed initial data** <!-- id:rSILNX -->
   Run `bun run lib/seed.ts` or `npm run db:seed` to populate the newly created products table with mock data.
 
 - [ ] **5. Test application recovery** <!-- id:J9ZfMB -->
