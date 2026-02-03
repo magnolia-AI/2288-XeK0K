@@ -20,7 +20,7 @@ The research indicates that the schema is correctly defined in lib/schema.ts and
 - [x] **4. Seed initial data** <!-- id:rSILNX -->
   Run `bun run lib/seed.ts` or `npm run db:seed` to populate the newly created products table with mock data.
 
-- [ ] **5. Test application recovery** <!-- id:J9ZfMB -->
+- [x] **5. Test application recovery** <!-- id:J9ZfMB -->
   Navigate to /products in the application to ensure the NeonDbError is resolved and products are displaying correctly.
 
 ---
