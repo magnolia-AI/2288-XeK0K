@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useState, useEffect } from 'react';
 
 interface VideoProps {
@@ -263,6 +265,7 @@ const Video: React.FC<VideoProps> = ({
           }}
         >
           Video unavailable
+export default Video;
         </div>
       )}
     </div>
