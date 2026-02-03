@@ -65,21 +65,25 @@ export default function Home() {
             </div>
             
             {/* HUD Elements */}
-            <div className="absolute left-10 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-12 text-white/20 items-start">
+            <div className="absolute left-10 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-12 text-white/45 items-start font-mono">
               <div className="flex flex-col gap-1">
-                <div className="text-[10px] uppercase tracking-widest font-bold">Ambient Temp</div>
-                <div className="text-2xl font-mono">24.5°C</div>
+                <div className="text-[10px] uppercase tracking-widest font-bold opacity-70">Grid Sector</div>
+                <div className="text-2xl font-bold">ARC-742</div>
               </div>
               <div className="flex flex-col gap-1">
-                <div className="text-[10px] uppercase tracking-widest font-bold">Security Level</div>
-                <div className="text-2xl font-mono text-primary/50 text-primary">SIGMA-9</div>
+                <div className="text-[10px] uppercase tracking-widest font-bold opacity-70">Security Level</div>
+                <div className="text-2xl font-bold text-primary italic">SIGMA-9</div>
+              </div>
+              <div className="flex flex-col gap-1">
+                <div className="text-[10px] uppercase tracking-widest font-bold opacity-70">Atmosphere</div>
+                <div className="text-2xl font-bold">STABLE</div>
               </div>
             </div>
           </div>
         </div>
         
         {/* Scroll Indicator */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/40">
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/60">
           <div className="text-[9px] uppercase tracking-[0.4em] font-bold">Scroll to Decipher</div>
           <div className="w-px h-16 bg-gradient-to-b from-primary to-transparent" />
         </div>

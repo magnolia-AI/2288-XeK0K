@@ -17,7 +17,7 @@ The approach focuses on three areas: theme synchronization, typography color ref
 - [x] **3. Increase Contrast for Hero Section Typography** <!-- id:jhPu_m -->
   In 'app/page.tsx', update hero description text from 'text-gray-400' to 'text-zinc-300'. Ensure the 'Facility Standards' section description uses 'text-zinc-400' instead of 'text-gray-500' for better legibility on pure black.
 
-- [ ] **4. Enhance HUD and Decorative Element Visibility** <!-- id:28p9Ed -->
+- [x] **4. Enhance HUD and Decorative Element Visibility** <!-- id:28p9Ed -->
   Locate decorative scan lines and terminal data points in 'app/page.tsx' (e.g., coordinates, sector IDs). Change opacity from 'text-white/20' to 'text-white/45' to make them visible but still subordinate to primary content.
 
 - [ ] **5. Update Hero Badge and Button Contrast** <!-- id:rFTPdd -->
