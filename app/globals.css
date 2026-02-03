@@ -106,8 +106,8 @@
 @layer utilities {
   .glass-header {
     background-color: color-mix(in srgb, var(--background), transparent 10%);
-    border-bottom-color: color-mix(in srgb, var(--primary), transparent 90%);
-    @apply backdrop-blur-xl border-b;
+    @apply backdrop-blur-[12px] border-b;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 30px -10px rgba(0, 0, 0, 0.3);
   }
 }

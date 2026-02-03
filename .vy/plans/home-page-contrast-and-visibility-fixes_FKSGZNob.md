@@ -11,7 +11,7 @@ The approach focuses on three areas: theme synchronization, typography color ref
 - [x] **1. Align Global Theme with Brand Identity** <!-- id:QnubPg -->
   Modify 'app/layout.tsx' to set 'defaultTheme="dark"' and 'enableSystem={false}' in the ThemeProvider to ensure the initial render matches the intended dark cinematic aesthetic of RexShop.
 
-- [ ] **2. Refine Header Glassmorphism and Border Contrast** <!-- id:QN2-bd -->
+- [x] **2. Refine Header Glassmorphism and Border Contrast** <!-- id:QN2-bd -->
   Update '.glass-header' in 'app/globals.css'. Adjust 'backdrop-blur' to '12px' and change the border color from 'var(--border)' to a fixed semi-transparent white like 'rgba(255,255,255,0.1)' to ensure edge definition on the dark home page.
 
 - [ ] **3. Increase Contrast for Hero Section Typography** <!-- id:jhPu_m -->
