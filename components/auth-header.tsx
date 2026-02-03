@@ -11,29 +11,36 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useAuthClient } from '@/lib/auth/client';
-import { LogOut, Settings, Footprints } from 'lucide-react';
+import { LogOut, Settings, Footprints, ShoppingBag } from 'lucide-react';
 import { CartSheet } from '@/components/cart-sheet';
 import { MobileNav } from '@/components/mobile-nav';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 export function AuthHeader() {
   const { user, isPending, signOut } = useAuthClient();
+  const pathname = usePathname();
 
   const handleSignOut = async () => {
     await signOut();
     window.location.href = '/';
   };
 
-  const headerStyles = "sticky top-0 z-50 w-full glass-header dark:shadow-[0_4px_30px_-10px_rgba(0,0,0,0.7)] transition-all";
+  const navLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'The Catalog', href: '/products' },
+  ];
+
+  const headerStyles = "sticky top-0 z-50 w-full glass-header transition-all duration-300";
 
   if (isPending) {
     return (
       <header className={headerStyles}>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/40 to-transparent pointer-events-none" />
         <div className="container mx-auto px-4 md:px-6 h-16 flex justify-between items-center relative z-10">
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2 text-xl font-bold tracking-tighter drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)] dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-              <Footprints className="h-6 w-6 text-primary rotate-45" />
-              <span>REX<span className="text-primary">SHOP</span></span>
+            <div className="flex items-center gap-2 text-xl font-bold tracking-tighter">
+              <div className="h-6 w-6 bg-muted rounded-md animate-pulse rotate-45" />
+              <div className="h-6 w-24 bg-muted animate-pulse rounded" />
             </div>
           </div>
           <div className="h-9 w-9 rounded-full bg-muted animate-pulse" />
@@ -44,64 +51,81 @@ export function AuthHeader() {
 
   return (
     <header className={headerStyles}>
-      <div className="absolute inset-0 bg-gradient-to-b from-background/40 to-transparent pointer-events-none" />
       <div className="container mx-auto px-4 md:px-6 h-16 flex justify-between items-center relative z-10">
-        <div className="flex items-center gap-6">
-          <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tighter hover:opacity-90 transition-opacity drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)] dark:drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-            <Footprints className="h-6 w-6 text-primary rotate-45" />
-            <span>REX<span className="text-primary">SHOP</span></span>
+        <div className="flex items-center gap-10">
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="relative">
+              <Footprints className="h-6 w-6 text-primary rotate-45 transition-transform duration-300 group-hover:scale-110" />
+            </div>
+            <span className="text-xl font-bold tracking-tighter">
+              REX<span className="text-primary">SHOP</span>
+            </span>
           </Link>
-          <nav className="hidden md:flex gap-6 items-center">
-            <Link href="/products" className="text-sm font-semibold hover:text-primary transition-colors drop-shadow-sm">
-              T-Rex Catalog
-            </Link>
+
+          <nav className="hidden md:flex gap-8 items-center">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-primary relative py-1",
+                  pathname === link.href ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-full" : "text-muted-foreground"
+                )}
+              >
+                {link.name}
+              </Link>
+            ))}
           </nav>
         </div>
-        <div className="flex items-center gap-4">
-          <MobileNav />
-          <CartSheet />
+
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1 md:gap-2 mr-2">
+            <MobileNav />
+            <CartSheet />
+          </div>
+
+          <div className="hidden h-6 w-[1px] bg-border md:block mx-1" />
+
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-9 w-9 rounded-full ring-1 ring-primary/10">
-                  <Avatar className="h-9 w-9">
-                    <AvatarFallback className="bg-primary text-primary-foreground">
+                <Button variant="ghost" className="relative h-9 w-9 rounded-full ring-2 ring-transparent transition-all hover:ring-primary/20">
+                  <Avatar className="h-8 w-8">
+                    <AvatarFallback className="bg-primary/10 text-primary font-bold text-xs">
                       {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
                     </AvatarFallback>
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                <div className="flex items-center justify-start gap-2 p-2">
-                  <div className="flex flex-col space-y-1 leading-none">
-                    {user.name && <p className="font-medium">{user.name}</p>}
-                    {user.email && (
-                      <p className="w-[200px] truncate text-sm text-muted-foreground">
-                        {user.email}
-                      </p>
-                    )}
+              <DropdownMenuContent align="end" className="w-56 mt-2 rounded-xl border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden p-1">
+                <div className="flex items-center justify-start gap-2 p-3 bg-muted/30 mb-1 rounded-lg">
+                  <div className="flex flex-col space-y-1">
+                    {user.name && <p className="font-semibold text-sm leading-none">{user.name}</p>}
+                    <p className="text-xs text-muted-foreground truncate max-w-[180px]">
+                      {user.email}
+                    </p>
                   </div>
                 </div>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/account/settings" className="cursor-pointer">
-                    <Settings className="mr-2 h-4 w-4" />
-                    Settings
+                <DropdownMenuSeparator className="mx-1" />
+                <DropdownMenuItem asChild className="rounded-lg m-1 cursor-pointer">
+                  <Link href="/account/settings">
+                    <Settings className="mr-2 h-4 w-4 opacity-70" />
+                    <span>Settings</span>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer text-destructive">
-                  <LogOut className="mr-2 h-4 w-4" />
-                  Sign out
+                <DropdownMenuSeparator className="mx-1" />
+                <DropdownMenuItem onClick={handleSignOut} className="rounded-lg m-1 cursor-pointer text-destructive focus:bg-destructive/10 focus:text-destructive">
+                  <LogOut className="mr-2 h-4 w-4 opacity-70" />
+                  <span>Sign out</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
             <div className="flex items-center gap-2">
-              <Button variant="ghost" asChild className="hover:bg-primary/5">
+              <Button variant="ghost" asChild className="hidden sm:flex text-sm font-medium hover:bg-muted rounded-full px-5">
                 <Link href="/auth/sign-in">Sign in</Link>
               </Button>
-              <Button asChild className="shadow-md">
+              <Button asChild className="h-9 px-5 rounded-full shadow-md shadow-primary/10 transition-all hover:shadow-primary/20 active:scale-95 text-sm font-semibold">
                 <Link href="/auth/sign-up">Sign up</Link>
               </Button>
             </div>
