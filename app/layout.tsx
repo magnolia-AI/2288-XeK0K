@@ -25,7 +25,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <body className="h-full flex flex-col antialiased selection:bg-primary selection:text-primary-foreground">
-        <ThemeProvider defaultTheme="light" attribute="class">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <AuthProvider initialSession={initialSession}>
             <div className="flex flex-col min-h-screen">
               <AuthHeader />
@@ -41,4 +41,3 @@ export default async function RootLayout({
     </html>
   )
 }
-
