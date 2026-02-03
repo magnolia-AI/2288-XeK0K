@@ -20,7 +20,7 @@ The approach focuses on three areas: theme synchronization, typography color ref
 - [x] **4. Enhance HUD and Decorative Element Visibility** <!-- id:28p9Ed -->
   Locate decorative scan lines and terminal data points in 'app/page.tsx' (e.g., coordinates, sector IDs). Change opacity from 'text-white/20' to 'text-white/45' to make them visible but still subordinate to primary content.
 
-- [ ] **5. Update Hero Badge and Button Contrast** <!-- id:rFTPdd -->
+- [x] **5. Update Hero Badge and Button Contrast** <!-- id:rFTPdd -->
   Refine the 'Secure Genetic Uplink' badge in the hero section by increasing the opacity of 'text-primary-foreground/80' to '/100'. Adjust the 'Lineage Verification' button to use 'bg-white/10' and 'border-white/20' for a more distinct交互 state.
 
 ---

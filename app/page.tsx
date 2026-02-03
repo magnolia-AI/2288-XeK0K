@@ -34,7 +34,7 @@ export default function Home() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary-foreground/80">
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary-foreground">
                 Secure Genetic Uplink Established
               </span>
             </div>
@@ -59,7 +59,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-white/20 translate-y-full transition-transform group-hover:translate-y-0" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="h-16 px-10 text-lg font-medium rounded-none border-white/10 bg-white/5 backdrop-blur-xl text-white hover:bg-white/10 hover:border-white/20 transition-all transition-colors" asChild>
+              <Button size="lg" variant="outline" className="h-16 px-10 text-lg font-medium rounded-none border-white/20 bg-white/10 backdrop-blur-xl text-white hover:bg-white/20 hover:border-white/30 transition-all transition-colors" asChild>
                 <Link href="/about">LINEAGE VERIFICATION</Link>
               </Button>
             </div>
