@@ -23,7 +23,7 @@ The approach focuses on three core areas: Page Layout, Component Enhancement, an
 - [x] **5. Integrate Inventory and Stock Status** <!-- id:fROTjF -->
   Update product fetching logic to check the 'inventory' table via 'lib/db.ts'. Display 'In Stock', 'Low Stock', or 'Out of Stock' badges on both listing and detail pages.
 
-- [ ] **6. Add Motion and Transitions** <!-- id:ShWmu3 -->
+- [ ] **6. Add Motion and Transitions** *(in_progress)* <!-- id:ShWmu3 -->
   Use Framer Motion to add staggered entrance animations for the product grid and smooth transitions between product images on the detail page.
 
 - [ ] **7. Implement Breadcrumb Navigation** <!-- id:3Dh_BB -->

@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { formatCurrency, cn } from '@/lib/utils';
 import { AddToCartButton } from '@/components/products/add-to-cart-button';
 import { ShoppingCart, Eye } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface ProductCardProps {
   product: Product & { inventoryQuantity?: number | null };
@@ -24,8 +25,23 @@ export function ProductCard({ product }: ProductCardProps) {
   const isLowStock = inventoryLevel > 0 && inventoryLevel < 10;
   const isInStock = inventoryLevel >= 10;
 
+  const item: any = {
+    hidden: { opacity: 0, y: 30 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
   return (
-    <Card className="flex flex-col h-full overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 group shadow-sm hover:shadow-xl bg-card">
+    <motion.div
+      variants={item}
+      className="h-full"
+    >
+      <Card className="flex flex-col h-full overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 group shadow-sm hover:shadow-xl bg-card">
       {/* Image Container */}
       <div className="relative aspect-[4/5] overflow-hidden">
         <Link href={`/products/${product.slug}`} className="block h-full w-full">
@@ -161,5 +177,6 @@ export function ProductCard({ product }: ProductCardProps) {
         </AddToCartButton>
       </div>
     </Card>
+  </motion.div>
   );
 }

@@ -8,6 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import { Card, CardContent } from "@/components/ui/card";
 import { AddToCartButton } from "@/components/products/add-to-cart-button";
 import { Home, LayoutGrid, ShieldCheck, Truck, RotateCcw, Zap } from "lucide-react";
+import { ProductImageGallery } from "./product-image-gallery";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -103,30 +104,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <div className="container mx-auto px-4 md:px-6 py-8 md:py-12 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-start">
           
-          {/* Left Column: Image Carousel */}
+          {/* Left Column: Image Gallery */}
           <div className="space-y-4">
-            <Carousel className="w-full">
-              <CarouselContent>
-                {images.map((img, index) => (
-                  <CarouselItem key={index}>
-                    <div className="relative aspect-[1/1] overflow-hidden rounded-3xl border bg-muted/30 shadow-sm">
-                      <SafeImage
-                        src={img}
-                        alt={`${product.name} - View ${index + 1}`}
-                        productName={product.name}
-                        fill
-                        className="object-cover"
-                        priority={index === 0}
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="hidden md:flex justify-end gap-2 mt-4 absolute bottom-4 right-4">
-                <CarouselPrevious className="static translate-y-0" />
-                <CarouselNext className="static translate-y-0" />
-              </div>
-            </Carousel>
+            <ProductImageGallery images={images} productName={product.name} />
 
             {/* Features/Trust Badges */}
             <div className="grid grid-cols-3 gap-4 py-6 border-t border-b">

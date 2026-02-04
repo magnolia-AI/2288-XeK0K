@@ -1,6 +1,5 @@
 import db from '@/lib/db';
 import { products, inventory } from '@/lib/schema';
-import { ProductCard } from '@/components/products/product-card';
 import { ProductFilters, SearchBar, SortDropdown } from '@/components/products/product-filters';
 import { desc, asc, ilike, or, and, eq, gte, lte } from 'drizzle-orm';
 import { Suspense } from 'react';
@@ -15,6 +14,7 @@ import {
 import { Home, LayoutGrid, SlidersHorizontal } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { ProductListGrid } from './product-grid';
 
 export const dynamic = 'force-dynamic';
 
@@ -106,22 +106,7 @@ async function ProductList({
     .where(where)
     .orderBy(...orderBy);
 
-  if (allProducts.length === 0) {
-    return (
-      <div className="text-center py-20 bg-muted/20 border-2 border-dashed border-muted rounded-2xl">
-        <h3 className="text-xl font-semibold">No specimens matching your criteria</h3>
-        <p className="text-muted-foreground mt-2">The DNA archive is currently empty for these parameters.</p>
-      </div>
-    );
-  }
-
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      {allProducts.map((product) => (
-        <ProductCard key={product.id} product={product as any} />
-      ))}
-    </div>
-  );
+  return <ProductListGrid allProducts={allProducts} />;
 }
 
 function GridSkeleton() {
@@ -236,3 +221,4 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
     </div>
   );
 }
+
