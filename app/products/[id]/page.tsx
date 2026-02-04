@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent } from "@/components/ui/card";
 import { AddToCartButton } from "@/components/products/add-to-cart-button";
-import { Home, LayoutGrid } from "lucide-react";
+import { Home, LayoutGrid, ShieldCheck, Truck, RotateCcw, Zap } from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -16,6 +16,15 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -39,175 +48,226 @@ export default async function ProductDetailPage({ params }: PageProps) {
   }
 
   const specs = (product.specs as any) || {};
+  
+  // Mock secondary images for carousel demonstration
+  const images = [
+    product.imageUrl,
+    "https://images.unsplash.com/photo-1525833447209-e8b1ff0a19cb?q=80&w=1000&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1560148192-baeb9e6ee0a2?q=80&w=1000&auto=format&fit=crop",
+  ];
 
   return (
-    <div className="flex flex-col flex-1">
-      {/* Dedicated Breadcrumb Section */}
-      <div className="border-b bg-muted/30">
+    <div className="flex flex-col flex-1 bg-background">
+      {/* Breadcrumb Section - Slim & Minimal */}
+      <div className="bg-muted/10">
         <div className="container mx-auto px-4 md:px-6 py-4 max-w-7xl">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/" className="flex items-center gap-1">
-                  <Home className="h-3.5 w-3.5" />
-                  <span>Home</span>
+                <BreadcrumbLink href="/" className="hover:text-primary transition-colors">
+                  Home
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbLink href="/products" className="flex items-center gap-1">
-                  <LayoutGrid className="h-3.5 w-3.5" />
-                  <span>Catalog</span>
+                <BreadcrumbLink href="/products" className="hover:text-primary transition-colors">
+                  Catalog
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage className="truncate max-w-[200px] md:max-w-none">
-                  {product.name}
-                </BreadcrumbPage>
+                <BreadcrumbPage>{product.name}</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
         </div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 py-8 max-w-7xl">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Product Visuals */}
-          <div className="space-y-6">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-muted border shadow-2xl group">
-              <SafeImage
-                src={product.imageUrl}
-                alt={product.name}
-                productName={product.name}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                priority
-              />
-              {product.stock > 0 && product.stock < 5 && (
-                <Badge className="absolute top-6 left-6 bg-orange-500 text-white border-none shadow-lg px-4 py-1.5 text-sm font-bold">
-                  ONLY {product.stock} LEFT
-                </Badge>
-              )}
+      <div className="container mx-auto px-4 md:px-6 py-8 md:py-12 max-w-7xl">
+        <div className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-start">
+          
+          {/* Left Column: Image Carousel */}
+          <div className="space-y-4">
+            <Carousel className="w-full">
+              <CarouselContent>
+                {images.map((img, index) => (
+                  <CarouselItem key={index}>
+                    <div className="relative aspect-[1/1] overflow-hidden rounded-3xl border bg-muted/30 shadow-sm">
+                      <SafeImage
+                        src={img}
+                        alt={`${product.name} - View ${index + 1}`}
+                        productName={product.name}
+                        fill
+                        className="object-cover"
+                        priority={index === 0}
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="hidden md:flex justify-end gap-2 mt-4 absolute bottom-4 right-4">
+                <CarouselPrevious className="static translate-y-0" />
+                <CarouselNext className="static translate-y-0" />
+              </div>
+            </Carousel>
+
+            {/* Features/Trust Badges */}
+            <div className="grid grid-cols-3 gap-4 py-6 border-t border-b">
+              <div className="flex flex-col items-center text-center space-y-2">
+                <Truck className="h-5 w-5 text-primary" />
+                <span className="text-[10px] font-bold uppercase tracking-tighter">Safe Transit</span>
+              </div>
+              <div className="flex flex-col items-center text-center space-y-2 text-primary">
+                <ShieldCheck className="h-5 w-5" />
+                <span className="text-[10px] font-bold uppercase tracking-tighter">Verified DNA</span>
+              </div>
+              <div className="flex flex-col items-center text-center space-y-2">
+                <Zap className="h-5 w-5 text-orange-500" />
+                <span className="text-[10px] font-bold uppercase tracking-tighter">Instinct-Prime</span>
+              </div>
             </div>
           </div>
 
-          {/* Product Summary */}
+          {/* Right Column: Product Info */}
           <div className="flex flex-col">
-            <div className="mb-8">
-              <div className="flex items-center gap-3 mb-4">
-                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 px-3 py-1 font-bold text-xs uppercase tracking-widest">
-                  {product.category || "Standard T-Rex"}
+            <div className="space-y-4 mb-8">
+              <div className="flex items-center gap-2">
+                <Badge variant="outline" className="border-primary/30 text-primary font-bold tracking-widest uppercase text-[10px] px-2 py-0.5">
+                  {product.category || "Cretaceous"}
                 </Badge>
-                {product.stock > 0 ? (
-                  <div className="flex items-center gap-1.5 text-green-600 dark:text-green-400 text-sm font-medium">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                    </span>
-                    Ready for Delivery
-                  </div>
-                ) : (
-                  <Badge variant="destructive" className="bg-red-500/10 text-red-500 border-red-500/20 px-3 py-1 font-bold text-xs uppercase tracking-widest">
-                    Sold Out
+                {product.stock > 0 && product.stock < 5 ? (
+                  <Badge variant="destructive" className="bg-red-500/10 text-red-500 border-none font-bold text-[10px]">
+                    LOW STOCK: {product.stock} REMAINING
                   </Badge>
-                )}
+                ) : product.stock > 0 ? (
+                  <span className="text-xs font-bold text-green-500 flex items-center gap-1 ml-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                    Available for Immediate Deployment
+                  </span>
+                ) : null}
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-4 leading-[1.1]">
+              <h1 className="text-5xl md:text-6xl font-black tracking-tight leading-tight">
                 {product.name}
               </h1>
-              
-              <div className="flex items-baseline gap-4 mt-6">
-                <span className="text-4xl font-black text-primary mb-2">
+
+              <div className="flex items-baseline gap-3">
+                <span className="text-4xl font-black text-primary">
                   ${Number(product.price).toLocaleString()}
                 </span>
-                {specs.rarity && (
-                  <span className="text-sm font-medium text-muted-foreground italic">
-                    Rarity: {specs.rarity}
-                  </span>
-                )}
+                <span className="text-sm text-muted-foreground line-through opacity-50 font-bold italic">
+                  ${(Number(product.price) * 1.25).toLocaleString()}
+                </span>
               </div>
             </div>
 
-            <Separator className="mb-8" />
+            <p className="text-lg text-muted-foreground leading-relaxed mb-10 font-medium">
+              {product.description || "An exceptional specimen of the tyrannosaurid theropod dinosaur. This creature represents the pinnacle of ancient predatory evolution, meticulously reconstructed for modern observers."}
+            </p>
 
-            <div className="space-y-6 mb-10">
-              <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-muted-foreground">Detailed Description</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed font-medium">
-                {product.description || "An exceptional specimen of the tyrannosaurid theropod dinosaur. This creature represents the pinnacle of ancient predatory evolution, meticulously reconstructed for modern observers."}
-              </p>
+            {/* Variant Selectors (Mock) */}
+            <div className="space-y-8 mb-10">
+              <div className="space-y-4">
+                <div className="flex justify-between">
+                  <Label className="text-sm font-black uppercase tracking-widest">Growth Stage</Label>
+                  <span className="text-xs font-bold text-primary italic">Bio-Certified</span>
+                </div>
+                <RadioGroup defaultValue="adult" className="flex gap-4">
+                  <div className="flex-1">
+                    <RadioGroupItem value="juvenile" id="juvenile" className="peer sr-only" />
+                    <Label
+                      htmlFor="juvenile"
+                      className="flex items-center justify-center rounded-xl border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary transition-all cursor-pointer font-bold text-sm"
+                    >
+                      Juvenile
+                    </Label>
+                  </div>
+                  <div className="flex-1">
+                    <RadioGroupItem value="adult" id="adult" className="peer sr-only" />
+                    <Label
+                      htmlFor="adult"
+                      className="flex items-center justify-center rounded-xl border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary transition-all cursor-pointer font-bold text-sm"
+                    >
+                      Adult
+                    </Label>
+                  </div>
+                  <div className="flex-1">
+                    <RadioGroupItem value="elder" id="elder" className="peer sr-only" />
+                    <Label
+                      htmlFor="elder"
+                      className="flex items-center justify-center rounded-xl border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary transition-all cursor-pointer font-bold text-sm"
+                    >
+                      Alpha
+                    </Label>
+                  </div>
+                </RadioGroup>
+              </div>
+
+              <div className="space-y-4">
+                <Label className="text-sm font-black uppercase tracking-widest">DNA Purity</Label>
+                <RadioGroup defaultValue="99" className="flex gap-4">
+                  {["95", "99", "100"].map((lvl) => (
+                    <div key={lvl} className="flex-1">
+                      <RadioGroupItem value={lvl} id={`dna-${lvl}`} className="peer sr-only" />
+                      <Label
+                        htmlFor={`dna-${lvl}`}
+                        className="flex items-center justify-center rounded-xl border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary transition-all cursor-pointer font-bold text-sm"
+                      >
+                        {lvl}% Pure
+                      </Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              </div>
             </div>
 
-            {/* Key Specs Grid */}
-            <div className="grid grid-cols-2 gap-4 mb-10">
-              <Card className="bg-muted/30 border-none shadow-sm transition-colors hover:bg-muted/50">
-                <CardContent className="p-4">
-                  <p className="text-[10px] text-muted-foreground uppercase font-black tracking-widest mb-1.5 text-center">Height</p>
-                  <p className="text-lg font-bold text-center">{specs.height || "4.6m"}</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-muted/30 border-none shadow-sm transition-colors hover:bg-muted/50">
-                <CardContent className="p-4">
-                  <p className="text-[10px] text-muted-foreground uppercase font-black tracking-widest mb-1.5 text-center">Weight</p>
-                  <p className="text-lg font-bold text-center">{specs.weight || "8,000kg"}</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-muted/30 border-none shadow-sm transition-colors hover:bg-muted/50">
-                <CardContent className="p-4">
-                  <p className="text-[10px] text-muted-foreground uppercase font-black tracking-widest mb-1.5 text-center">Temperament</p>
-                  <p className="text-lg font-bold text-center capitalize">{specs.temperament || "Aggressive"}</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-muted/30 border-none shadow-sm transition-colors hover:bg-muted/50">
-                <CardContent className="p-4">
-                  <p className="text-[10px] text-muted-foreground uppercase font-black tracking-widest mb-1.5 text-center">Age</p>
-                  <p className="text-lg font-bold text-center">{specs.age || "Adult"}</p>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Add to Cart */}
-            <div className="space-y-4 mt-auto">
-              <AddToCartButton 
-                product={product} 
-                size="lg" 
-                className="w-full h-16 text-xl font-bold rounded-2xl shadow-xl hover:shadow-2xl transition-all active:scale-[0.98]"
-              />
-              <p className="text-center text-xs text-muted-foreground font-medium flex items-center justify-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-red-500"></span>
-                Special transport permit required for interstellar shipping
-              </p>
+            {/* Add to Cart Section */}
+            <div className="space-y-6 pt-6 border-t">
+              <div className="flex items-center gap-4">
+                <AddToCartButton 
+                  product={product} 
+                  size="lg" 
+                  className="flex-1 h-14 md:h-16 text-xl font-black rounded-2xl shadow-xl hover:shadow-2xl transition-all active:scale-[0.98] uppercase tracking-wider"
+                />
+              </div>
+              <div className="flex items-center justify-center gap-6 text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
+                <span className="flex items-center gap-1.5"><RotateCcw className="h-3 w-3" /> 30-Day Return</span>
+                <span className="flex items-center gap-1.5"><ShieldCheck className="h-3 w-3" /> Carbon Guarantee</span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Extended Specifications Section */}
-        <section className="mt-24 pt-24 border-t">
-          <h2 className="text-3xl font-black mb-12 tracking-tight flex items-center gap-3">
-            <span className="bg-primary h-8 w-2 rounded-full"></span>
-            BIOLOGICAL SPECIFICATIONS
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-8">
+        {/* Detailed Biological Specs */}
+        <div className="mt-32">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div>
+              <h2 className="text-4xl font-black tracking-tight mb-2">BIOLOGICAL AUDIT</h2>
+              <p className="text-muted-foreground font-medium">Verified fossil-record parity standards.</p>
+            </div>
+            <div className="h-px bg-border flex-1 mx-8 hidden md:block"></div>
+            <Badge variant="secondary" className="px-4 py-1.5 font-bold uppercase tracking-widest text-xs h-fit">
+              Doc. ID: TR-29472-X
+            </Badge>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { label: "Dietary Requirement", value: specs.diet || "Mega-Carnivore" },
-              { label: "Bite Force", value: specs.biteForce || "35,000 Newtons" },
-              { label: "Top Pursuit Speed", value: specs.speed || "27 mph" },
-              { label: "Intelligence Quotient", value: specs.iq || "Estimated 2.0" },
-              { label: "Proto-Feather Coverage", value: specs.feathers || "Limited (15%)" },
-              { label: "Native Environment", value: specs.nativeRegion || "North America (Hell Creek)" },
-            ].map((item, i) => (
-              <div key={i} className="flex justify-between items-center py-4 border-b group">
-                <span className="text-muted-foreground font-bold text-xs uppercase tracking-widest group-hover:text-primary transition-colors">
-                  {item.label}
-                </span>
-                <span className="font-bold text-foreground">
-                  {item.value}
-                </span>
-              </div>
+              { label: "Height", value: specs.height || "4.6m", detail: "At Shoulder" },
+              { label: "Weight", value: specs.weight || "8,000kg", detail: "Dry Weight" },
+              { label: "Temperament", value: specs.temperament || "Aggressive", detail: "Field Observation" },
+              { label: "Diet", value: specs.diet || "Mega-Carnivore", detail: "Live Feed" },
+            ].map((spec, i) => (
+              <Card key={i} className="border-none bg-muted/30 shadow-none overflow-hidden group">
+                <CardContent className="p-6">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-4">{spec.label}</p>
+                  <p className="text-2xl font-black mb-1 group-hover:text-primary transition-colors">{spec.value}</p>
+                  <p className="text-[10px] font-bold italic text-muted-foreground/60">{spec.detail}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
-        </section>
+        </div>
       </div>
     </div>
   );

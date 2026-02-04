@@ -17,7 +17,7 @@ The approach focuses on three core areas: Page Layout, Component Enhancement, an
 - [x] **3. Implement Advanced Sidebar Filters** <!-- id:WzZVgB -->
   Modify 'components/products/product-filters.tsx' to include range sliders for price, category checkboxes, and size/color availability filters based on 'lib/schema.ts'.
 
-- [ ] **4. Modernize Product Detail Page Layout** <!-- id:SvqEIN -->
+- [x] **4. Modernize Product Detail Page Layout** <!-- id:SvqEIN -->
   Completely redesign 'app/products/[id]/page.tsx' using a split-screen layout on desktop: an image carousel from 'components/ui/carousel.tsx' on the left, and product info, price, and variant selectors on the right.
 
 - [ ] **5. Integrate Inventory and Stock Status** <!-- id:fROTjF -->

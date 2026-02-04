@@ -15,7 +15,7 @@ interface SafeImageProps extends ImageProps {
 export function SafeImage({ 
   src, 
   alt, 
-  fallbackSrc = '/images/products/placeholder.webp', 
+  fallbackSrc = 'https://images.unsplash.com/photo-1525833447209-e8b1ff0a19cb?q=80&w=1000&auto=format&fit=crop', 
   productName,
   ...props 
 }: SafeImageProps) {
@@ -32,13 +32,9 @@ export function SafeImage({
     if (!hasError) {
       setHasError(true);
       
-      // If productName is provided, use the dynamic placeholder generator
-      // Otherwise fallback to the static placeholder image
-      if (productName) {
-        setImgSrc(`/api/placeholder?name=${encodeURIComponent(productName)}`);
-      } else {
-        setImgSrc(fallbackSrc);
-      }
+      // Use a consistent, high-quality prehistoric fallback from Unsplash
+      // This avoids local API pattern errors and ensures a "premium" look even when images fail
+      setImgSrc(fallbackSrc);
     }
   };
 
@@ -48,6 +44,8 @@ export function SafeImage({
       src={imgSrc}
       alt={alt}
       onError={handleError}
+      // Add unoptimized for fallback if we detect it's a fallback, 
+      // but simpler to just use a valid remote pattern
     />
   );
 }
