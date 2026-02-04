@@ -68,8 +68,10 @@ export function AuthHeader() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary relative py-1",
-                  pathname === link.href ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-full" : "text-muted-foreground"
+                  "text-xs font-bold tracking-widest uppercase transition-all duration-300 hover:text-primary relative py-1",
+                  pathname === link.href 
+                    ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1px] after:bg-primary" 
+                    : "text-white/50 hover:text-white"
                 )}
               >
                 {link.name}
@@ -89,43 +91,43 @@ export function AuthHeader() {
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-9 w-9 rounded-full ring-2 ring-transparent transition-all hover:ring-primary/20">
-                  <Avatar className="h-8 w-8">
-                    <AvatarFallback className="bg-primary/10 text-primary font-bold text-xs">
+                <Button variant="ghost" className="relative h-9 w-9 rounded-none ring-1 ring-white/10 transition-all hover:ring-primary/50 p-0">
+                  <Avatar className="h-8 w-8 rounded-none">
+                    <AvatarFallback className="bg-primary/10 text-primary font-bold text-xs rounded-none">
                       {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
                     </AvatarFallback>
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56 mt-2 rounded-xl border-slate-200 dark:border-slate-800 shadow-xl overflow-hidden p-1">
-                <div className="flex items-center justify-start gap-2 p-3 bg-muted/30 mb-1 rounded-lg">
+              <DropdownMenuContent align="end" className="w-56 mt-2 rounded-none border-white/10 shadow-xl overflow-hidden p-1 bg-black/95 backdrop-blur-xl">
+                <div className="flex items-center justify-start gap-2 p-3 bg-white/5 mb-1 rounded-none">
                   <div className="flex flex-col space-y-1">
-                    {user.name && <p className="font-semibold text-sm leading-none">{user.name}</p>}
-                    <p className="text-xs text-muted-foreground truncate max-w-[180px]">
+                    {user.name && <p className="font-bold text-xs uppercase tracking-tighter leading-none">{user.name}</p>}
+                    <p className="text-[10px] text-white/50 font-mono truncate max-w-[180px]">
                       {user.email}
                     </p>
                   </div>
                 </div>
-                <DropdownMenuSeparator className="mx-1" />
-                <DropdownMenuItem asChild className="rounded-lg m-1 cursor-pointer">
-                  <Link href="/account/settings">
+                <DropdownMenuSeparator className="mx-1 bg-white/5" />
+                <DropdownMenuItem asChild className="rounded-none m-1 cursor-pointer focus:bg-white/10">
+                  <Link href="/account/settings" className="flex items-center w-full">
                     <Settings className="mr-2 h-4 w-4 opacity-70" />
-                    <span>Settings</span>
+                    <span className="text-xs uppercase tracking-widest font-bold">Settings</span>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator className="mx-1" />
-                <DropdownMenuItem onClick={handleSignOut} className="rounded-lg m-1 cursor-pointer text-destructive focus:bg-destructive/10 focus:text-destructive">
+                <DropdownMenuSeparator className="mx-1 bg-white/5" />
+                <DropdownMenuItem onClick={handleSignOut} className="rounded-none m-1 cursor-pointer text-destructive focus:bg-destructive/10 focus:text-destructive">
                   <LogOut className="mr-2 h-4 w-4 opacity-70" />
-                  <span>Sign out</span>
+                  <span className="text-xs uppercase tracking-widest font-bold">Sign out</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
             <div className="flex items-center gap-2">
-              <Button variant="ghost" asChild className="hidden sm:flex text-sm font-medium hover:bg-muted rounded-full px-5">
+              <Button variant="ghost" asChild className="hidden sm:flex text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white/5 rounded-none px-5 text-white/70 hover:text-white transition-all">
                 <Link href="/auth/sign-in">Sign in</Link>
               </Button>
-              <Button asChild className="h-9 px-5 rounded-full shadow-md shadow-primary/10 transition-all hover:shadow-primary/20 active:scale-95 text-sm font-semibold">
+              <Button asChild className="h-9 px-6 rounded-none border border-white/20 bg-white/5 hover:bg-white/10 hover:border-white/40 transition-all active:scale-95 text-[10px] font-bold uppercase tracking-[0.2em] text-white">
                 <Link href="/auth/sign-up">Sign up</Link>
               </Button>
             </div>
@@ -135,4 +137,3 @@ export function AuthHeader() {
     </header>
   );
 }
-

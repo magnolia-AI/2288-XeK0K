@@ -30,7 +30,7 @@
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Border radius */
-  --radius: 0.625rem;
+  --radius: 0rem;
 
   /* Colors - Light theme */
   --background: oklch(1 0 0);
@@ -105,9 +105,9 @@
 
 @layer utilities {
   .glass-header {
-    background-color: color-mix(in srgb, var(--background), transparent 10%);
+    background-color: oklch(0 0 0 / 80%);
     @apply backdrop-blur-[12px] border-b;
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 30px -10px rgba(0, 0, 0, 0.3);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px -10px rgba(0, 0, 0, 0.5);
   }
 }

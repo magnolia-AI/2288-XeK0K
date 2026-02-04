@@ -30,7 +30,7 @@ export function CartSheet() {
 
   if (!mounted) {
     return (
-      <Button variant="outline" size="icon" className="relative bg-background/50 backdrop-blur-sm">
+      <Button variant="outline" size="icon" className="relative bg-background/50 backdrop-blur-sm rounded-none border-white/10 px-0 h-9 w-9">
         <ShoppingCart className="h-4 w-4" />
       </Button>
     );
@@ -39,10 +39,10 @@ export function CartSheet() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="relative border-2 border-primary/20 hover:border-primary/50 transition-colors bg-background/50 backdrop-blur-sm">
+        <Button variant="outline" size="icon" className="relative border border-white/10 hover:border-white/40 transition-all bg-white/5 backdrop-blur-sm rounded-none px-0 h-9 w-9">
           <ShoppingCart className="h-4 w-4" />
           {itemCount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center">
+            <span className="absolute -top-1 -right-1 bg-primary text-black text-[8px] font-bold px-1 py-0.5 rounded-none min-w-[16px] text-center">
               {itemCount}
             </span>
           )}
