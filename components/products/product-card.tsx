@@ -8,7 +8,7 @@ import { AddToCartButton } from '@/components/products/add-to-cart-button';
 import { ShoppingCart, Eye } from 'lucide-react';
 
 interface ProductCardProps {
-  product: Product;
+  product: Product & { inventoryQuantity?: number | null };
 }
 
 export function ProductCard({ product }: ProductCardProps) {
@@ -17,6 +17,12 @@ export function ProductCard({ product }: ProductCardProps) {
   const isOnSale = product.specs?.onSale || false;
   const salePrice = product.specs?.salePrice;
   const secondaryImageUrl = product.specs?.secondaryImageUrl;
+
+  // Stock status logic
+  const inventoryLevel = product.inventoryQuantity ?? 0;
+  const isOutOfStock = inventoryLevel <= 0;
+  const isLowStock = inventoryLevel > 0 && inventoryLevel < 10;
+  const isInStock = inventoryLevel >= 10;
 
   return (
     <Card className="flex flex-col h-full overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 group shadow-sm hover:shadow-xl bg-card">
@@ -55,6 +61,19 @@ export function ProductCard({ product }: ProductCardProps) {
 
         {/* Status Badges */}
         <div className="absolute top-4 left-4 flex flex-col gap-2">
+          {isOutOfStock ? (
+            <Badge className="bg-destructive text-destructive-foreground border-none font-black px-3 py-1 shadow-lg transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300">
+              OUT OF STOCK
+            </Badge>
+          ) : isLowStock ? (
+            <Badge className="bg-orange-600 text-white border-none font-black px-3 py-1 shadow-lg transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300">
+              LOW STOCK: {inventoryLevel}
+            </Badge>
+          ) : (
+            <Badge className="bg-green-600 text-white border-none font-black px-3 py-1 shadow-lg transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300">
+              IN STOCK
+            </Badge>
+          )}
           {isNew && (
             <Badge className="bg-blue-600 text-white border-none font-black px-3 py-1 shadow-lg transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300">
               NEW SPECIMEN
@@ -85,6 +104,7 @@ export function ProductCard({ product }: ProductCardProps) {
             <AddToCartButton 
               product={product} 
               showIcon 
+              disabled={isOutOfStock}
               className="rounded-full h-12 w-12 p-0 bg-primary/90 hover:bg-primary shadow-xl"
             >
               <span className="sr-only">Quick Add</span>
@@ -134,10 +154,12 @@ export function ProductCard({ product }: ProductCardProps) {
       <div className="px-5 pb-5 mt-auto">
         <AddToCartButton 
           product={product} 
+          disabled={isOutOfStock}
           className="w-full font-black text-sm uppercase tracking-widest h-12 shadow-md hover:shadow-lg transition-all"
-        />
+        >
+          {isOutOfStock ? 'OUT OF STOCK' : 'ADOPT NOW'}
+        </AddToCartButton>
       </div>
     </Card>
   );
 }
-

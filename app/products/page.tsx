@@ -1,5 +1,5 @@
 import db from '@/lib/db';
-import { products } from '@/lib/schema';
+import { products, inventory } from '@/lib/schema';
 import { ProductCard } from '@/components/products/product-card';
 import { ProductFilters, SearchBar, SortDropdown } from '@/components/products/product-filters';
 import { desc, asc, ilike, or, and, eq, gte, lte } from 'drizzle-orm';
@@ -85,8 +85,24 @@ async function ProductList({
   const where = conditions.length > 0 ? and(...conditions) : undefined;
 
   const allProducts = await db
-    .select()
+    .select({
+      id: products.id,
+      name: products.name,
+      slug: products.slug,
+      description: products.description,
+      price: products.price,
+      category: products.category,
+      rating: products.rating,
+      specs: products.specs,
+      imageUrl: products.imageUrl,
+      categoryId: products.categoryId,
+      createdAt: products.createdAt,
+      updatedAt: products.updatedAt,
+      stock: products.stock,
+      inventoryQuantity: inventory.quantity,
+    })
     .from(products)
+    .leftJoin(inventory, eq(products.id, inventory.productId))
     .where(where)
     .orderBy(...orderBy);
 
@@ -102,7 +118,7 @@ async function ProductList({
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {allProducts.map((product) => (
-        <ProductCard key={product.id} product={product} />
+        <ProductCard key={product.id} product={product as any} />
       ))}
     </div>
   );
@@ -220,4 +236,3 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
     </div>
   );
 }
-

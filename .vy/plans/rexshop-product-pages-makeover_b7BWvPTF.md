@@ -20,7 +20,7 @@ The approach focuses on three core areas: Page Layout, Component Enhancement, an
 - [x] **4. Modernize Product Detail Page Layout** <!-- id:SvqEIN -->
   Completely redesign 'app/products/[id]/page.tsx' using a split-screen layout on desktop: an image carousel from 'components/ui/carousel.tsx' on the left, and product info, price, and variant selectors on the right.
 
-- [ ] **5. Integrate Inventory and Stock Status** <!-- id:fROTjF -->
+- [x] **5. Integrate Inventory and Stock Status** <!-- id:fROTjF -->
   Update product fetching logic to check the 'inventory' table via 'lib/db.ts'. Display 'In Stock', 'Low Stock', or 'Out of Stock' badges on both listing and detail pages.
 
 - [ ] **6. Add Motion and Transitions** <!-- id:ShWmu3 -->

@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import db from './db';
-import { categories, products } from './schema';
+import { categories, products, inventory } from './schema';
 import { eq } from 'drizzle-orm';
 import { generateProductImage } from './utils';
 
@@ -150,6 +150,25 @@ async function main() {
       }
     }
 
+    // 3. Seed Inventory
+    console.log('Seeding inventory...');
+    const allProducts = await db.select().from(products);
+    const existingInventory = await db.select().from(inventory);
+
+    if (existingInventory.length === 0) {
+      const inventoryData = allProducts.map(p => ({
+        productId: p.id,
+        // Match the product.stock field or give some variation for testing
+        // Royal Juvenile has stock 5 (low stock), others have 1-3 (low stock)
+        // Let's add one more with high stock for testing
+        quantity: p.name === 'Azure Reef Hunter' ? 25 : p.stock,
+        location: 'Sector 7 Detention Center'
+      }));
+      await db.insert(inventory).values(inventoryData);
+      console.log('Inventory seeded.');
+    }
+
+
     console.log('Database seed completed successfully!');
   } catch (error) {
     console.error('Error during seed:', error);
@@ -165,4 +184,3 @@ main()
   .finally(async () => {
     process.exit(0);
   });
-

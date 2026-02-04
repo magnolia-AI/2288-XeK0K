@@ -34,18 +34,35 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const { id: idOrSlug } = await params;
   
   // Try to parse as integer for ID lookup, otherwise use as slug
-  const productId = parseInt(idOrSlug);
-  const isNumeric = !isNaN(productId);
+  const productIdValue = parseInt(idOrSlug);
+  const isNumeric = !isNaN(productIdValue);
 
-  const product = await db.query.products.findFirst({
-    where: isNumeric 
-      ? or(eq(schema.products.id, productId), eq(schema.products.slug, idOrSlug))
-      : eq(schema.products.slug, idOrSlug),
-  });
+  const productData = await db
+    .select({
+      product: schema.products,
+      inventoryQuantity: schema.inventory.quantity,
+    })
+    .from(schema.products)
+    .leftJoin(schema.inventory, eq(schema.products.id, schema.inventory.productId))
+    .where(
+      isNumeric 
+        ? or(eq(schema.products.id, productIdValue), eq(schema.products.slug, idOrSlug))
+        : eq(schema.products.slug, idOrSlug)
+    )
+    .limit(1);
 
-  if (!product) {
+  const result = productData[0];
+
+  if (!result) {
     notFound();
   }
+
+  const { product, inventoryQuantity } = result;
+  
+  // Stock status logic
+  const inventoryLevel = inventoryQuantity ?? 0;
+  const isOutOfStock = inventoryLevel <= 0;
+  const isLowStock = inventoryLevel > 0 && inventoryLevel < 10;
 
   const specs = (product.specs as any) || {};
   
@@ -135,16 +152,20 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 <Badge variant="outline" className="border-primary/30 text-primary font-bold tracking-widest uppercase text-[10px] px-2 py-0.5">
                   {product.category || "Cretaceous"}
                 </Badge>
-                {product.stock > 0 && product.stock < 5 ? (
-                  <Badge variant="destructive" className="bg-red-500/10 text-red-500 border-none font-bold text-[10px]">
-                    LOW STOCK: {product.stock} REMAINING
+                {isOutOfStock ? (
+                  <Badge variant="destructive" className="bg-red-500/10 text-red-500 border-none font-bold text-[10px] uppercase tracking-widest px-2 py-0.5">
+                    Out of Stock - Genetic Reconstruction in Progress
                   </Badge>
-                ) : product.stock > 0 ? (
-                  <span className="text-xs font-bold text-green-500 flex items-center gap-1 ml-2">
+                ) : isLowStock ? (
+                  <Badge className="bg-orange-500/10 text-orange-500 border-none font-bold text-[10px] uppercase tracking-widest px-2 py-0.5">
+                    LOW STOCK: {inventoryLevel} SPECIMENS REMAINING
+                  </Badge>
+                ) : (
+                  <span className="text-[10px] font-black text-green-500 flex items-center gap-1.5 ml-2 uppercase tracking-widest bg-green-500/10 px-2 py-0.5 rounded border border-green-500/20">
                     <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                    Available for Immediate Deployment
+                    Available for Immediate Deployment ({inventoryLevel} In Stock)
                   </span>
-                ) : null}
+                )}
               </div>
               
               <h1 className="text-5xl md:text-6xl font-black tracking-tight leading-tight">
@@ -226,9 +247,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <div className="flex items-center gap-4">
                 <AddToCartButton 
                   product={product} 
+                  disabled={isOutOfStock}
                   size="lg" 
                   className="flex-1 h-14 md:h-16 text-xl font-black rounded-2xl shadow-xl hover:shadow-2xl transition-all active:scale-[0.98] uppercase tracking-wider"
-                />
+                >
+                  {isOutOfStock ? "Out of Stock" : "Add to Enclosure"}
+                </AddToCartButton>
               </div>
               <div className="flex items-center justify-center gap-6 text-[10px] font-black uppercase tracking-widest text-muted-foreground/60">
                 <span className="flex items-center gap-1.5"><RotateCcw className="h-3 w-3" /> 30-Day Return</span>
@@ -272,4 +296,3 @@ export default async function ProductDetailPage({ params }: PageProps) {
     </div>
   );
 }
-
