@@ -11,7 +11,7 @@ The approach focuses on three core areas: Page Layout, Component Enhancement, an
 - [x] **1. Refactor Product Listing Page Grid** <!-- id:QjiGkK -->
   Update 'app/products/page.tsx' to use a responsive grid (1 col mobile, 3-4 cols desktop) with a sidebar for filters. Implement a 'Sort By' dropdown using 'components/ui/select.tsx'.
 
-- [ ] **2. Enhance Product Cards with Hover Effects** <!-- id:B-EfM9 -->
+- [x] **2. Enhance Product Cards with Hover Effects** <!-- id:B-EfM9 -->
   Update 'components/products/product-card.tsx' to include secondary image swap on hover, badge overlays for sales/new arrivals, and a quick-add-to-cart overlay.
 
 - [ ] **3. Implement Advanced Sidebar Filters** <!-- id:WzZVgB -->
