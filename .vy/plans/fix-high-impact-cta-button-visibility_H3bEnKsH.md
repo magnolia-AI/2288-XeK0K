@@ -19,5 +19,5 @@ The investigation shows that in 'app/page.tsx', the 'VIEW LINEAGE' button uses a
 
 ---
 plan_id: -OeqgFxI
-status: executing
+status: completed
 created: 2026-02-05T14:10:25.383Z

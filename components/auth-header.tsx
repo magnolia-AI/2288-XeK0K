@@ -34,19 +34,19 @@ export function AuthHeader() {
     { name: 'Contact', href: '/contact' },
   ];
 
-  const headerStyles = "sticky top-0 z-50 w-full glass-header transition-all duration-300";
+  const headerStyles = "sticky top-0 z-50 w-full glass-header border-b border-white/5 transition-all duration-300";
 
   if (isPending) {
     return (
       <header className={headerStyles}>
-        <div className="container max-w-7xl mx-auto px-4 md:px-6 h-16 flex justify-between items-center relative z-10">
+        <div className="container max-w-7xl mx-auto px-4 md:px-6 h-20 flex justify-between items-center relative z-10">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 text-xl font-bold tracking-tighter">
-              <div className="h-6 w-6 bg-muted rounded-md animate-pulse rotate-45" />
-              <div className="h-6 w-24 bg-muted animate-pulse rounded" />
+              <div className="h-6 w-6 bg-muted rounded-none animate-pulse rotate-45" />
+              <div className="h-6 w-24 bg-muted animate-pulse rounded-none" />
             </div>
           </div>
-          <div className="h-9 w-9 rounded-full bg-muted animate-pulse" />
+          <div className="h-10 w-10 rounded-none bg-muted animate-pulse" />
         </div>
       </header>
     );
@@ -54,18 +54,19 @@ export function AuthHeader() {
 
   return (
     <header className={headerStyles}>
-      <div className="container max-w-7xl mx-auto px-4 md:px-6 h-16 flex justify-between items-center relative z-10">
-        <div className="flex items-center gap-10">
-          <Link href="/" className="flex items-center gap-2 group">
+      <div className="container max-w-7xl mx-auto px-4 md:px-6 h-20 flex justify-between items-center relative z-10">
+        <div className="flex items-center gap-12">
+          <Link href="/" className="flex items-center gap-3 group">
             <div className="relative">
-              <Footprints className="h-6 w-6 text-primary rotate-45 transition-transform duration-300 group-hover:scale-110" />
+              <Footprints className="h-6 w-6 text-primary rotate-45 transition-transform duration-500 group-hover:rotate-[225deg]" />
+              <div className="absolute -inset-1 bg-primary/20 blur-lg rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
-            <span className="text-xl font-bold tracking-tighter">
-              REX<span className="text-primary">SHOP</span>
+            <span className="text-xl font-black tracking-tighter uppercase italic">
+              REX<span className="text-primary not-italic">SHOP</span>
             </span>
           </Link>
 
-          <nav className="hidden md:flex gap-8 items-center">
+          <nav className="hidden lg:flex gap-10 items-center">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -73,15 +74,15 @@ export function AuthHeader() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "relative py-2 text-sm font-medium tracking-wider uppercase transition-colors duration-300",
-                    isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                    "relative py-1 text-[11px] font-bold tracking-[0.25em] uppercase transition-all duration-300",
+                    isActive ? "text-primary" : "text-white/50 hover:text-white"
                   )}
                 >
                   {link.name}
                   {isActive && (
                     <motion.div
                       layoutId="nav-underline"
-                      className="absolute bottom-0 left-0 right-0 h-[1px] bg-primary"
+                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-primary"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{
@@ -97,55 +98,59 @@ export function AuthHeader() {
           </nav>
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1">
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2">
             <MobileNav />
-            <ThemeToggle />
-            <CartSheet />
+            <div className="flex items-center gap-[2px]">
+              <ThemeToggle />
+              <CartSheet />
+            </div>
           </div>
 
-          <div className="hidden h-5 w-[1px] bg-white/20 md:block mx-1" />
+          <div className="hidden h-8 w-[1px] bg-white/10 md:block" />
 
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group relative h-9 w-9 rounded-none ring-[1.5px] ring-white/10 transition-all hover:ring-primary/50 p-0">
-                  <Avatar className="h-8 w-8 rounded-none transition-transform duration-300 group-hover:scale-105 group-hover:-translate-y-0.5">
-                    <AvatarFallback className="bg-primary/10 text-primary font-bold text-xs rounded-none">
+                <Button variant="ghost" className="group relative h-10 w-10 rounded-none ring-1 ring-white/10 transition-all hover:ring-primary/50 overflow-hidden p-0">
+                  <Avatar className="h-full w-full rounded-none">
+                    <AvatarFallback className="bg-zinc-900 text-primary font-black text-[10px] rounded-none">
                       {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
                     </AvatarFallback>
                   </Avatar>
+                  <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56 mt-2 rounded-none border-white/10 shadow-xl overflow-hidden p-1 bg-black/95 backdrop-blur-xl">
-                <div className="flex items-center justify-start gap-2 p-3 bg-white/5 mb-1 rounded-none">
-                  <div className="flex flex-col space-y-1">
-                    {user.name && <p className="font-bold text-xs uppercase tracking-tighter leading-none">{user.name}</p>}
-                    <p className="text-[10px] text-muted-foreground font-mono truncate max-w-[180px]">
-                      {user.email}
-                    </p>
-                  </div>
+              <DropdownMenuContent align="end" className="w-56 mt-4 rounded-none border-white/10 shadow-2xl p-0 bg-black/95 backdrop-blur-2xl">
+                <div className="flex flex-col p-4 bg-white/5 border-b border-white/5">
+                  {user.name && <p className="font-black text-[10px] uppercase tracking-widest leading-none mb-1">{user.name}</p>}
+                  <p className="text-[9px] text-muted-foreground font-mono truncate">
+                    {user.email}
+                  </p>
                 </div>
-                <DropdownMenuSeparator className="mx-1 bg-white/5" />
-                <DropdownMenuItem asChild className="rounded-none m-1 cursor-pointer focus:bg-white/10">
-                  <Link href="/account/settings" className="flex items-center w-full">
-                    <Settings className="mr-2 h-4 w-4 opacity-70" />
-                    <span className="text-xs uppercase tracking-widest font-bold">Settings</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator className="mx-1 bg-white/5" />
-                <DropdownMenuItem onClick={handleSignOut} className="rounded-none m-1 cursor-pointer text-destructive focus:bg-destructive/10 focus:text-destructive">
-                  <LogOut className="mr-2 h-4 w-4 opacity-70" />
-                  <span className="text-xs uppercase tracking-widest font-bold">Sign out</span>
-                </DropdownMenuItem>
+                <div className="p-1">
+                  <DropdownMenuItem asChild className="rounded-none cursor-pointer focus:bg-white/5 transition-colors">
+                    <Link href="/account/settings" className="flex items-center w-full px-3 py-2">
+                      <Settings className="mr-3 h-3.5 w-3.5 opacity-50" />
+                      <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Settings</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator className="bg-white/5 mx-1" />
+                  <DropdownMenuItem onClick={handleSignOut} className="rounded-none cursor-pointer text-destructive focus:bg-destructive/10 focus:text-destructive transition-colors">
+                    <Link href="#" className="flex items-center w-full px-3 py-2">
+                      <LogOut className="mr-3 h-3.5 w-3.5 opacity-50" />
+                      <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Sign out</span>
+                    </Link>
+                  </DropdownMenuItem>
+                </div>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <div className="flex items-center gap-2">
-              <Button variant="ghost" asChild className="hidden sm:flex h-10 text-[11px] font-bold uppercase tracking-[0.2em] rounded-none px-6 transition-all">
+            <div className="flex items-center gap-4">
+              <Button variant="ghost" asChild className="hidden sm:flex h-11 text-[10px] font-black uppercase tracking-[0.3em] rounded-none px-6 transition-all hover:text-primary hover:bg-transparent">
                 <Link href="/auth/sign-in">Sign in</Link>
               </Button>
-              <Button variant="secondary" asChild className="h-10 px-6 rounded-none text-[11px] font-bold uppercase tracking-[0.2em] transition-all active:scale-95">
+              <Button asChild className="h-11 px-8 rounded-none text-[10px] font-black uppercase tracking-[0.3em] bg-white text-black hover:bg-primary transition-all active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-primary/20">
                 <Link href="/auth/sign-up">Sign up</Link>
               </Button>
             </div>
@@ -153,5 +158,6 @@ export function AuthHeader() {
         </div>
       </div>
     </header>
+
   );
 }
