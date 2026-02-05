@@ -34,7 +34,7 @@ export function AuthHeader() {
     { name: 'Contact', href: '/contact' },
   ];
 
-  const headerStyles = "sticky top-0 z-50 w-full glass-header border-b border-white/5 transition-all duration-300";
+  const headerStyles = "sticky top-0 z-50 w-full glass-header border-b border-border/40 transition-all duration-300";
 
   if (isPending) {
     return (
@@ -75,7 +75,7 @@ export function AuthHeader() {
                   href={link.href}
                   className={cn(
                     "relative py-1 text-[11px] font-bold tracking-[0.25em] uppercase transition-all duration-300",
-                    isActive ? "text-primary" : "text-white/50 hover:text-white"
+                    isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
                   )}
                 >
                   {link.name}
@@ -107,35 +107,35 @@ export function AuthHeader() {
             </div>
           </div>
 
-          <div className="hidden h-8 w-[1px] bg-white/10 md:block" />
+          <div className="hidden h-8 w-[1px] bg-border md:block" />
 
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group relative h-10 w-10 rounded-none ring-1 ring-white/10 transition-all hover:ring-primary/50 overflow-hidden p-0">
+                <Button variant="ghost" className="group relative h-10 w-10 rounded-none ring-1 ring-border transition-all hover:ring-primary/50 overflow-hidden p-0">
                   <Avatar className="h-full w-full rounded-none">
-                    <AvatarFallback className="bg-zinc-900 text-primary font-black text-[10px] rounded-none">
+                    <AvatarFallback className="bg-muted text-primary font-black text-[10px] rounded-none">
                       {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
                     </AvatarFallback>
                   </Avatar>
                   <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56 mt-4 rounded-none border-white/10 shadow-2xl p-0 bg-black/95 backdrop-blur-2xl">
-                <div className="flex flex-col p-4 bg-white/5 border-b border-white/5">
+              <DropdownMenuContent align="end" className="w-56 mt-4 rounded-none border-border shadow-2xl p-0 bg-background/95 backdrop-blur-2xl">
+                <div className="flex flex-col p-4 bg-muted/30 border-b border-border/50">
                   {user.name && <p className="font-black text-[10px] uppercase tracking-widest leading-none mb-1">{user.name}</p>}
                   <p className="text-[9px] text-muted-foreground font-mono truncate">
                     {user.email}
                   </p>
                 </div>
                 <div className="p-1">
-                  <DropdownMenuItem asChild className="rounded-none cursor-pointer focus:bg-white/5 transition-colors">
+                  <DropdownMenuItem asChild className="rounded-none cursor-pointer focus:bg-muted transition-colors">
                     <Link href="/account/settings" className="flex items-center w-full px-3 py-2">
                       <Settings className="mr-3 h-3.5 w-3.5 opacity-50" />
                       <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Settings</span>
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuSeparator className="bg-white/5 mx-1" />
+                  <DropdownMenuSeparator className="bg-border mx-1" />
                   <DropdownMenuItem onClick={handleSignOut} className="rounded-none cursor-pointer text-destructive focus:bg-destructive/10 focus:text-destructive transition-colors">
                     <Link href="#" className="flex items-center w-full px-3 py-2">
                       <LogOut className="mr-3 h-3.5 w-3.5 opacity-50" />
@@ -150,7 +150,7 @@ export function AuthHeader() {
               <Button variant="ghost" asChild className="hidden sm:flex h-11 text-[10px] font-black uppercase tracking-[0.3em] rounded-none px-6 transition-all hover:text-primary hover:bg-transparent">
                 <Link href="/auth/sign-in">Sign in</Link>
               </Button>
-              <Button asChild className="h-11 px-8 rounded-none text-[10px] font-black uppercase tracking-[0.3em] bg-white text-black hover:bg-primary transition-all active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-primary/20">
+              <Button asChild className="h-11 px-8 rounded-none text-[10px] font-black uppercase tracking-[0.3em] bg-foreground text-background hover:bg-primary transition-all active:scale-95 shadow-[0_0_20px_rgba(var(--foreground),0.1)] hover:shadow-primary/20">
                 <Link href="/auth/sign-up">Sign up</Link>
               </Button>
             </div>
