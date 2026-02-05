@@ -68,9 +68,8 @@
 
 @layer utilities {
   .glass-header {
-    background-color: oklch(0 0 0 / 85%);
-    @apply backdrop-blur-[16px] border-b;
-    border-bottom-color: rgba(255, 255, 255, 0.1);
+    background-color: oklch(0 0 0 / 70%);
+    @apply backdrop-blur-[24px] border-b border-white/5;
   }
 
   .hud-gradient-overlay {
@@ -90,4 +89,3 @@
     text-shadow: 0 0 10px oklch(0.75 0.15 220 / 40%);
   }
 }
-
