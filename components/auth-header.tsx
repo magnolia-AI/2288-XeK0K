@@ -14,6 +14,7 @@ import { useAuthClient } from '@/lib/auth/client';
 import { LogOut, Settings, Footprints, ShoppingBag } from 'lucide-react';
 import { CartSheet } from '@/components/cart-sheet';
 import { MobileNav } from '@/components/mobile-nav';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
@@ -29,6 +30,7 @@ export function AuthHeader() {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'The Catalog', href: '/products' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   const headerStyles = "sticky top-0 z-50 w-full glass-header transition-all duration-300";
@@ -36,7 +38,7 @@ export function AuthHeader() {
   if (isPending) {
     return (
       <header className={headerStyles}>
-        <div className="container mx-auto px-4 md:px-6 h-16 flex justify-between items-center relative z-10">
+        <div className="container max-w-7xl mx-auto px-4 md:px-6 h-16 flex justify-between items-center relative z-10">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 text-xl font-bold tracking-tighter">
               <div className="h-6 w-6 bg-muted rounded-md animate-pulse rotate-45" />
@@ -51,7 +53,7 @@ export function AuthHeader() {
 
   return (
     <header className={headerStyles}>
-      <div className="container mx-auto px-4 md:px-6 h-16 flex justify-between items-center relative z-10">
+      <div className="container max-w-7xl mx-auto px-4 md:px-6 h-16 flex justify-between items-center relative z-10">
         <div className="flex items-center gap-10">
           <Link href="/" className="flex items-center gap-2 group">
             <div className="relative">
@@ -71,7 +73,7 @@ export function AuthHeader() {
                   "text-xs font-bold tracking-widest uppercase transition-all duration-300 hover:text-primary relative py-1",
                   pathname === link.href 
                     ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1px] after:bg-primary" 
-                    : "text-white/50 hover:text-white"
+                    : "text-muted-foreground hover:text-foreground"
                 )}
               >
                 {link.name}
@@ -83,6 +85,7 @@ export function AuthHeader() {
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1 md:gap-2 mr-2">
             <MobileNav />
+            <ThemeToggle />
             <CartSheet />
           </div>
 
@@ -103,7 +106,7 @@ export function AuthHeader() {
                 <div className="flex items-center justify-start gap-2 p-3 bg-white/5 mb-1 rounded-none">
                   <div className="flex flex-col space-y-1">
                     {user.name && <p className="font-bold text-xs uppercase tracking-tighter leading-none">{user.name}</p>}
-                    <p className="text-[10px] text-white/50 font-mono truncate max-w-[180px]">
+                    <p className="text-[10px] text-muted-foreground font-mono truncate max-w-[180px]">
                       {user.email}
                     </p>
                   </div>
@@ -137,3 +140,4 @@ export function AuthHeader() {
     </header>
   );
 }
+�

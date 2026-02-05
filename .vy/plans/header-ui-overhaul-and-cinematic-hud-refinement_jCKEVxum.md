@@ -11,7 +11,7 @@ The overhaul focuses on improving legibility and aesthetic premium-ness by lever
 - [x] **1. Refine the glass-header utility in app/globals.css** <!-- id:-9VTSm -->
   Update .glass-header to use a slightly more transparent background (oklch(0 0 0 / 70%)) and increase backdrop-blur to 24px for a more premium frosted effect. Ensure the bottom border is extremely subtle (border-b-white/5).
 
-- [ ] **2. Integrate ThemeToggle and refine layout in components/auth-header.tsx** <!-- id:4-x-A2 -->
+- [x] **2. Integrate ThemeToggle and refine layout in components/auth-header.tsx** <!-- id:4-x-A2 -->
   Import ThemeToggle from components/theme-toggle.tsx and place it beside the CartSheet. Update the container to use 'max-w-7xl' for better content alignment and replace hardcoded 'text-white/50' with 'text-muted-foreground' for proper theme-switching support.
 
 - [ ] **3. Modernize navigation link styling in AuthHeader** <!-- id:QeWqvL -->
