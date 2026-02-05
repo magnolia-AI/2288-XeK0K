@@ -110,12 +110,12 @@ export default function Home() {
                 desc: "Global delivery executed via heavy-lift vertical takeoff aircraft. Silence and security are our standard."
               }
             ].map((feature, i) => (
-              <div key={i} className="p-16 bg-black hover:bg-zinc-950 transition-all duration-500 group">
+              <div key={i} className="px-12 py-16 bg-black hover:bg-zinc-950 transition-all duration-500 group">
                 <div className="mb-10 p-5 w-fit rounded-full bg-primary/5 border border-primary/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-all duration-500">
                   {feature.icon}
                 </div>
                 <h3 className="text-2xl font-black mb-6 tracking-tighter uppercase">{feature.title}</h3>
-                <p className="text-zinc-300 leading-relaxed font-medium text-lg">
+                <p className="text-zinc-200 leading-relaxed font-medium text-lg">
                   {feature.desc}
                 </p>
               </div>
