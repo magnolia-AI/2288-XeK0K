@@ -26,7 +26,7 @@ I will implement the following changes:
 - [x] **4. Standardize Auth Button Sizing** <!-- id:hcY62G -->
   Update the 'Sign in' and 'Sign up' buttons in 'components/auth-header.tsx'. Match the height of text-buttons to icon-buttons (h-10) and use consistent tracking and font-weight for the uppercase text.
 
-- [ ] **5. Verify HUD Style Color Consistency** <!-- id:8R7gau -->
+- [x] **5. Verify HUD Style Color Consistency** <!-- id:8R7gau -->
   Apply 'oklch' based colors from 'globals.css' to the buttons to ensure the 'Sign Up' button has a professional high-contrast dark-to-light or primary-to-background relationship as per the site's cinematic theme.
 
 ---
