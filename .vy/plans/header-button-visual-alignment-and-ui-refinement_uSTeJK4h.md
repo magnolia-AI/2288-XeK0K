@@ -20,7 +20,7 @@ I will implement the following changes:
 - [x] **2. Align Header Utility Icons** <!-- id:qEWp8l -->
   In 'components/auth-header.tsx', wrap the ThemeToggle, MobileNav, and CartSheet in a container with 'flex items-center gap-1'. Ensure the vertical separator (line 107) has consistent opacity and height.
 
-- [ ] **3. Refine Cart Button Visuals** <!-- id:O5yN6t -->
+- [x] **3. Refine Cart Button Visuals** <!-- id:O5yN6t -->
   Update the CartSheet trigger in 'components/cart-sheet.tsx' to remove the awkward dark background box seen in the reference image. Shift to a clean glass-effect border or a standard ghost variant that matches the ThemeToggle.
 
 - [ ] **4. Standardize Auth Button Sizing** <!-- id:hcY62G -->
