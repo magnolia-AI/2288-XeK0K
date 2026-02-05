@@ -17,7 +17,7 @@ The approach focuses on leveraging the existing Drizzle schema for user_profiles
 - [x] **3. Implement the Dino-Quest Dashboard in the Account section** <!-- id:vEOhxw -->
   Flesh out `app/account/page.tsx` (if missing) and integrate `components/account/explorer-stats.tsx`. Use the previously created `use-user-profile` hook to display the current level, point progress bar, and a list of active/completed quests with Lucide icons.
 
-- [ ] **4. Connect E-commerce transactions to the Loyalty System** <!-- id:jPVsAr -->
+- [x] **4. Connect E-commerce transactions to the Loyalty System** <!-- id:jPVsAr -->
   Update the checkout success logic in `app/api/orders/route.ts` (or the checkout handler) to trigger a rewarding event. Each purchase should grant `fossilPoints` based on the total price (e.g., 10 points per $100 spent) by updating the `user_profiles` table.
 
 - [ ] **5. Build interactive 'Quest Completed' notification system** <!-- id:hvhErH -->
