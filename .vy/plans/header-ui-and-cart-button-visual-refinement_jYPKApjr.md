@@ -17,7 +17,7 @@ The current header has a mix of rounded-none components and default Radix UI com
 - [x] **3. Standardize Header Utility Button sizes** <!-- id:45AUBK -->
   Ensure 'CartSheet', 'ThemeToggle', and 'MobileNav' buttons all share the exactly identical height, width (h-9 w-9), and border styles. Currently, some use 'border' while others use 'ring-1'.
 
-- [ ] **4. Harmonize ThemeToggle appearance** <!-- id:P3U15D -->
+- [x] **4. Harmonize ThemeToggle appearance** <!-- id:P3U15D -->
   Modify 'components/theme-toggle.tsx' to add 'rounded-none' and 'ring-1 ring-white/10' to the DropdownMenuTrigger button, removing the default rounded icon-button look.
 
 - [ ] **5. Fix Cart Sheet item image rendering** <!-- id:UA8b71 -->
