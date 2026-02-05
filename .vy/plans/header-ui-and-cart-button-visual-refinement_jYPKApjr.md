@@ -11,7 +11,7 @@ The current header has a mix of rounded-none components and default Radix UI com
 - [x] **1. Align CartSheet trigger styling with Account button** <!-- id:p6rcfl -->
   Update 'components/cart-sheet.tsx' to change the CartSheet trigger button. Remove 'rounded-none' on the button and apply 'ring-1 ring-white/10 transition-all hover:ring-primary/50' to match the account dropdown button in 'auth-header.tsx'.
 
-- [ ] **2. Refine the Cart Item Counter badge** <!-- id:Qe-893 -->
+- [x] **2. Refine the Cart Item Counter badge** <!-- id:Qe-893 -->
   In 'components/cart-sheet.tsx', update the pill badge from 'rounded-none' to a sharp rectangle with a pixel-perfect offset. Ensure it uses the 'oklch' primary color from globals.css for a glow effect.
 
 - [ ] **3. Standardize Header Utility Button sizes** <!-- id:45AUBK -->

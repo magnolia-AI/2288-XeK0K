@@ -30,7 +30,7 @@ export function CartSheet() {
 
   if (!mounted) {
     return (
-      <Button variant="outline" size="icon" className="relative bg-background/50 backdrop-blur-sm rounded-none border-white/10 px-0 h-9 w-9">
+      <Button variant="outline" size="icon" className="relative border border-primary/20 bg-white/5 backdrop-blur-sm rounded-none px-0 h-9 w-9 shadow-[inset_0_0_10px_rgba(255,255,255,0.05)]">
         <ShoppingCart className="h-4 w-4" />
       </Button>
     );
@@ -39,10 +39,10 @@ export function CartSheet() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="relative border border-white/10 hover:border-white/40 transition-all bg-white/5 backdrop-blur-sm rounded-none px-0 h-9 w-9">
+        <Button variant="outline" size="icon" className="relative border border-primary/20 hover:border-primary/50 transition-all bg-white/5 backdrop-blur-sm rounded-none px-0 h-9 w-9 shadow-[inset_0_0_10px_rgba(255,255,255,0.05)]">
           <ShoppingCart className="h-4 w-4" />
           {itemCount > 0 && (
-            <span className="absolute -top-1 -right-1 bg-primary text-black text-[8px] font-bold px-1 py-0.5 rounded-none min-w-[16px] text-center">
+            <span className="absolute -top-1.5 -right-1.5 bg-primary text-black text-[9px] font-black px-1.5 py-0.5 rounded-none shadow-[0_0_10px_oklch(var(--primary))] min-w-[18px] h-[18px] flex items-center justify-center border-[0.5px] border-black/20">
               {itemCount}
             </span>
           )}
