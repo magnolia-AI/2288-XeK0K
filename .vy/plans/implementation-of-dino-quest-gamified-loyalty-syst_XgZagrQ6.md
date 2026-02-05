@@ -14,7 +14,7 @@ The approach focuses on extending the existing PostgreSQL schema using Drizzle O
 - [x] **2. Generate and run database migration** <!-- id:vk4roI -->
   Run 'bun drizzle-kit generate' followed by 'bun drizzle-kit push' to update the Neon database with the new profile and quest tables.
 
-- [ ] **3. Create Quest Progress API route** <!-- id:88oz3y -->
+- [x] **3. Create Quest Progress API route** <!-- id:88oz3y -->
   Implement 'app/api/quests/route.ts' to fetch user-specific quest progress and calculate point totals using server-side logic from 'lib/auth/server.ts'.
 
 - [ ] **4. Develop the HUD Explorer Dashboard component** <!-- id:FnBrTa -->
