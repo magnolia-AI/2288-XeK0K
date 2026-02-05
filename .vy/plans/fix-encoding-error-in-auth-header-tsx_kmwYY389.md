@@ -11,7 +11,7 @@ The investigation using `cat -A` confirmed that the file terminates with hidden 
 - [x] **1. Sanitize components/auth-header.tsx of hidden characters** <!-- id:MdFXY6 -->
   Read the file content, truncate it exactly after the final '}' character on line 157, and remove any trailing null bytes or non-printable ASCII characters that were detected in the shell logs.
 
-- [ ] **2. Validate file integrity with shell diagnostics** <!-- id:RDn9Zi -->
+- [x] **2. Validate file integrity with shell diagnostics** <!-- id:RDn9Zi -->
   Run 'tail -c 5 components/auth-header.tsx | xxd' or 'cat -A' again to ensure no hidden bytes remain at the end of the file.
 
 - [ ] **3. Verify compilation success** <!-- id:cxOSe8 -->
