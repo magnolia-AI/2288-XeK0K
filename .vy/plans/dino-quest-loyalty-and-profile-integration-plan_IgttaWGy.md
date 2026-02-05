@@ -11,7 +11,7 @@ The approach focuses on leveraging the existing Drizzle schema for user_profiles
 - [x] **1. Initialize User Profile state and data synchronization** <!-- id:T_aNBg -->
   Create a custom hook `use-user-profile.ts` in `/hooks` that fetches data from `/api/quests`. This hook should manage the global state for `fossilPoints` and `explorerLevel` using TanStack Query to ensure cache invalidation when quests are completed.
 
-- [ ] **2. Enhance the Quests API to support dynamic quest generation** <!-- id:FghODc -->
+- [x] **2. Enhance the Quests API to support dynamic quest generation** <!-- id:FghODc -->
   Modify `app/api/quests/route.ts` to include a logic block that seeds initial 'Welcome Quests' (e.g., 'Make your first purchase', 'Browse 5 products') if a user has no active quests. Update the POST handler to ensure transaction safety when incrementing `fossilPoints`.
 
 - [ ] **3. Implement the Dino-Quest Dashboard in the Account section** <!-- id:vEOhxw -->
