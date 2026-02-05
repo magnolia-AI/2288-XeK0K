@@ -20,7 +20,7 @@ The approach focuses on leveraging the existing Drizzle schema for user_profiles
 - [x] **4. Connect E-commerce transactions to the Loyalty System** <!-- id:jPVsAr -->
   Update the checkout success logic in `app/api/orders/route.ts` (or the checkout handler) to trigger a rewarding event. Each purchase should grant `fossilPoints` based on the total price (e.g., 10 points per $100 spent) by updating the `user_profiles` table.
 
-- [ ] **5. Build interactive 'Quest Completed' notification system** <!-- id:hvhErH -->
+- [x] **5. Build interactive 'Quest Completed' notification system** <!-- id:hvhErH -->
   Integrate the `sonner` toast library with the Quest POST handler. When a user completes an action that fulfills a quest requirement, trigger a cinematic 'Quest Complete' toast that displays the amount of Fossil Points earned and the new point total.
 
 - [ ] **6. Refine visual feedback and Level-Up animations** <!-- id:AII2Xe -->

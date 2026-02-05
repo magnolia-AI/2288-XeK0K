@@ -180,13 +180,18 @@ export async function POST(request: Request) {
           .where(eq(userProfiles.userId, userId));
       }
 
-      return quest;
+      return {
+        ...quest,
+        newTotal: (profiles[0]?.fossilPoints || 0) + quest.rewardPoints
+      };
     });
 
     return NextResponse.json({
       success: true,
       message: `Quest completed! You earned ${result.rewardPoints} Fossil Points.`,
-      rewardPoints: result.rewardPoints
+      rewardPoints: result.rewardPoints,
+      newTotal: result.newTotal,
+      questTitle: result.title
     });
 
   } catch (error: any) {
@@ -204,4 +209,3 @@ export async function POST(request: Request) {
     );
   }
 }
-
