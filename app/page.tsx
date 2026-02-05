@@ -6,7 +6,7 @@ import { ShieldCheck, Dna, Rocket, ArrowRight, Zap, Microscope } from 'lucide-re
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-black text-white">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       {/* Cinematic Hero Section */}
       <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden uppercase font-heading">
         {/* Animated Background Video */}
@@ -88,7 +88,7 @@ export default function Home() {
       </section>
 
       {/* Facility standards / Features */}
-      <section className="py-40 relative overflow-hidden bg-black">
+      <section className="py-40 relative overflow-hidden bg-background">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
         
         <div className="container mx-auto px-4 md:px-6">
@@ -110,7 +110,7 @@ export default function Home() {
                 desc: "Global delivery executed via heavy-lift vertical takeoff aircraft. Silence and security are our standard."
               }
             ].map((feature, i) => (
-              <div key={i} className="px-12 py-16 bg-black hover:bg-zinc-950 transition-all duration-500 group">
+              <div key={i} className="px-12 py-16 bg-card hover:bg-muted/50 transition-all duration-500 group">
                 <div className="mb-10 p-5 w-fit rounded-full bg-primary/5 border border-primary/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-all duration-500">
                   {feature.icon}
                 </div>
@@ -125,7 +125,7 @@ export default function Home() {
       </section>
 
       {/* Featured specimens teaser */}
-      <section className="py-40 bg-zinc-950 relative border-t border-white/5">
+      <section className="py-40 bg-muted/20 relative border-t border-white/5">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
             <div className="max-w-2xl">

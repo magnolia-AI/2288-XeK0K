@@ -25,7 +25,7 @@ The approach focuses on auditing the existing component library for hard-coded c
 - [x] **4. Audit and replace hard-coded border colors** <!-- id:yxLwTT -->
   Locate files using 'border-white/10' or 'border-zinc-900' and replace them with 'border-border' or a secondary-themed variant where appropriate.
 
-- [ ] **5. Refactor Facility Standards section background colors** <!-- id:n0H9j3 -->
+- [x] **5. Refactor Facility Standards section background colors** <!-- id:n0H9j3 -->
   In 'app/page.tsx', replace 'bg-zinc-950' and 'bg-black' with 'bg-background' or 'bg-card' to ensure consistent layering in the HUD design.
 
 - [ ] **6. Clean up globals.css and tailwind.config.ts overlaps** <!-- id:U6b0z- -->
