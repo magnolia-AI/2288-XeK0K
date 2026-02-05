@@ -19,7 +19,7 @@ The approach focuses on auditing the existing component library for hard-coded c
 - [x] **2. Standardize Zinc-based text to semantic muted-foreground** <!-- id:jUEBiy -->
   Scan 'components/footer.tsx', 'app/page.tsx', and 'app/about/page.tsx' to replace utility classes like 'text-zinc-400' and 'text-zinc-500' with 'text-muted-foreground'. This ensures text remains legible across different theme modes.
 
-- [ ] **3. Refactor Quest UI to use semantic variables** <!-- id:V0q8_A -->
+- [x] **3. Refactor Quest UI to use semantic variables** <!-- id:V0q8_A -->
   Update 'components/ui/quest-completion-toast.tsx' to replace 'bg-zinc-900' and 'text-zinc-500' with semantic background or muted variables.
 
 - [ ] **4. Audit and replace hard-coded border colors** <!-- id:yxLwTT -->

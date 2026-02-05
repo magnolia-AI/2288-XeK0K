@@ -41,16 +41,16 @@ export function QuestCompletionToast({
           <Badge className="bg-primary/10 text-primary border-primary/20 text-[9px] font-mono tracking-tighter h-5">
             REWARD: +{rewardPoints} FP
           </Badge>
-          <div className="flex items-center gap-1 text-[9px] text-zinc-500 font-mono">
+          <div className="flex items-center gap-1 text-[9px] text-muted-foreground font-mono">
             <span>TOTAL</span>
             <ChevronRight className="h-2 w-2" />
-            <span className="text-zinc-300 font-bold">{newTotal}</span>
+            <span className="text-foreground font-bold">{newTotal}</span>
           </div>
         </div>
       </div>
 
       {/* Cinematic Pulse Bar */}
-      <div className="relative h-1 w-full bg-zinc-900 rounded-full overflow-hidden border border-white/5">
+      <div className="relative h-1 w-full bg-muted rounded-full overflow-hidden border border-white/5">
         <div className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary/50 via-primary to-cyan-400 w-full animate-quest-progress" />
       </div>
 
@@ -67,4 +67,3 @@ export function QuestCompletionToast({
 // I'll add the custom animation to globals.css if needed.
 
 import { Badge } from "@/components/ui/badge"
-
