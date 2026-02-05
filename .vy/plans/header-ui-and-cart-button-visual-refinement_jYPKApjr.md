@@ -23,7 +23,7 @@ The current header has a mix of rounded-none components and default Radix UI com
 - [x] **5. Fix Cart Sheet item image rendering** <!-- id:UA8b71 -->
   Update the cart item list in 'components/cart-sheet.tsx' to use sharp 'rounded-none' corners for product thumbnails and add a subtle 'border-white/5' to the image containers to match the HUD theme.
 
-- [ ] **6. Add hover state transitions to Header Icons** <!-- id:-jKw6b -->
+- [x] **6. Add hover state transitions to Header Icons** <!-- id:-jKw6b -->
   In 'auth-header.tsx' and 'cart-sheet.tsx', add a slight 'group-hover' scale or lift to the icons within the buttons to provide better visual feedback during interaction.
 
 ---

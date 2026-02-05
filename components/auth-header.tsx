@@ -109,8 +109,8 @@ export function AuthHeader() {
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative h-9 w-9 rounded-none ring-1 ring-white/10 transition-all hover:ring-primary/50 p-0">
-                  <Avatar className="h-8 w-8 rounded-none">
+                <Button variant="ghost" className="group relative h-9 w-9 rounded-none ring-1 ring-white/10 transition-all hover:ring-primary/50 p-0">
+                  <Avatar className="h-8 w-8 rounded-none transition-transform duration-300 group-hover:scale-105 group-hover:-translate-y-0.5">
                     <AvatarFallback className="bg-primary/10 text-primary font-bold text-xs rounded-none">
                       {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
                     </AvatarFallback>
