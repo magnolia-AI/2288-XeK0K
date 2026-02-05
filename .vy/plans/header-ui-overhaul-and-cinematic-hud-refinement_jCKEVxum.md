@@ -20,7 +20,7 @@ The overhaul focuses on improving legibility and aesthetic premium-ness by lever
 - [x] **4. Enhance mobile navigation trigger and sheet in components/mobile-nav.tsx** <!-- id:4xwcWN -->
   Style the mobile menu button to match the header's glass aesthetics. Ensure the MobileNav links use the same OKLCH color tokens as the desktop header for consistency.
 
-- [ ] **5. Uniform button styling across the header** <!-- id:pg1YZJ -->
+- [x] **5. Uniform button styling across the header** <!-- id:pg1YZJ -->
   Ensure Sign In and Sign Up buttons use the secondary/primary variants from the UI library instead of custom inline styles to maintain brand consistency and hover states.
 
 - [ ] **6. Verify header height and layout offset in app/layout.tsx** <!-- id:puN6em -->
