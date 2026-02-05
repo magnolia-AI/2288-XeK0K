@@ -21,9 +21,9 @@ export function MobileNav() {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button 
-          variant="ghost" 
+          variant="outline" 
           size="icon" 
-          className="md:hidden h-9 w-9 bg-background/30 backdrop-blur-md border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all rounded-lg shadow-lg"
+          className="md:hidden h-9 w-9 border border-primary/20 hover:border-primary/50 transition-all bg-white/5 backdrop-blur-sm rounded-none px-0 shadow-[inset_0_0_10px_rgba(255,255,255,0.05)]"
         >
           <Menu className="h-5 w-5 text-foreground/80" />
           <span className="sr-only">Toggle menu</span>

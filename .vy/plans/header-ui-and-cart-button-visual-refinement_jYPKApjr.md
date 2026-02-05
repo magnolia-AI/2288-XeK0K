@@ -14,7 +14,7 @@ The current header has a mix of rounded-none components and default Radix UI com
 - [x] **2. Refine the Cart Item Counter badge** <!-- id:Qe-893 -->
   In 'components/cart-sheet.tsx', update the pill badge from 'rounded-none' to a sharp rectangle with a pixel-perfect offset. Ensure it uses the 'oklch' primary color from globals.css for a glow effect.
 
-- [ ] **3. Standardize Header Utility Button sizes** <!-- id:45AUBK -->
+- [x] **3. Standardize Header Utility Button sizes** <!-- id:45AUBK -->
   Ensure 'CartSheet', 'ThemeToggle', and 'MobileNav' buttons all share the exactly identical height, width (h-9 w-9), and border styles. Currently, some use 'border' while others use 'ring-1'.
 
 - [ ] **4. Harmonize ThemeToggle appearance** <!-- id:P3U15D -->
