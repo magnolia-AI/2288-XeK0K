@@ -23,7 +23,7 @@ The approach prioritizes WCAG-aligned contrast ratios and balanced typography. H
 - [x] **5. Standardize Button and Input contrast across the app.** <!-- id:IYc1-H -->
   Update the default button variants in components/ui/button.tsx or app/globals.css to ensure that 'outline' variants have a minimum 2px border and that primary text-glow is not so bright that it obscures the text label.
 
-- [ ] **6. Adjust Footer legibility and spacing.** <!-- id:_XYMZv -->
+- [x] **6. Adjust Footer legibility and spacing.** <!-- id:_XYMZv -->
   In components/footer.tsx, increase the font-size of the newsletter input and footer links. Change lower-case paragraphs to standard sentence-case for faster scanning.
 
 ---

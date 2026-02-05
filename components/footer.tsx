@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 
 export function Footer() {
   return (
-    <footer className="w-full bg-black border-t border-white/5 relative overflow-hidden backdrop-blur-3xl uppercase font-heading">
+    <footer className="w-full bg-black border-t border-white/5 relative overflow-hidden backdrop-blur-3xl font-heading">
       {/* Decorative HUD line at very top */}
       <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
       
@@ -12,11 +12,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
           {/* Brand Section */}
           <div className="flex flex-col gap-6">
-            <Link href="/" className="flex items-center gap-3 text-3xl font-black tracking-tighter transition-all hover:scale-105 active:scale-95">
+            <Link href="/" className="flex items-center gap-3 text-3xl font-black tracking-tighter transition-all hover:scale-105 active:scale-95 uppercase">
               <Footprints className="h-8 w-8 text-primary rotate-45" />
               <span className="text-white">REX<span className="text-primary italic">SHOP</span></span>
             </Link>
-            <p className="text-zinc-400 text-sm max-w-xs leading-relaxed font-medium lowercase first-letter:uppercase">
+            <p className="text-zinc-400 text-base max-w-xs leading-relaxed font-medium">
               Step into the prehistoric world with RexShop. We provide premium roaring specimens and genetic masterpieces for the modern apex enthusiast.
             </p>
             <div className="flex gap-4 mt-2">
@@ -34,8 +34,8 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="flex flex-col gap-6">
-            <h3 className="font-black text-xs uppercase tracking-[0.3em] text-white/50">Connectivity</h3>
-            <nav className="flex flex-col gap-3 font-bold">
+            <h3 className="font-black text-sm uppercase tracking-[0.3em] text-white/50">Connectivity</h3>
+            <nav className="flex flex-col gap-3 font-bold text-base">
               <Link href="/products" className="text-zinc-200 hover:text-primary transition-all hover:translate-x-1">The Catalog</Link>
               <Link href="#" className="text-zinc-200 hover:text-primary transition-all hover:translate-x-1">Gene Sequencing</Link>
               <Link href="#" className="text-zinc-200 hover:text-primary transition-all hover:translate-x-1">Specimen Tracking</Link>
@@ -45,17 +45,17 @@ export function Footer() {
 
           {/* Customer Service */}
           <div className="flex flex-col gap-6">
-            <h3 className="font-black text-xs uppercase tracking-[0.3em] text-white/50">Technical Specs</h3>
+            <h3 className="font-black text-sm uppercase tracking-[0.3em] text-white/50">Technical Specs</h3>
             <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3 text-sm text-zinc-100 font-bold">
+              <div className="flex items-center gap-3 text-base text-zinc-100 font-bold">
                 <Truck className="h-5 w-5 text-primary" />
                 <span>Pangea-wide Logistics</span>
               </div>
-              <div className="flex items-center gap-3 text-sm text-zinc-100 font-bold">
+              <div className="flex items-center gap-3 text-base text-zinc-100 font-bold">
                 <RefreshCw className="h-5 w-5 text-primary" />
                 <span>65M Year Quality Pledge</span>
               </div>
-              <div className="flex items-center gap-3 text-sm text-zinc-100 font-bold">
+              <div className="flex items-center gap-3 text-base text-zinc-100 font-bold">
                 <Shield className="h-5 w-5 text-primary" />
                 <span>Secure Fossil Protocol</span>
               </div>
@@ -64,16 +64,16 @@ export function Footer() {
 
           {/* Newsletter */}
           <div className="flex flex-col gap-6">
-            <h3 className="font-black text-xs uppercase tracking-[0.3em] text-white/50">Secure Channel</h3>
-            <p className="text-sm text-zinc-400 font-medium leading-relaxed lowercase first-letter:uppercase">Join our pack for exclusive genetic updates and apex predator tactical tips.</p>
+            <h3 className="font-black text-sm uppercase tracking-[0.3em] text-white/50">Secure Channel</h3>
+            <p className="text-base text-zinc-400 font-medium leading-relaxed">Join our pack for exclusive genetic updates and apex predator tactical tips.</p>
             <div className="flex flex-col gap-3">
               <input 
                 type="email" 
-                placeholder="ENTER AUTHORIZED EMAIL" 
-                className="flex h-12 w-full rounded-none border border-white/10 bg-white/5 px-4 py-2 text-xs font-bold ring-offset-background placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all"
+                placeholder="Enter Authorized Email" 
+                className="flex h-12 w-full rounded-none border border-white/10 bg-white/5 px-4 py-2 text-sm font-bold ring-offset-background placeholder:text-zinc-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all uppercase"
               />
-              <button className="inline-flex items-center justify-center rounded-none text-xs font-black tracking-widest uppercase ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-black hover:bg-primary/90 h-12 px-6">
-                ESTABLISH LINK
+              <button className="inline-flex items-center justify-center rounded-none text-sm font-black tracking-widest uppercase ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-black hover:bg-primary/90 h-12 px-6">
+                Establish Link
               </button>
             </div>
           </div>
@@ -93,4 +93,3 @@ export function Footer() {
     </footer>
   );
 }
-
