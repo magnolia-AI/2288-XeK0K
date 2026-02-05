@@ -20,7 +20,7 @@ The approach prioritizes WCAG-aligned contrast ratios and balanced typography. H
 - [x] **4. Improve Feature Card contrast and typography in the home page.** <!-- id:Pvxa3Z -->
   In the 'Facility standards' section of app/page.tsx, change p-16 to px-12 py-16 for better text flow. Ensure p.text-zinc-300 has a higher contrast relative to the black background by bumping it to zinc-200 or white/90.
 
-- [ ] **5. Standardize Button and Input contrast across the app.** <!-- id:IYc1-H -->
+- [x] **5. Standardize Button and Input contrast across the app.** <!-- id:IYc1-H -->
   Update the default button variants in components/ui/button.tsx or app/globals.css to ensure that 'outline' variants have a minimum 2px border and that primary text-glow is not so bright that it obscures the text label.
 
 - [ ] **6. Adjust Footer legibility and spacing.** <!-- id:_XYMZv -->
