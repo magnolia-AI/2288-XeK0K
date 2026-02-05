@@ -17,7 +17,7 @@ The overhaul focuses on improving legibility and aesthetic premium-ness by lever
 - [x] **3. Modernize navigation link styling in AuthHeader** <!-- id:QeWqvL -->
   Change font size from text-xs to text-[13px], update font-weight to medium, and increase tracking (tracking-widest). Implement a smoother transition for the active state underline using framer-motion or a CSS transition that expands from the center.
 
-- [ ] **4. Enhance mobile navigation trigger and sheet in components/mobile-nav.tsx** <!-- id:4xwcWN -->
+- [x] **4. Enhance mobile navigation trigger and sheet in components/mobile-nav.tsx** <!-- id:4xwcWN -->
   Style the mobile menu button to match the header's glass aesthetics. Ensure the MobileNav links use the same OKLCH color tokens as the desktop header for consistency.
 
 - [ ] **5. Uniform button styling across the header** <!-- id:pg1YZJ -->
