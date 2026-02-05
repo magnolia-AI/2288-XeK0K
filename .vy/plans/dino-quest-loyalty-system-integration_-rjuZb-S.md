@@ -14,7 +14,7 @@ The approach leverages the existing Drizzle schema (`user_profiles`, `quests`) a
 - [x] **2. Create Explorer Stats Profile Component** <!-- id:fsl3AC -->
   Develop 'components/account/profile-card.tsx' using the 'Card' and 'Progress' UI components. Fetch and display the authenticated user's 'explorer_level' and 'fossil_points' from the database to provide visual feedback on their loyalty status.
 
-- [ ] **3. Integrate Reward Triggers in Checkout Success** <!-- id:QDMalp -->
+- [x] **3. Integrate Reward Triggers in Checkout Success** <!-- id:QDMalp -->
   Modify 'app/checkout/success/page.tsx' to invoke the quest completion API. Add a 'Quest Completed' toast notification using the 'sonner' library to inform users they have earned Fossil Points for their purchase.
 
 ---
