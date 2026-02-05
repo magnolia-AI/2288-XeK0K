@@ -23,7 +23,7 @@ The approach focuses on standardizing the color palette by moving away from Tail
 - [x] **4. Update Product Cards and Badges to use semantic status colors** <!-- id:k0RMhj -->
   In components/products/product-card.tsx and app/products/[id]/page.tsx, replace 'bg-red-600', 'bg-green-600', and 'bg-orange-600' with utility classes or new CSS variables that provide sufficient contrast in light mode (e.g., use oklch status variables).
 
-- [ ] **5. Thematize the Contact Form** <!-- id:llKl9Z -->
+- [x] **5. Thematize the Contact Form** <!-- id:llKl9Z -->
   In components/contact-form.tsx, update labels and inputs to use the HUD typography (font-bold, uppercase tracking-widest) and ensure the button matches the primary brand style defined in the hero section.
 
 - [ ] **6. Final verification of contrast ratios in Light Mode** <!-- id:or-7li -->
