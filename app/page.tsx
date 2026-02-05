@@ -57,7 +57,7 @@ export default function Home() {
                   <span>ENTER THE CATALOG</span>
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="h-16 px-10 text-lg font-bold rounded-none border-white/40 bg-white/5 backdrop-blur-2xl text-white hover:bg-white/10 hover:border-white transition-all shadow-xl" asChild>
+              <Button size="lg" variant="outline" className="h-16 px-10 text-lg font-bold rounded-none border-white/40 bg-white/5 backdrop-blur-2xl text-white hover:bg-white hover:text-black hover:border-white transition-all shadow-xl" asChild>
                 <Link href="/about">LINEAGE VERIFICATION</Link>
               </Button>
             </div>
