@@ -20,7 +20,7 @@ The approach focuses on standardizing the color palette by moving away from Tail
 - [x] **3. Sanitize Footer colors for light mode compatibility** <!-- id:UAHaDe -->
   In components/footer.tsx, change 'bg-black' to 'bg-background', and 'text-zinc-400'/'text-zinc-200' to 'text-muted-foreground'. Ensure the newsletter input uses themed 'border-input' and 'bg-transparent' instead of hardcoded white/10.
 
-- [ ] **4. Update Product Cards and Badges to use semantic status colors** <!-- id:k0RMhj -->
+- [x] **4. Update Product Cards and Badges to use semantic status colors** <!-- id:k0RMhj -->
   In components/products/product-card.tsx and app/products/[id]/page.tsx, replace 'bg-red-600', 'bg-green-600', and 'bg-orange-600' with utility classes or new CSS variables that provide sufficient contrast in light mode (e.g., use oklch status variables).
 
 - [ ] **5. Thematize the Contact Form** <!-- id:llKl9Z -->

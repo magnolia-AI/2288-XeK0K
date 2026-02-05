@@ -119,7 +119,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                 <span className="text-[10px] font-bold uppercase tracking-tighter">Verified DNA</span>
               </div>
               <div className="flex flex-col items-center text-center space-y-2">
-                <Zap className="h-5 w-5 text-orange-500" />
+                <Zap className="h-5 w-5 text-warning" />
                 <span className="text-[10px] font-bold uppercase tracking-tighter">Instinct-Prime</span>
               </div>
             </div>
@@ -133,18 +133,18 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   {product.category || "Cretaceous"}
                 </Badge>
                 {isOutOfStock ? (
-                  <Badge variant="destructive" className="bg-red-500/10 text-red-500 border-none font-bold text-[10px] uppercase tracking-widest px-2 py-0.5">
+                  <Badge variant="destructive" className="border-none font-bold text-[10px] uppercase tracking-widest px-2 py-0.5">
                     Out of Stock - Genetic Reconstruction in Progress
                   </Badge>
                 ) : isLowStock ? (
-                  <Badge className="bg-orange-500/10 text-orange-500 border-none font-bold text-[10px] uppercase tracking-widest px-2 py-0.5">
+                  <Badge variant="warning" className="border-none font-bold text-[10px] uppercase tracking-widest px-2 py-0.5">
                     LOW STOCK: {inventoryLevel} SPECIMENS REMAINING
                   </Badge>
                 ) : (
-                  <span className="text-[10px] font-black text-green-500 flex items-center gap-1.5 ml-2 uppercase tracking-widest bg-green-500/10 px-2 py-0.5 rounded border border-green-500/20">
-                    <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                  <Badge variant="success" className="border-none font-bold text-[10px] uppercase tracking-widest px-2 py-0.5">
+                    <span className="h-1.2 w-1.2 rounded-full bg-current mr-1.5 animate-pulse"></span>
                     Available for Immediate Deployment ({inventoryLevel} In Stock)
-                  </span>
+                  </Badge>
                 )}
               </div>
               

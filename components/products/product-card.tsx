@@ -78,15 +78,15 @@ export function ProductCard({ product }: ProductCardProps) {
         {/* Status Badges */}
         <div className="absolute top-4 left-4 flex flex-col gap-2">
           {isOutOfStock ? (
-            <Badge className="bg-destructive text-destructive-foreground border-none font-black px-3 py-1 shadow-lg transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300">
+            <Badge variant="destructive" className="border-none font-black px-3 py-1 shadow-lg transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300">
               OUT OF STOCK
             </Badge>
           ) : isLowStock ? (
-            <Badge className="bg-orange-600 text-white border-none font-black px-3 py-1 shadow-lg transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300">
+            <Badge variant="warning" className="border-none font-black px-3 py-1 shadow-lg transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300">
               LOW STOCK: {inventoryLevel}
             </Badge>
           ) : (
-            <Badge className="bg-green-600 text-white border-none font-black px-3 py-1 shadow-lg transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300">
+            <Badge variant="success" className="border-none font-black px-3 py-1 shadow-lg transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300">
               IN STOCK
             </Badge>
           )}
@@ -96,7 +96,7 @@ export function ProductCard({ product }: ProductCardProps) {
             </Badge>
           )}
           {isOnSale && (
-            <Badge className="bg-red-600 text-white border-none font-black px-3 py-1 shadow-lg transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500">
+            <Badge variant="destructive" className="border-none font-black px-3 py-1 shadow-lg transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500">
               LIMITED OFFER
             </Badge>
           )}
