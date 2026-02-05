@@ -1,8 +1,9 @@
 'use client';
 
+import { useUserProfile } from '@/hooks/use-user-profile';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { Footprints, Shield, Award, Zap } from 'lucide-react';
+import { Footprints, Shield, Award, Zap, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ExplorerStatsProps {
@@ -13,12 +14,26 @@ interface ExplorerStatsProps {
 }
 
 export function ExplorerStats({
-  level = 1,
-  points = 0,
+  level: initialLevel,
+  points: initialPoints,
   nextLevelPoints = 1000,
   className
 }: ExplorerStatsProps) {
+  const { profile, isLoading } = useUserProfile();
+
+  // Use hook values if available, fallback to props
+  const level = initialLevel ?? profile.explorerLevel;
+  const points = initialPoints ?? profile.fossilPoints;
+
   const progress = Math.min((points / nextLevelPoints) * 100, 100);
+
+  if (isLoading && !initialLevel && !initialPoints) {
+    return (
+      <Card className={cn("flex h-48 items-center justify-center border-white/10 bg-black/40 backdrop-blur-xl", className)}>
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </Card>
+    );
+  }
 
   return (
     <Card className={cn(
@@ -93,4 +108,3 @@ export function ExplorerStats({
     </Card>
   );
 }
-
