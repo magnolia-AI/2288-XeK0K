@@ -20,7 +20,7 @@ The current header has a mix of rounded-none components and default Radix UI com
 - [x] **4. Harmonize ThemeToggle appearance** <!-- id:P3U15D -->
   Modify 'components/theme-toggle.tsx' to add 'rounded-none' and 'ring-1 ring-white/10' to the DropdownMenuTrigger button, removing the default rounded icon-button look.
 
-- [ ] **5. Fix Cart Sheet item image rendering** <!-- id:UA8b71 -->
+- [x] **5. Fix Cart Sheet item image rendering** <!-- id:UA8b71 -->
   Update the cart item list in 'components/cart-sheet.tsx' to use sharp 'rounded-none' corners for product thumbnails and add a subtle 'border-white/5' to the image containers to match the HUD theme.
 
 - [ ] **6. Add hover state transitions to Header Icons** <!-- id:-jKw6b -->
