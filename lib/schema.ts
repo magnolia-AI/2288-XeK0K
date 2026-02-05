@@ -67,6 +67,32 @@ export const orderItems = pgTable('order_items', {
   price: decimal('price', { precision: 12, scale: 2 }).notNull(),
 });
 
+/**
+ * Dino-Quest Rewards Schema
+ */
+
+export const userProfiles = pgTable('user_profiles', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  userId: uuid('user_id')
+    .notNull()
+    .unique()
+    .references(() => neonAuthUser.id, { onDelete: 'cascade' }),
+  fossilPoints: integer('fossil_points').default(0).notNull(),
+  explorerLevel: integer('explorer_level').default(1).notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+});
+
+export const quests = pgTable('quests', {
+  id: serial('id').primaryKey(),
+  userId: uuid('user_id')
+    .notNull()
+    .references(() => neonAuthUser.id, { onDelete: 'cascade' }),
+  title: varchar('title', { length: 255 }).notNull(),
+  status: varchar('status', { length: 50 }).default('active').notNull(),
+  rewardPoints: integer('reward_points').notNull(),
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
 // Type exports
 export type Category = typeof categories.$inferSelect;
 export type NewCategory = typeof categories.$inferInsert;
@@ -76,6 +102,10 @@ export type Order = typeof orders.$inferSelect;
 export type NewOrder = typeof orders.$inferInsert;
 export type OrderItem = typeof orderItems.$inferSelect;
 export type NewOrderItem = typeof orderItems.$inferInsert;
+export type UserProfile = typeof userProfiles.$inferSelect;
+export type NewUserProfile = typeof userProfiles.$inferInsert;
+export type Quest = typeof quests.$inferSelect;
+export type NewQuest = typeof quests.$inferInsert;
 
 export type {
   NeonAuthUser,
@@ -86,3 +116,4 @@ export type {
   NeonAuthMember,
   NeonAuthInvitation,
 } from './neon-auth-schema';
+

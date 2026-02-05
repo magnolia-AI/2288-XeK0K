@@ -7,9 +7,13 @@ import { Badge } from '@/components/ui/badge';
 export default function AboutPage() {
   return (
     <div className="flex flex-col min-h-screen bg-black text-white selection:bg-primary selection:text-primary-foreground">
-      {/* Cinematic Header Section */}
-      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden uppercase font-heading">
+      {/* Genetic Legacy Hero Section */}
+      <section className="relative h-[85vh] min-h-[700px] flex items-center justify-center overflow-hidden uppercase font-heading">
+        {/* Cinematic Background Layer */}
         <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-black" />
+          
+          {/* Animated Video Background - Using existing video but adding overlays */}
           <Video
             src="/videos/pixverse_cMTicXgn9D.mp4"
             className="h-full w-full object-cover brightness-[0.2] scale-105"
@@ -17,24 +21,69 @@ export default function AboutPage() {
             loop
             muted
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,black_100%)] opacity-80" />
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none" />
-        </div>
 
-        <div className="container relative z-10 mx-auto px-4 md:px-6">
+          {/* Grainy Noise Overlay */}
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-150 contrast-150 pointer-events-none z-10" />
+          
+          {/* Subtle Vertical Scanlines */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] pointer-events-none opacity-20" />
+          
+          {/* Gradient Overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,black_100%)] opacity-70" />
+        </div>
+        
+        {/* Content Container */}
+        <div className="container relative z-20 mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center text-center">
-            <Badge variant="outline" className="mb-8 text-primary border-primary py-1 px-4 rounded-none font-mono tracking-[0.3em] text-[10px] bg-primary/5 border-glow-primary">
-              CORPORATE_DOSSIER_77
-            </Badge>
-            <h1 className="text-5xl md:text-8xl font-black tracking-tighter mb-6 leading-tight text-white drop-shadow-2xl">
-              OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/90 to-cyan-400 italic">LEGACY</span>
+            {/* Top HUD Indicator */}
+            <div className="inline-flex items-center gap-3 px-4 py-1.5 mb-12 border-l border-r border-primary/30 bg-primary/5 backdrop-blur-md">
+              <span className="w-1.5 h-1.5 bg-primary animate-pulse rounded-full" />
+              <span className="text-[10px] font-mono font-bold tracking-[0.3em] text-primary">
+                ESTABLISHED_DATA_STREAM_65Ma
+              </span>
+              <span className="w-1.5 h-1.5 bg-primary animate-pulse rounded-full" />
+            </div>
+
+            <h1 className="text-6xl md:text-[8rem] xl:text-[10rem] font-black tracking-tighter mb-8 leading-[0.8] text-white selection:text-black">
+              GENETIC <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/90 to-cyan-400 italic">
+                LEGACY
+              </span>
             </h1>
-            <p className="text-zinc-400 font-mono text-sm tracking-widest uppercase max-w-xl mx-auto">
-              Engineering the return of the biosphere&apos;s ultimate predators.
+            
+            <p className="text-sm md:text-base mb-16 max-w-xl mx-auto text-zinc-400 font-mono tracking-widest uppercase leading-relaxed text-glow-hud">
+              Resurrecting the apex lineage through hyper-controlled 
+              geological extraction and recursive sequence optimization.
             </p>
+
+            {/* Bottom HUD Data Points */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 pt-12 border-t border-white/10 w-full max-w-5xl">
+              <div className="flex flex-col gap-1 items-start text-left">
+                <span className="text-[10px] text-zinc-500 font-mono tracking-widest uppercase">Foundation</span>
+                <span className="text-2xl font-black text-white italic tracking-tighter">ER-01_ANP</span>
+              </div>
+              <div className="flex flex-col gap-1 items-start text-left text-primary">
+                <span className="text-[10px] text-primary/60 font-mono tracking-widest uppercase">Sequence_Purity</span>
+                <span className="text-2xl font-black text-glow-primary tracking-tighter italic">99.98%</span>
+              </div>
+              <div className="flex flex-col gap-1 items-start text-left">
+                <span className="text-[10px] text-zinc-500 font-mono tracking-widest uppercase">Origin_Site</span>
+                <span className="text-2xl font-black text-white tracking-tighter italic">HELL_CREEK</span>
+              </div>
+              <div className="flex flex-col gap-1 items-start text-left">
+                <span className="text-[10px] text-zinc-500 font-mono tracking-widest uppercase">Classification</span>
+                <span className="text-2xl font-black text-white tracking-tighter italic underline decoration-white/20 underline-offset-4">PIONEER</span>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* Decorative Corner HUD Elements */}
+        <div className="absolute top-10 left-10 w-24 h-24 border-t-2 border-l-2 border-primary/20 pointer-events-none hidden md:block" />
+        <div className="absolute top-10 right-10 w-24 h-24 border-t-2 border-r-2 border-white/10 pointer-events-none hidden md:block" />
+        <div className="absolute bottom-10 left-10 w-24 h-24 border-b-2 border-l-2 border-white/10 pointer-events-none hidden md:block" />
+        <div className="absolute bottom-10 right-10 w-24 h-24 border-b-2 border-r-2 border-primary/20 pointer-events-none hidden md:block" />
       </section>
 
       {/* Corporate Mission */}

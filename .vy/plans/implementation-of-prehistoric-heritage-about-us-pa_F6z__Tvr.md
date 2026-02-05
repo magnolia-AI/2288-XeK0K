@@ -11,7 +11,7 @@ The implementation will follow the existing project's aesthetic of black backgro
 - [x] **1. Create the basic page structure at app/about/page.tsx** <!-- id:eTc2SV -->
   Initialize the file with 'use client' if animations are used, or keep it as a Server Component if possible. Re-use the layout patterns from app/page.tsx including the black background and container constraints.
 
-- [ ] **2. Implement the 'Genetic Legacy' Hero section** <!-- id:ygiHje -->
+- [x] **2. Implement the 'Genetic Legacy' Hero section** <!-- id:ygiHje -->
   Use a large typography header similar to 'GENETIC MASTERPIECES' on the home page. Include a background overlay with grainy noise and a primary-colored HUD indicator (e.g., 'ESTABLISHED_DATA_STREAM_65Ma').
 
 - [ ] **3. Develop the 'Our Process' storytelling component** <!-- id:4AYw3r -->
