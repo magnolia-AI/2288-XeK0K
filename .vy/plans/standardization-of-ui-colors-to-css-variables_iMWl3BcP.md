@@ -28,7 +28,7 @@ The approach focuses on auditing the existing component library for hard-coded c
 - [x] **5. Refactor Facility Standards section background colors** <!-- id:n0H9j3 -->
   In 'app/page.tsx', replace 'bg-zinc-950' and 'bg-black' with 'bg-background' or 'bg-card' to ensure consistent layering in the HUD design.
 
-- [ ] **6. Clean up globals.css and tailwind.config.ts overlaps** <!-- id:U6b0z- -->
+- [x] **6. Clean up globals.css and tailwind.config.ts overlaps** <!-- id:U6b0z- -->
   Verify that all CSS variables referenced in the oklch format in 'globals.css' are correctly mapped in 'tailwind.config.ts' without any missing fallbacks.
 
 ---
