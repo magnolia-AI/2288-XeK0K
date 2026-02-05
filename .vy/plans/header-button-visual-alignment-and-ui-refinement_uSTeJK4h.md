@@ -23,7 +23,7 @@ I will implement the following changes:
 - [x] **3. Refine Cart Button Visuals** <!-- id:O5yN6t -->
   Update the CartSheet trigger in 'components/cart-sheet.tsx' to remove the awkward dark background box seen in the reference image. Shift to a clean glass-effect border or a standard ghost variant that matches the ThemeToggle.
 
-- [ ] **4. Standardize Auth Button Sizing** <!-- id:hcY62G -->
+- [x] **4. Standardize Auth Button Sizing** <!-- id:hcY62G -->
   Update the 'Sign in' and 'Sign up' buttons in 'components/auth-header.tsx'. Match the height of text-buttons to icon-buttons (h-10) and use consistent tracking and font-weight for the uppercase text.
 
 - [ ] **5. Verify HUD Style Color Consistency** <!-- id:8R7gau -->

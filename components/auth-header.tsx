@@ -142,10 +142,10 @@ export function AuthHeader() {
             </DropdownMenu>
           ) : (
             <div className="flex items-center gap-2">
-              <Button variant="ghost" asChild className="hidden sm:flex text-[10px] font-bold uppercase tracking-[0.2em] rounded-none px-5 transition-all">
+              <Button variant="ghost" asChild className="hidden sm:flex h-10 text-[11px] font-bold uppercase tracking-[0.2em] rounded-none px-6 transition-all">
                 <Link href="/auth/sign-in">Sign in</Link>
               </Button>
-              <Button variant="secondary" asChild className="h-9 px-6 rounded-none text-[10px] font-bold uppercase tracking-[0.2em] transition-all active:scale-95">
+              <Button variant="secondary" asChild className="h-10 px-6 rounded-none text-[11px] font-bold uppercase tracking-[0.2em] transition-all active:scale-95">
                 <Link href="/auth/sign-up">Sign up</Link>
               </Button>
             </div>
