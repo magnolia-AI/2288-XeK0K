@@ -22,7 +22,7 @@ The approach focuses on auditing the existing component library for hard-coded c
 - [x] **3. Refactor Quest UI to use semantic variables** <!-- id:V0q8_A -->
   Update 'components/ui/quest-completion-toast.tsx' to replace 'bg-zinc-900' and 'text-zinc-500' with semantic background or muted variables.
 
-- [ ] **4. Audit and replace hard-coded border colors** <!-- id:yxLwTT -->
+- [x] **4. Audit and replace hard-coded border colors** <!-- id:yxLwTT -->
   Locate files using 'border-white/10' or 'border-zinc-900' and replace them with 'border-border' or a secondary-themed variant where appropriate.
 
 - [ ] **5. Refactor Facility Standards section background colors** <!-- id:n0H9j3 -->
