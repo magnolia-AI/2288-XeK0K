@@ -14,7 +14,7 @@ The approach prioritizes WCAG-aligned contrast ratios and balanced typography. H
 - [x] **2. Enhance AuthHeader legibility and navigation layout.** <!-- id:7FnP_8 -->
   In components/auth-header.tsx, increase navigation link font size from text-[13px] to text-sm (14px). Reduce tracking-widest to tracking-wider. Update the Auth button borders from ring-1 to ring-[1.5px] and increase the opacity of the white/10 vertical separator.
 
-- [ ] **3. Optimize Hero section typography and contrast in app/page.tsx.** <!-- id:YqCElM -->
+- [x] **3. Optimize Hero section typography and contrast in app/page.tsx.** <!-- id:YqCElM -->
   Increase the hero paragraph text-size to text-xl and add a more pronounced text-shadow (text-glow-hud). Adjust the 'HUD elements' labels from text-[10px] to text-xs to improve readability.
 
 - [ ] **4. Improve Feature Card contrast and typography in the home page.** <!-- id:Pvxa3Z -->

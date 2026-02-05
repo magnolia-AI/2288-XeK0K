@@ -46,7 +46,7 @@ export default function Home() {
               </span>
             </h1>
             
-            <p className="text-lg md:text-xl mb-14 max-w-2xl mx-auto text-zinc-100 font-medium leading-relaxed tracking-tight text-glow-hud">
+            <p className="text-xl mb-14 max-w-2xl mx-auto text-zinc-100 font-medium leading-relaxed tracking-tight text-glow-hud">
               The world&apos;s premier digital showroom for pure-bred Tyrannosaurus Rex specimens. 
               Ethically sequenced. Geologically authenticated. Peerless.
             </p>
@@ -65,15 +65,15 @@ export default function Home() {
             {/* HUD Elements - High Contrast Monospace */}
             <div className="absolute left-10 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-14 items-start font-mono">
               <div className="flex flex-col gap-2 group transition-all hover:translate-x-1">
-                <div className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary/80">Grid Sector</div>
+                <div className="text-xs uppercase tracking-[0.3em] font-bold text-primary/80">Grid Sector</div>
                 <div className="text-2xl font-black text-white text-glow-hud">ARC-742</div>
               </div>
               <div className="flex flex-col gap-2 group transition-all hover:translate-x-1">
-                <div className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary/80">Security Level</div>
+                <div className="text-xs uppercase tracking-[0.3em] font-bold text-primary/80">Security Level</div>
                 <div className="text-2xl font-black text-primary italic text-glow-primary underline decoration-primary/40 underline-offset-8">SIGMA-9</div>
               </div>
               <div className="flex flex-col gap-2 group transition-all hover:translate-x-1">
-                <div className="text-[10px] uppercase tracking-[0.3em] font-bold text-primary/80">Atmosphere</div>
+                <div className="text-xs uppercase tracking-[0.3em] font-bold text-primary/80">Atmosphere</div>
                 <div className="text-2xl font-black text-white text-glow-hud">STABLE</div>
               </div>
             </div>
@@ -209,4 +209,3 @@ export default function Home() {
     </div>
   );
 }
-
