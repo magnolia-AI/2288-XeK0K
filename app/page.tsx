@@ -29,24 +29,24 @@ export default function Home() {
         {/* Hero Content */}
         <div className="container relative z-10 mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 mb-10 rounded-full border border-primary/40 bg-zinc-950/60 backdrop-blur-xl transition-all hover:bg-zinc-950/80">
+            <div className="inline-flex items-center gap-2 px-4 py-2 mb-10 rounded-full border border-primary/40 bg-background/60 backdrop-blur-xl transition-all hover:bg-background/80">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
               </span>
-              <span className="text-[10px] font-bold tracking-[0.25em] text-white text-glow-hud">
+              <span className="text-[10px] font-bold tracking-[0.25em] text-foreground text-glow-hud">
                 Secure Genetic Uplink Established
               </span>
             </div>
 
-            <h1 className="text-6xl md:text-[10rem] font-black tracking-tighter mb-8 leading-[0.8] text-white drop-shadow-2xl">
+            <h1 className="text-6xl md:text-[10rem] font-black tracking-tighter mb-8 leading-[0.8] text-foreground drop-shadow-2xl">
               GENETIC <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary/90 to-cyan-400 italic">
                 MASTERPIECES
               </span>
             </h1>
             
-            <p className="text-xl mb-14 max-w-2xl mx-auto text-zinc-100 font-medium leading-relaxed tracking-tight text-glow-hud">
+            <p className="text-xl mb-14 max-w-2xl mx-auto text-foreground/90 font-medium leading-relaxed tracking-tight text-glow-hud">
               The world&apos;s premier digital showroom for pure-bred Tyrannosaurus Rex specimens. 
               Ethically sequenced. Geologically authenticated. Peerless.
             </p>
@@ -57,7 +57,7 @@ export default function Home() {
                   <span>ENTER THE CATALOG</span>
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="h-16 px-10 text-lg font-bold rounded-none border-white/40 bg-white/5 backdrop-blur-2xl text-white hover:bg-white hover:text-black hover:border-white transition-all shadow-xl" asChild>
+              <Button size="lg" variant="outline" className="h-16 px-10 text-lg font-bold rounded-none border-foreground/40 bg-foreground/5 backdrop-blur-2xl text-foreground hover:bg-foreground hover:text-background hover:border-foreground transition-all shadow-xl" asChild>
                 <Link href="/about">LINEAGE VERIFICATION</Link>
               </Button>
             </div>
@@ -66,7 +66,7 @@ export default function Home() {
             <div className="absolute left-10 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-14 items-start font-mono">
               <div className="flex flex-col gap-2 group transition-all hover:translate-x-1">
                 <div className="text-xs uppercase tracking-[0.3em] font-bold text-primary/80">Grid Sector</div>
-                <div className="text-2xl font-black text-white text-glow-hud">ARC-742</div>
+                <div className="text-2xl font-black text-foreground text-glow-hud">ARC-742</div>
               </div>
               <div className="flex flex-col gap-2 group transition-all hover:translate-x-1">
                 <div className="text-xs uppercase tracking-[0.3em] font-bold text-primary/80">Security Level</div>
@@ -74,7 +74,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col gap-2 group transition-all hover:translate-x-1">
                 <div className="text-xs uppercase tracking-[0.3em] font-bold text-primary/80">Atmosphere</div>
-                <div className="text-2xl font-black text-white text-glow-hud">STABLE</div>
+                <div className="text-2xl font-black text-foreground text-glow-hud">STABLE</div>
               </div>
             </div>
           </div>

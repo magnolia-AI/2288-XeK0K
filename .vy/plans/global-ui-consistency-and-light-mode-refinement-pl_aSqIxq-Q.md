@@ -14,7 +14,7 @@ The approach focuses on standardizing the color palette by moving away from Tail
 - [x] **1. Audit and replace hardcoded zinc and white classes in AuthHeader** <!-- id:LXysMF -->
   In components/auth-header.tsx, replace 'bg-zinc-900' with 'bg-muted' or 'bg-card', and 'text-white/50' with 'text-muted-foreground'. Ensure the dropdown menu uses theme-aware borders instead of hardcoded 'white/10'.
 
-- [ ] **2. Refine Home Page hero and section backgrounds** <!-- id:wRCKXo -->
+- [x] **2. Refine Home Page hero and section backgrounds** <!-- id:wRCKXo -->
   Update app/page.tsx to replace hardcoded 'bg-zinc-950', 'bg-zinc-900', and 'text-zinc-200' with semantic variables. Ensure the grid in the 'Facility standards' section uses 'bg-border' for the gap lines instead of a static zinc color.
 
 - [ ] **3. Sanitize Footer colors for light mode compatibility** <!-- id:UAHaDe -->
