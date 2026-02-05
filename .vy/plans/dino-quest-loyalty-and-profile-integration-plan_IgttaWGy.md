@@ -23,7 +23,7 @@ The approach focuses on leveraging the existing Drizzle schema for user_profiles
 - [x] **5. Build interactive 'Quest Completed' notification system** <!-- id:hvhErH -->
   Integrate the `sonner` toast library with the Quest POST handler. When a user completes an action that fulfills a quest requirement, trigger a cinematic 'Quest Complete' toast that displays the amount of Fossil Points earned and the new point total.
 
-- [ ] **6. Refine visual feedback and Level-Up animations** <!-- id:AII2Xe -->
+- [x] **6. Refine visual feedback and Level-Up animations** <!-- id:AII2Xe -->
   Add Framer Motion animations to the `ExplorerStats` component. When the `explorerLevel` increments in the database, trigger a localized 'Level Up' splash effect on the user's profile badge to reinforce the gamification loop.
 
 ---
