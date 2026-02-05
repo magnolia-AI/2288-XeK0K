@@ -148,7 +148,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-24 max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter uppercase mb-6">Foundational Protocols</h2>
-            <p className="text-zinc-500 font-medium">Built on the bedrock of scientific integrity and military-grade security.</p>
+            <p className="text-muted-foreground font-medium">Built on the bedrock of scientific integrity and military-grade security.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">

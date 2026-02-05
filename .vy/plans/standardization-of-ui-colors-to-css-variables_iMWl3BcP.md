@@ -16,7 +16,7 @@ The approach focuses on auditing the existing component library for hard-coded c
 - [x] **1. Remove hard-coded blue-600 badge coloring in product cards** <!-- id:4zo1M- -->
   Update 'components/products/product-card.tsx' to replace 'bg-blue-600' with 'bg-primary' and 'text-white' with 'text-primary-foreground' to align with the Cinematic HUD theme.
 
-- [ ] **2. Standardize Zinc-based text to semantic muted-foreground** <!-- id:jUEBiy -->
+- [x] **2. Standardize Zinc-based text to semantic muted-foreground** <!-- id:jUEBiy -->
   Scan 'components/footer.tsx', 'app/page.tsx', and 'app/about/page.tsx' to replace utility classes like 'text-zinc-400' and 'text-zinc-500' with 'text-muted-foreground'. This ensures text remains legible across different theme modes.
 
 - [ ] **3. Refactor Quest UI to use semantic variables** <!-- id:V0q8_A -->

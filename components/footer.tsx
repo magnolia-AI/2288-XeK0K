@@ -81,7 +81,7 @@ export function Footer() {
 
         <Separator className="my-16 bg-white/5" />
 
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold text-zinc-500 tracking-[0.2em]">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold text-muted-foreground tracking-[0.2em]">
           <p>© {new Date().getFullYear()} REXSHOP GLOBAL INDUSTRIES. ALL RIGHTS RESERVED BY THE APEX.</p>
           <div className="flex gap-8 uppercase">
             <Link href="#" className="hover:text-primary transition-colors">Privacy Protocol</Link>
