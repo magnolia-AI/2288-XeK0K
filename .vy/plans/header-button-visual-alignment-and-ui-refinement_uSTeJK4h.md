@@ -17,7 +17,7 @@ I will implement the following changes:
 - [x] **1. Standardize Button Component Variants** <!-- id:PyEUEi -->
   Update 'components/ui/button.tsx' to ensure 'ghost' and 'outline' variants support the sharp, square edge aesthetic (removing default Radix 'rounded-md' where necessary) and adjust the 'icon' size to match the preferred 40x40px or 36x36px header standard.
 
-- [ ] **2. Align Header Utility Icons** <!-- id:qEWp8l -->
+- [x] **2. Align Header Utility Icons** <!-- id:qEWp8l -->
   In 'components/auth-header.tsx', wrap the ThemeToggle, MobileNav, and CartSheet in a container with 'flex items-center gap-1'. Ensure the vertical separator (line 107) has consistent opacity and height.
 
 - [ ] **3. Refine Cart Button Visuals** <!-- id:O5yN6t -->

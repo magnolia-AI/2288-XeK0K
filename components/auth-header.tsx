@@ -98,13 +98,13 @@ export function AuthHeader() {
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1 md:gap-2 mr-2">
+          <div className="flex items-center gap-1">
             <MobileNav />
             <ThemeToggle />
             <CartSheet />
           </div>
 
-          <div className="hidden h-6 w-[1px] bg-border md:block mx-1" />
+          <div className="hidden h-5 w-[1px] bg-white/10 md:block mx-1" />
 
           {user ? (
             <DropdownMenu>
@@ -155,4 +155,3 @@ export function AuthHeader() {
     </header>
   );
 }
-
