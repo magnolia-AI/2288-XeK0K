@@ -11,7 +11,7 @@ The approach prioritizes WCAG-aligned contrast ratios and balanced typography. H
 - [x] **1. Refine global CSS color variables for better accessibility contrast.** <!-- id:-Mk0eH -->
   In app/globals.css, update --muted-foreground for dark mode to oklch(0.85 0.01 220) and --border to oklch(1 0 0 / 25%). Adjust .glass-header background-color from 70% to 85% opacity to prevents background bleed-through.
 
-- [ ] **2. Enhance AuthHeader legibility and navigation layout.** <!-- id:7FnP_8 -->
+- [x] **2. Enhance AuthHeader legibility and navigation layout.** <!-- id:7FnP_8 -->
   In components/auth-header.tsx, increase navigation link font size from text-[13px] to text-sm (14px). Reduce tracking-widest to tracking-wider. Update the Auth button borders from ring-1 to ring-[1.5px] and increase the opacity of the white/10 vertical separator.
 
 - [ ] **3. Optimize Hero section typography and contrast in app/page.tsx.** <!-- id:YqCElM -->

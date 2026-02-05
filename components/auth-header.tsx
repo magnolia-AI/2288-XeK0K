@@ -73,7 +73,7 @@ export function AuthHeader() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    "relative py-2 text-[13px] font-medium tracking-widest uppercase transition-colors duration-300",
+                    "relative py-2 text-sm font-medium tracking-wider uppercase transition-colors duration-300",
                     isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
                   )}
                 >
@@ -104,12 +104,12 @@ export function AuthHeader() {
             <CartSheet />
           </div>
 
-          <div className="hidden h-5 w-[1px] bg-white/10 md:block mx-1" />
+          <div className="hidden h-5 w-[1px] bg-white/20 md:block mx-1" />
 
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="group relative h-9 w-9 rounded-none ring-1 ring-white/10 transition-all hover:ring-primary/50 p-0">
+                <Button variant="ghost" className="group relative h-9 w-9 rounded-none ring-[1.5px] ring-white/10 transition-all hover:ring-primary/50 p-0">
                   <Avatar className="h-8 w-8 rounded-none transition-transform duration-300 group-hover:scale-105 group-hover:-translate-y-0.5">
                     <AvatarFallback className="bg-primary/10 text-primary font-bold text-xs rounded-none">
                       {user.name?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase() || 'U'}
