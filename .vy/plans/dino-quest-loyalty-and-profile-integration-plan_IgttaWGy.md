@@ -14,7 +14,7 @@ The approach focuses on leveraging the existing Drizzle schema for user_profiles
 - [x] **2. Enhance the Quests API to support dynamic quest generation** <!-- id:FghODc -->
   Modify `app/api/quests/route.ts` to include a logic block that seeds initial 'Welcome Quests' (e.g., 'Make your first purchase', 'Browse 5 products') if a user has no active quests. Update the POST handler to ensure transaction safety when incrementing `fossilPoints`.
 
-- [ ] **3. Implement the Dino-Quest Dashboard in the Account section** <!-- id:vEOhxw -->
+- [x] **3. Implement the Dino-Quest Dashboard in the Account section** <!-- id:vEOhxw -->
   Flesh out `app/account/page.tsx` (if missing) and integrate `components/account/explorer-stats.tsx`. Use the previously created `use-user-profile` hook to display the current level, point progress bar, and a list of active/completed quests with Lucide icons.
 
 - [ ] **4. Connect E-commerce transactions to the Loyalty System** <!-- id:jPVsAr -->
