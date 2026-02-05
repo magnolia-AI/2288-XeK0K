@@ -14,7 +14,7 @@ The overhaul focuses on improving legibility and aesthetic premium-ness by lever
 - [x] **2. Integrate ThemeToggle and refine layout in components/auth-header.tsx** <!-- id:4-x-A2 -->
   Import ThemeToggle from components/theme-toggle.tsx and place it beside the CartSheet. Update the container to use 'max-w-7xl' for better content alignment and replace hardcoded 'text-white/50' with 'text-muted-foreground' for proper theme-switching support.
 
-- [ ] **3. Modernize navigation link styling in AuthHeader** <!-- id:QeWqvL -->
+- [x] **3. Modernize navigation link styling in AuthHeader** <!-- id:QeWqvL -->
   Change font size from text-xs to text-[13px], update font-weight to medium, and increase tracking (tracking-widest). Implement a smoother transition for the active state underline using framer-motion or a CSS transition that expands from the center.
 
 - [ ] **4. Enhance mobile navigation trigger and sheet in components/mobile-nav.tsx** <!-- id:4xwcWN -->

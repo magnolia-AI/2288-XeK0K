@@ -17,6 +17,7 @@ import { MobileNav } from '@/components/mobile-nav';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 
 export function AuthHeader() {
   const { user, isPending, signOut } = useAuthClient();
@@ -65,20 +66,34 @@ export function AuthHeader() {
           </Link>
 
           <nav className="hidden md:flex gap-8 items-center">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "text-xs font-bold tracking-widest uppercase transition-all duration-300 hover:text-primary relative py-1",
-                  pathname === link.href 
-                    ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[1px] after:bg-primary" 
-                    : "text-muted-foreground hover:text-foreground"
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "relative py-2 text-[13px] font-medium tracking-widest uppercase transition-colors duration-300",
+                    isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  {link.name}
+                  {isActive && (
+                    <motion.div
+                      layoutId="nav-underline"
+                      className="absolute bottom-0 left-0 right-0 h-[1px] bg-primary"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 30
+                      }}
+                    />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
         </div>
 
