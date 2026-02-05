@@ -11,7 +11,7 @@ The approach leverages the existing Drizzle schema (`user_profiles`, `quests`) a
 - [x] **1. Implement Reward Logic in Quest API** <!-- id:1y7J1K -->
   Update 'app/api/quests/route.ts' to handle POST requests that update quest status. Include logic to increment 'fossil_points' in the 'user_profiles' table using Drizzle ORM when a quest is marked as 'completed'.
 
-- [ ] **2. Create Explorer Stats Profile Component** <!-- id:fsl3AC -->
+- [x] **2. Create Explorer Stats Profile Component** <!-- id:fsl3AC -->
   Develop 'components/account/profile-card.tsx' using the 'Card' and 'Progress' UI components. Fetch and display the authenticated user's 'explorer_level' and 'fossil_points' from the database to provide visual feedback on their loyalty status.
 
 - [ ] **3. Integrate Reward Triggers in Checkout Success** <!-- id:QDMalp -->
