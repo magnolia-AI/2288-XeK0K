@@ -17,7 +17,7 @@ The approach focuses on extending the existing PostgreSQL schema using Drizzle O
 - [x] **3. Create Quest Progress API route** <!-- id:88oz3y -->
   Implement 'app/api/quests/route.ts' to fetch user-specific quest progress and calculate point totals using server-side logic from 'lib/auth/server.ts'.
 
-- [ ] **4. Develop the HUD Explorer Dashboard component** <!-- id:FnBrTa -->
+- [x] **4. Develop the HUD Explorer Dashboard component** <!-- id:FnBrTa -->
   Create 'components/account/explorer-stats.tsx' using 'components/ui/card.tsx' and 'components/ui/progress.tsx'. Use the cinematic glassmorphism style found in the header to display level and point balance.
 
 - [ ] **5. Integrate loyalty points into Checkout process** <!-- id:IfZ1E8 -->
