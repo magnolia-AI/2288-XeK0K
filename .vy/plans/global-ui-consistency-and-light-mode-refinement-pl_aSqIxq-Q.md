@@ -26,7 +26,7 @@ The approach focuses on standardizing the color palette by moving away from Tail
 - [x] **5. Thematize the Contact Form** <!-- id:llKl9Z -->
   In components/contact-form.tsx, update labels and inputs to use the HUD typography (font-bold, uppercase tracking-widest) and ensure the button matches the primary brand style defined in the hero section.
 
-- [ ] **6. Final verification of contrast ratios in Light Mode** <!-- id:or-7li -->
+- [x] **6. Final verification of contrast ratios in Light Mode** <!-- id:or-7li -->
   Review globals.css oklch values for light mode to ensure --muted-foreground (currently oklch(0.4 0 0)) and --primary (oklch(0.2 0 0)) meet AA accessibility standards against the white background.
 
 ---
