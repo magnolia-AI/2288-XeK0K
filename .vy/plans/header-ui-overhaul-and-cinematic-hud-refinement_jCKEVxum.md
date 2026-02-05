@@ -23,7 +23,7 @@ The overhaul focuses on improving legibility and aesthetic premium-ness by lever
 - [x] **5. Uniform button styling across the header** <!-- id:pg1YZJ -->
   Ensure Sign In and Sign Up buttons use the secondary/primary variants from the UI library instead of custom inline styles to maintain brand consistency and hover states.
 
-- [ ] **6. Verify header height and layout offset in app/layout.tsx** <!-- id:puN6em -->
+- [x] **6. Verify header height and layout offset in app/layout.tsx** <!-- id:puN6em -->
   Ensure the main content area has a consistent padding-top (pt-16) to prevent the sticky header from overlapping page content, especially on product pages.
 
 ---
