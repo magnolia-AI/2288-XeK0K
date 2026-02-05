@@ -31,5 +31,5 @@ The approach focuses on standardizing the color palette by moving away from Tail
 
 ---
 plan_id: ePvwNWJD
-status: executing
+status: draft
 created: 2026-02-05T15:06:01.518Z
