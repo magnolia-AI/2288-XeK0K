@@ -11,7 +11,7 @@ The approach focuses on extending the existing PostgreSQL schema using Drizzle O
 - [x] **1. Extend database schema in lib/schema.ts for rewards** <!-- id:ySKG4j -->
   Create 'user_profiles' table linked to 'neonAuthUser.id' with columns for 'fossil_points' (integer) and 'explorer_level' (integer). Add a 'quests' table to store active challenges like 'First Predator Purchase'.
 
-- [ ] **2. Generate and run database migration** <!-- id:vk4roI -->
+- [x] **2. Generate and run database migration** <!-- id:vk4roI -->
   Run 'bun drizzle-kit generate' followed by 'bun drizzle-kit push' to update the Neon database with the new profile and quest tables.
 
 - [ ] **3. Create Quest Progress API route** <!-- id:88oz3y -->
