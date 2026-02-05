@@ -17,7 +17,7 @@ The approach focuses on standardizing the color palette by moving away from Tail
 - [x] **2. Refine Home Page hero and section backgrounds** <!-- id:wRCKXo -->
   Update app/page.tsx to replace hardcoded 'bg-zinc-950', 'bg-zinc-900', and 'text-zinc-200' with semantic variables. Ensure the grid in the 'Facility standards' section uses 'bg-border' for the gap lines instead of a static zinc color.
 
-- [ ] **3. Sanitize Footer colors for light mode compatibility** <!-- id:UAHaDe -->
+- [x] **3. Sanitize Footer colors for light mode compatibility** <!-- id:UAHaDe -->
   In components/footer.tsx, change 'bg-black' to 'bg-background', and 'text-zinc-400'/'text-zinc-200' to 'text-muted-foreground'. Ensure the newsletter input uses themed 'border-input' and 'bg-transparent' instead of hardcoded white/10.
 
 - [ ] **4. Update Product Cards and Badges to use semantic status colors** <!-- id:k0RMhj -->
@@ -31,5 +31,5 @@ The approach focuses on standardizing the color palette by moving away from Tail
 
 ---
 plan_id: ePvwNWJD
-status: draft
+status: executing
 created: 2026-02-05T15:06:01.518Z
